@@ -1,0 +1,30 @@
+let mapleader = " "
+
+set surround
+set commentary
+set ignorecase
+set smartcase
+set incsearch              " Highlight while searching with / or ?.
+set hlsearch               " Keep matches highlighted.
+set visualbell
+set noerrorbells
+
+nnoremap <silent> <C-l> :<C-u>nohl<CR><C-l>
+nnoremap g; g;zz
+nnoremap g, g,zz
+nnoremap ' `
+nnoremap ` '
+nnoremap * *zzzv
+nnoremap # #zzzv
+nnoremap n nzzzv
+nnoremap N Nzzzv
+nnoremap ; :
+vnoremap ; :
+nnoremap : ;
+vnoremap : ;
+nnoremap j gj
+nnoremap k gk
+
+nnoremap gn :action GotoNextError<CR>
+nnoremap gp :action GotoPreviousError<CR>
+nnoremap g[ :action GotoImplementation<CR>
