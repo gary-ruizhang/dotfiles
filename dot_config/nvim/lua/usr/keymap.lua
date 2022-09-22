@@ -18,7 +18,7 @@ vim.g.mapleader = " "
 -- Normal --
 
 -- FIXME colon not show immediately after press if no further typing
-keymap("n", ";", ":", opts)
+keymap("n", ";", ":")
 keymap("n", "Y", "y$", opts)
 
 -- Better scroll
@@ -48,6 +48,3 @@ keymap("v", ">", ">gv", opts)
 -- Telescope builtin
 -- Karabiner remap <shift><shift> -> <C-c>
 keymap("n", "<C-c>", "<cmd>Telescope builtin<CR>", opts)
-
--- Hop easymotion
-keymap("n", "s", "<cmd>HopChar2<CR>", opts)

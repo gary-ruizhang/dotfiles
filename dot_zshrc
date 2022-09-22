@@ -1,3 +1,6 @@
+## prof if need, don't forget the zprof at end of file
+# zmodload zsh/zprof
+
 ## Settings
 setopt MENU_COMPLETE
 # case-insensitive,partial-word and then substring completion
@@ -39,6 +42,7 @@ alias g=git
 alias lg=lazygit
 alias k=kubectl
 alias ks='kubectl -n kube-system'
+alias c=cargo
 
 alias vim=nvim
 alias vi=nvim
@@ -84,8 +88,16 @@ eval "$(starship init zsh)"
 # highlight
 source /Users/ruizhang/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-# make zsh completion system work
-autoload -U +X compinit && compinit
+fpath=(/Users/ruizhang/.zsh/zsh-completions/src $fpath)
+fpath+=~/.zfunc
+
+autoload -Uz compinit
+if [ $(date +'%j') != $(stat -f '%Sm' -t '%j' ~/.zcompdump) ]; then
+  compinit
+else
+  compinit -C
+fi
+
 source <(kubectl completion zsh)
 
 export PATH="/usr/local/opt/binutils/bin:$PATH"
@@ -101,7 +113,6 @@ source /Users/ruizhang/.config/broot/launcher/bash/br
 
 eval "$(atuin init zsh)"
 
-fpath=(/Users/ruizhang/.zsh/zsh-completions/src $fpath)
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 export JAVA_HOME=$(/usr/libexec/java_home)
@@ -134,8 +145,8 @@ tmux_work() {
     tmux new-window -d -n front -c "/Users/ruizhang/Work/workspace/ivoss_web"
     tmux new-window -d -n back -c "/Users/ruizhang/Work/workspace/ivoss_web_service"
     tmux new-window -d -n bss/bigdata -c "/Users/ruizhang/Work/ivoss_bigdata"
-    tmux new-window -d -n other
-    tmux new-window -d -n ssh
+    tmux new-window -d -n other -c "/Users/ruizhang"
+    tmux new-window -d -n ssh -c "/Users/ruizhang"
     # -d to detach any other client (which there shouldn't be,
     # since you just created the session).
     tmux attach-session -d -t work
@@ -144,6 +155,10 @@ tmux_work() {
   fi
 }
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# Follow copied and moved files to destination directory
+cpf() { cp "$@" && goto "$_"; }
+mvf() { mv "$@" && goto "$_"; }
+goto() { [ -d "$1" ] && cd "$1" || cd "$(dirname "$1")"; }
+
+##
+# zprof

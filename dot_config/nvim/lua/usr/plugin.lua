@@ -77,15 +77,6 @@ return packer.startup(function(use)
   -- Theme
   use { "EdenEast/nightfox.nvim" }
 
-  -- Easymotion
-  use {
-    'phaazon/hop.nvim',
-    branch = 'v2',
-    config = function()
-      require'hop'.setup {}
-    end
-  }
-
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then

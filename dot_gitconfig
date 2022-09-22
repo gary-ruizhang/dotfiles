@@ -21,9 +21,53 @@
 [delta]
   navigate = true    # use n and N to move between diff sections
   light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
+  features = nord-future
 [merge]
   conflictstyle = diff3
 [diff]
   colorMoved = default
 [commit]
 	template = /Users/ruizhang/.gitmessage
+[rebase]
+  autoStash = true
+[delta "nord-future"]
+  #author: https://github.com/AirOnSkin
+  dark = true
+  line-numbers = true
+  keep-plus-minus-markers = false
+  syntax-theme = Nord
+  file-added-label = [+]
+  file-copied-label = [C]
+  file-decoration-style = none
+  file-modified-label = [M]
+  file-removed-label = [-]
+  file-renamed-label = [R]
+  file-style = 232 bold 184
+  hunk-header-decoration-style = none
+  hunk-header-file-style = "#999999"
+  hunk-header-line-number-style = bold "#03a4ff"
+  hunk-header-style = file line-number syntax
+  line-numbers-left-format = " {nm:>3} "
+  line-numbers-left-style = red
+  line-numbers-right-format = " {np:>3} "
+  line-numbers-right-style = green
+  line-numbers-minus-style = red italic black
+  line-numbers-plus-style = green italic black
+  line-numbers-zero-style = "#434C5E" italic
+  minus-style = bold red
+  minus-emph-style = bold "#202020" "#FF5555"
+  minus-non-emph-style = bold
+  plus-style = bold green
+  plus-emph-style = bold "#202020" "#50FA7B"
+  plus-non-emph-style = bold
+  zero-style = syntax
+  blame-code-style = syntax
+  blame-format = "{author:<18} ({commit:>9}) {timestamp:^16}"
+  blame-palette = "#2E3440" "#3B4252" "#434C5E" "#4C566A"
+  merge-conflict-begin-symbol = ~
+  merge-conflict-end-symbol = ~
+  merge-conflict-ours-diff-header-style = "#F1FA8C" bold
+  merge-conflict-ours-diff-header-decoration-style = "#434C5E" box
+  merge-conflict-theirs-diff-header-style = "#F1FA8C" bold
+  merge-conflict-theirs-diff-header-decoration-style = "#434C5E" box
+

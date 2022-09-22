@@ -2,8 +2,7 @@ local nvim_lsp = require('lspconfig')
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities(), { snippetSupport = false })
 
 -- TODO seperate each lsp to different config files
--- TODO BUT I only want to write RUST in vim
-local servers = { 'rust_analyzer', 'sumneko_lua', 'yamlls' }
+local servers = { 'bashls', 'sumneko_lua', 'yamlls' }
 
 local opts = { silent=true }
 
