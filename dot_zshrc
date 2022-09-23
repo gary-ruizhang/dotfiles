@@ -30,7 +30,7 @@ export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 ## Alias
 # alias ls to exa
 alias ls=exa
-alias ll='ls -alF -snewest'
+alias ll='ls -alF -snewest -I .DS_Store'
 
 # alias cat to bat
 alias cat=bat
@@ -46,13 +46,6 @@ alias c=cargo
 
 alias vim=nvim
 alias vi=nvim
-
-alias gst='git status'
-alias gc='git commit'
-alias gco='git checkout'
-alias gp='git push'
-alias gl='git pull'
-alias gcb='git checkout -b'
 
 ## Tools
 
@@ -112,6 +105,7 @@ eval "$(zoxide init zsh)"
 source /Users/ruizhang/.config/broot/launcher/bash/br
 
 eval "$(atuin init zsh)"
+eval "$(navi widget zsh)"
 
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
