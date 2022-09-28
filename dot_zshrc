@@ -39,6 +39,14 @@ alias cat=bat
 eval "$(hub alias -s)"
 
 alias g=git
+# gcp which used when want to cherry-pick current newest commit to another branch
+# alias not convient for long command
+gcp() {
+  cherry=$(git show --oneline | head -1 | awk '{ print $1 }')
+  echo $cherry | tr -d '\n' | pbcopy
+  echo $cherry
+}
+
 alias lg=lazygit
 alias k=kubectl
 alias ks='kubectl -n kube-system'
@@ -153,6 +161,9 @@ tmux_work() {
 cpf() { cp "$@" && goto "$_"; }
 mvf() { mv "$@" && goto "$_"; }
 goto() { [ -d "$1" ] && cd "$1" || cd "$(dirname "$1")"; }
+
+# remove duplicate in $PATH
+typeset -U path
 
 ##
 # zprof
