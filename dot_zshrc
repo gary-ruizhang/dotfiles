@@ -88,6 +88,12 @@ bindkey "ç" fzf-cd-widget
 
 source ~/.config/fzf-tab/fzf-tab.plugin.zsh
 
+# slow if source but normal for new shell session
+export LS_COLORS="$(vivid generate nord)"
+export FZF_DEFAULT_COMMAND="fd --type file --color=always"
+export FZF_DEFAULT_OPTS="--ansi"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
 ## UI
 
 # starship
