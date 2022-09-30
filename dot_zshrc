@@ -59,6 +59,7 @@ alias lg=lazygit
 alias k=kubectl
 alias ks='kubectl -n kube-system'
 alias c=cargo
+alias topgrade='topgrade ; brew bundle dump --force --file=~/.config/homebrew/Brewfile'
 
 alias vim=nvim
 alias vi=nvim
