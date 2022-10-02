@@ -85,3 +85,5 @@
 (setq org-roam-directory "~/org-roam")
 (remove-hook 'doom-first-input-hook #'evil-snipe-mode)
 (remove-hook 'undo-fu-mode-hook #'global-undo-fu-session-mode)
+(after! company
+   (map! :map company-active-map "<tab>" #'company-complete-selection))
