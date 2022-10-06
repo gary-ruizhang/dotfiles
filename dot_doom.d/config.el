@@ -79,7 +79,8 @@
 
 (add-hook 'window-setup-hook #'toggle-frame-fullscreen)
 (setq doom-font (font-spec :family "OperatorMonoSSmLig Nerd Font" :size 26))
-(setq which-key-idle-delay 0.3)
+;; sometimes no need to see which key
+;; (setq which-key-idle-delay 0.3)
 
 (map! :n ";" 'evil-ex)
 (map! :n "C-l" 'evil-force-normal-state)
