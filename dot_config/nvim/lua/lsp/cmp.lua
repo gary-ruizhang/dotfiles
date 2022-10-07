@@ -11,6 +11,10 @@ local check_backspace = function()
 end
 
 cmp.setup({
+  completion = {
+    completeopt = 'menu,menuone,noinsert'
+  },
+
   preselect = cmp.PreselectMode.None,
 
   sources = cmp.config.sources({
