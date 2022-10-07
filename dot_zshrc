@@ -179,11 +179,6 @@ tmux_work() {
   fi
 }
 
-# Follow copied and moved files to destination directory
-cpf() { cp "$@" && goto "$_"; }
-mvf() { mv "$@" && goto "$_"; }
-goto() { [ -d "$1" ] && cd "$1" || cd "$(dirname "$1")"; }
-
 # remove duplicate in $PATH
 typeset -U path
 

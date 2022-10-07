@@ -1,5 +1,4 @@
 -- NOTE if below spoons exist in chezmoi then it's a customized version. otherwise preinstall needed.
-hs.loadSpoon("BingDaily")
 hs.loadSpoon("Caffeine")
 hs.loadSpoon("EmmyLua")
 hs.loadSpoon("LookupSelection")
@@ -27,9 +26,10 @@ spoon.LookupSelection:bindHotkeys({
 spoon.MouseCircle:bindHotkeys({
     show = {cmd_alt_ctrl, "m"}
 })
+
 -- FIXME not work
 -- spoon.MouseFollowsFocus:start()
 
 hs.hotkey.bind(cmd_alt_ctrl, "w", function ()
-    hs.alert.show("suck your mother")
+    hs.alert.show("fuck your mother")
 end)
