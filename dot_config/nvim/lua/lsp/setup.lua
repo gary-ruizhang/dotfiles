@@ -14,12 +14,24 @@ vim.keymap.set('n', 'gn', vim.diagnostic.goto_next, opts)
 local on_attach = function(client, bufnr)
   -- Mappings.
   -- See `:help vim.lsp.*` for documentation on any of the below functions
+
+  -- local function on_list(options)
+  --   vim.fn.setqflist({}, ' ', options)
+  --   vim.api.nvim_command('cfirst')
+  -- end
+
+  -- local function on_list(options)
+  --   vim.fn.setloclist(0, {}, ' ', options)
+  --   vim.api.nvim_command('lopen')
+  -- end
+
   local bufopts = { silent=true, buffer=bufnr }
-  vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
-  vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
+  vim.keymap.set('n', 'gD', function () vim.lsp.buf.declaration   {} end, bufopts)
+  vim.keymap.set('n', 'gd', function () vim.lsp.buf.definition    {} end, bufopts)
+  vim.keymap.set('n', 'g[', function () vim.lsp.buf.implementation{} end, bufopts)
+  vim.keymap.set('n', 'gr', function () vim.lsp.buf.references    {} end, bufopts)
+
   vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
-  vim.keymap.set('n', 'g[', vim.lsp.buf.implementation, bufopts)
-  vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
 end
 
 for _, lsp in ipairs(servers) do

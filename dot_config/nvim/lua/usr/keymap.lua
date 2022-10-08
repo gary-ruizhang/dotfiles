@@ -8,12 +8,12 @@ keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
 
 -- Modes
---   normal_mode = "n",
---   insert_mode = "i",
---   visual_mode = "v",
+--   normal_mode       = "n",
+--   insert_mode       = "i",
+--   visual_mode       = "v",
 --   visual_block_mode = "x",
---   term_mode = "t",
---   command_mode = "c",
+--   term_mode         = "t",
+--   command_mode      = "c",
 
 -- Normal --
 
@@ -28,6 +28,9 @@ keymap("n", "<C-d>", "9j", opts)
 keymap("n", "<C-u>", "9k", opts)
 -- FIXME disable recording feature
 keymap("n", "q", "", opts)
+
+-- NOTE same shortcut with vim-lion which has a port version at doom emacs
+keymap('x', 'gl', function() require'align'.align_to_char(1, true) end, opts)
 
 -- Insert --
 -- Better movement

@@ -78,6 +78,24 @@ return packer.startup(function(use)
     end
   })
 
+  -- jump anywhere
+  use {
+    "ggandor/leap.nvim",
+    config = function ()
+      require('leap').set_default_keymaps()
+    end
+  }
+
+  use {
+    "ggandor/flit.nvim",
+    config = function ()
+      require('flit').setup()
+    end
+  }
+
+  -- align
+  use 'Vonr/align.nvim'
+
   -- Theme
   use { "EdenEast/nightfox.nvim" }
 

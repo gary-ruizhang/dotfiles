@@ -92,7 +92,9 @@
 (after! company
    (map! :map company-active-map "<tab>" #'company-complete-selection))
 
+(define-key company-active-map (kbd "RET") nil)
+(define-key company-active-map [return] nil)
+
 (setq org-agenda-files (directory-files-recursively "~/org/gtd/" "\\.org$"))
 (setq org-roam-directory "~/org-roam")
-(remove-hook 'doom-first-input-hook #'evil-snipe-mode)
 (remove-hook 'undo-fu-mode-hook #'global-undo-fu-session-mode)
