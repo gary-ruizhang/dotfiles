@@ -93,6 +93,18 @@ return packer.startup(function(use)
     end
   }
 
+  use {
+    "nvim-neorg/neorg",
+    config = function()
+        require('neorg').setup {
+            load = {
+                ["core.defaults"] = {}
+            }
+        }
+    end,
+    requires = "nvim-lua/plenary.nvim"
+  }
+
   -- align
   use 'Vonr/align.nvim'
 

@@ -86,9 +86,13 @@
 (map! :n "C-l" 'evil-force-normal-state)
 (map! :n "gp" 'flycheck-previous-error)
 (map! :n "gn" 'flycheck-next-error)
+;; FIXME not work
+;; (map! :n "s" 'avy-goto-char-2)
+;; (map! :n "S" 'avy-goto-char-2)
 (evil-ex-define-cmd "b" 'consult-buffer)
 (evil-ex-define-cmd "s" 'consult-line)
 
+;; FIXME error when start
 (after! company
    (map! :map company-active-map "<tab>" #'company-complete-selection))
 
