@@ -1,14 +1,3 @@
--- Autocommand that reloads neovim whenever you save the plugins.lua file
-pcall(
-  vim.cmd,
-  [[
-    augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost plugin.lua source <afile> | PackerSync
-    augroup end
-  ]]
-)
-
 -- Use a protected call so we don't error out on first use
 local status_ok, packer = pcall(require, "packer")
 if not status_ok then
@@ -51,6 +40,35 @@ return packer.startup(function(use)
   -- Telescope
   use { 'nvim-telescope/telescope.nvim', requires = { "nvim-lua/plenary.nvim" } }
 
+  use {
+    'nvim-telescope/telescope-fzf-native.nvim',
+    run = 'make',
+    config = function()
+      require('telescope').load_extension('fzf')
+    end,
+  }
+
+  use {
+    "AckslD/nvim-neoclip.lua",
+    requires = {
+      {'kkharji/sqlite.lua', module = 'sqlite'},
+      {'nvim-telescope/telescope.nvim'},
+    },
+    config = function()
+      require('neoclip').setup({
+        enable_persistent_history = true,
+      })
+      require('telescope').load_extension('neoclip')
+    end,
+  }
+
+  use {
+    "jvgrootveld/telescope-zoxide",
+    config = function()
+      require('telescope').load_extension('zoxide')
+    end,
+  }
+
   -- Treesitter
   use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
 
@@ -91,18 +109,6 @@ return packer.startup(function(use)
     config = function ()
       require('flit').setup()
     end
-  }
-
-  use {
-    "nvim-neorg/neorg",
-    config = function()
-        require('neorg').setup {
-            load = {
-                ["core.defaults"] = {}
-            }
-        }
-    end,
-    requires = "nvim-lua/plenary.nvim"
   }
 
   -- align

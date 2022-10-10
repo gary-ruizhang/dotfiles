@@ -92,7 +92,7 @@
 (evil-ex-define-cmd "b" 'consult-buffer)
 (evil-ex-define-cmd "s" 'consult-line)
 
-;; FIXME error when start
+;; FIXME error when start but reload is fine
 (after! company
    (map! :map company-active-map "<tab>" #'company-complete-selection))
 
