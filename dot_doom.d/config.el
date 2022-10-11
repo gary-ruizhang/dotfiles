@@ -97,6 +97,7 @@
    (map! :map company-active-map "RET" nil)
    (map! :map company-active-map "<return>" nil))
 
-(setq org-agenda-files "~/org/gtd/GTD.org")
+;; NOTE just one big GTD file to start
+(setq org-agenda-files (list "~/org/gtd/GTD.org"))
 (setq org-roam-directory "~/org-roam")
 (remove-hook 'undo-fu-mode-hook #'global-undo-fu-session-mode)
