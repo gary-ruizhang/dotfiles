@@ -92,13 +92,11 @@
 (evil-ex-define-cmd "b" 'consult-buffer)
 (evil-ex-define-cmd "s" 'consult-line)
 
-;; FIXME error when start but reload is fine
 (after! company
-   (map! :map company-active-map "<tab>" #'company-complete-selection))
+   (map! :map company-active-map "<tab>" #'company-complete-selection)
+   (map! :map company-active-map "RET" nil)
+   (map! :map company-active-map "<return>" nil))
 
-(define-key company-active-map (kbd "RET") nil)
-(define-key company-active-map [return] nil)
-
-(setq org-agenda-files (directory-files-recursively "~/org/gtd/" "\\.org$"))
+(setq org-agenda-files "~/org/gtd/GTD.org")
 (setq org-roam-directory "~/org-roam")
 (remove-hook 'undo-fu-mode-hook #'global-undo-fu-session-mode)

@@ -63,6 +63,14 @@ return packer.startup(function(use)
   }
 
   use {
+    "nvim-telescope/telescope-frecency.nvim",
+    config = function()
+      require"telescope".load_extension("frecency")
+    end,
+    requires = {"kkharji/sqlite.lua"}
+  }
+
+  use {
     "jvgrootveld/telescope-zoxide",
     config = function()
       require('telescope').load_extension('zoxide')

@@ -34,6 +34,9 @@ export LANG=en_US.UTF-8
 export BAT_THEME="Nord"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
+# use for bash lsp. NOTE not write bash that much, this lsp maybe not useful
+export GLOB_PATTERN="**/*@(.sh|.inc|.bash|.command|.zsh|zshrc|zsh_*)"
+
 ## Alias
 # alias ls to exa
 alias ls=exa

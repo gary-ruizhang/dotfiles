@@ -42,6 +42,10 @@ for _, lsp in ipairs(servers) do
 end
 
 -- FIXME refactor lsp config in the future
+require"lspconfig".bashls.setup {
+  filetypes = {"sh", "bash", "zsh"}
+}
+
 require('lspconfig').yamlls.setup {
   settings = {
     yaml = {
