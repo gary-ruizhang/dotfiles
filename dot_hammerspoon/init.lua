@@ -3,6 +3,7 @@ hs.loadSpoon("Caffeine")
 hs.loadSpoon("EmmyLua")
 hs.loadSpoon("LookupSelection")
 hs.loadSpoon("MouseCircle")
+hs.loadSpoon("MouseFollowsFocus")
 -- FIXME not work
 -- hs.loadSpoon("MouseFollowsFocus")
 hs.loadSpoon("ReloadConfiguration")
@@ -28,7 +29,7 @@ spoon.MouseCircle:bindHotkeys({
 })
 
 -- FIXME not work
--- spoon.MouseFollowsFocus:start()
+spoon.MouseFollowsFocus:start()
 
 hs.hotkey.bind(cmd_alt_ctrl, "w", function ()
     hs.alert.show("fuck your mother")

@@ -86,18 +86,44 @@
 (map! :n "C-l" 'evil-force-normal-state)
 (map! :n "gp" 'flycheck-previous-error)
 (map! :n "gn" 'flycheck-next-error)
-;; FIXME not work
-;; (map! :n "s" 'avy-goto-char-2)
-;; (map! :n "S" 'avy-goto-char-2)
+
+;; NOTE remove snipe to make avy work
+(remove-hook 'doom-first-input-hook #'evil-snipe-mode)
+(map! :n "s" 'avy-goto-char-2-below)
+(map! :n "S" 'avy-goto-char-2-above)
+
 (evil-ex-define-cmd "b" 'consult-buffer)
 (evil-ex-define-cmd "s" 'consult-line)
+
+;; <leader>
+(map! :leader
+      ;; NOTE switch behavior of these two keys
+      :desc "Pop up scratch buffer" "X"    #'doom/open-scratch-buffer
+      :desc "Org Capture"           "x"    #'org-capture
+      ;; NOTE not use git in emacs, magit not impressive at all
+      :desc "GTD" "g" (lambda() (interactive)(find-file "~/org/gtd/GTD.org"))
+      )
 
 (after! company
    (map! :map company-active-map "<tab>" #'company-complete-selection)
    (map! :map company-active-map "RET" nil)
    (map! :map company-active-map "<return>" nil))
 
-;; NOTE just one big GTD file to start
-(setq org-agenda-files (list "~/org/gtd/GTD.org"))
-(setq org-roam-directory "~/org-roam")
+;; TODO organize all org specific config in here
+(after! org
+        ;; NOTE just one big GTD file to start
+  (setq org-agenda-files (list "~/org/gtd/GTD.org")
+        org-todo-keywords '((sequence "TODO(t)" "WAIT(w)" "|" "DONE(d)" "KILL(k)"))
+        ;; FIXME not work
+        ;; org-todo-keywords-for-agenda '("TODO" "WAIT" "DONE" "KILL")
+        +org-capture-todo-file "~/org/gtd/GTD.org"
+        ))
+
+;; NOTE should view agenda everywhere not just in org file
+(map! :n
+      ;; NOTE this shortcut original used to do attachment
+      "C-c C-a" #'org-agenda)
+(setq org-agenda-custom-commands '(("s" consult-org-agenda)))
+
+;; (setq org-roam-directory "~/org-roam")
 (remove-hook 'undo-fu-mode-hook #'global-undo-fu-session-mode)
