@@ -30,6 +30,7 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', 'gd', function () vim.lsp.buf.definition    {} end, bufopts)
   vim.keymap.set('n', 'g[', function () vim.lsp.buf.implementation{} end, bufopts)
   vim.keymap.set('n', 'gr', function () vim.lsp.buf.references    {} end, bufopts)
+  vim.keymap.set('n', 'ga', vim.lsp.buf.code_action, bufopts)
 
   vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
 end
@@ -42,8 +43,11 @@ for _, lsp in ipairs(servers) do
 end
 
 -- FIXME refactor lsp config in the future
+-- FIXME below config will override general config above
 require"lspconfig".bashls.setup {
-  filetypes = {"sh", "bash", "zsh"}
+  filetypes = {"sh", "bash", "zsh"},
+  capabilities = capabilities,
+  on_attach = on_attach,
 }
 
 require('lspconfig').yamlls.setup {
@@ -53,7 +57,9 @@ require('lspconfig').yamlls.setup {
         ["https://raw.githubusercontent.com/instrumenta/kubernetes-json-schema/master/v1.18.0-standalone-strict/all.json"] = "/*.yaml",
       },
     },
-  }
+  },
+  capabilities = capabilities,
+  on_attach = on_attach,
 }
 
 require'lspconfig'.sumneko_lua.setup {
@@ -77,4 +83,6 @@ require'lspconfig'.sumneko_lua.setup {
       },
     },
   },
+  capabilities = capabilities,
+  on_attach = on_attach,
 }

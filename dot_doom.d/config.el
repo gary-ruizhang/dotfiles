@@ -113,11 +113,20 @@
 (after! org
         ;; NOTE just one big GTD file to start
   (setq org-agenda-files (list "~/org/gtd/GTD.org")
-        org-todo-keywords '((sequence "TODO(t)" "WAIT(w)" "|" "DONE(d)" "KILL(k)"))
+        org-todo-keywords '((sequence "TODO(t)" "WAIT(w)" "PROJ(p)" "|" "DONE(d)" "KILL(k)"))
         ;; FIXME not work
         ;; org-todo-keywords-for-agenda '("TODO" "WAIT" "DONE" "KILL")
         +org-capture-todo-file "~/org/gtd/GTD.org"
-        ))
+        org-show-notification-handler 'message)
+  )
+
+(after! evil-org
+  (map! :map evil-org-mode-map
+        ;; NOTE otherwise these 2 shortcuts will do normal evil new line
+        :n "C-<return>" '+org/insert-item-below
+        :n "s-<return>" '+org/insert-item-below)
+  )
+
 
 ;; NOTE should view agenda everywhere not just in org file
 (map! :n
@@ -125,5 +134,5 @@
       "C-c C-a" #'org-agenda)
 (setq org-agenda-custom-commands '(("s" consult-org-agenda)))
 
-;; (setq org-roam-directory "~/org-roam")
+(setq org-roam-directory "~/org-roam")
 (remove-hook 'undo-fu-mode-hook #'global-undo-fu-session-mode)
