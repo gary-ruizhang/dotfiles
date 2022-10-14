@@ -51,6 +51,7 @@ alias cat=bat
 eval "$(hub alias -s)"
 
 alias g=git
+
 # gcp which used when want to cherry-pick current newest commit to another branch
 # alias not convient for long command
 gcp() {
@@ -63,6 +64,7 @@ alias lg=lazygit
 alias k=kubectl
 alias ks='kubectl -n kube-system'
 alias c=cargo
+alias cc='cargo clippy'
 # TODO topgrade just upgrade not install new packages so brew dump file maybe no changes
 alias topgrade='topgrade && brew bundle dump --force --file=~/.config/homebrew/Brewfile'
 # install on new machine
@@ -101,7 +103,7 @@ source ~/.config/fzf-tab/fzf-tab.plugin.zsh
 # slow if source but normal for new shell session
 export LS_COLORS="$(vivid generate nord)"
 export FZF_DEFAULT_COMMAND="fd --type file --color=always"
-export FZF_DEFAULT_OPTS="--ansi"
+export FZF_DEFAULT_OPTS='--ansi --color=bg+:#3B4252,bg:#2E3440,spinner:#81A1C1,hl:#616E88,fg:#D8DEE9,header:#616E88,info:#81A1C1,pointer:#81A1C1,marker:#81A1C1,fg+:#D8DEE9,prompt:#81A1C1,hl+:#81A1C1'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="fd --type d"
 

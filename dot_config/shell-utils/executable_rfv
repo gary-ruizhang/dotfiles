@@ -13,8 +13,6 @@ IFS=: read -ra selected < <(
       --bind "ctrl-r:unbind(ctrl-r)+change-prompt(1. ripgrep> )+disable-search+reload($RG_PREFIX {q} || true)+rebind(change,ctrl-f)" \
       --prompt '1. ripgrep> ' \
       --delimiter : \
-      # NOTE no need notification here
-      # --header 'CTRL-R (ripgrep mode) ╱ CTRL-F (fzf mode)' \
       --preview 'bat --color=always {1} --highlight-line {2}' \
       --preview-window 'up,60%,border-bottom,+{2}+3/3,~3'
 )
