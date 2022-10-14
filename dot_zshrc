@@ -52,6 +52,11 @@ eval "$(hub alias -s)"
 
 alias g=git
 
+
+# z='fc -e -' repeat last command
+# use after git diff ..
+alias da='fc -e - diff=add'
+
 # gcp which used when want to cherry-pick current newest commit to another branch
 # alias not convient for long command
 gcp() {
