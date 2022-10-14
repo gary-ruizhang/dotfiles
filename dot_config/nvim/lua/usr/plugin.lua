@@ -49,20 +49,6 @@ return packer.startup(function(use)
   }
 
   use {
-    "AckslD/nvim-neoclip.lua",
-    requires = {
-      {'kkharji/sqlite.lua', module = 'sqlite'},
-      {'nvim-telescope/telescope.nvim'},
-    },
-    config = function()
-      require('neoclip').setup({
-        enable_persistent_history = true,
-      })
-      require('telescope').load_extension('neoclip')
-    end,
-  }
-
-  use {
     "jvgrootveld/telescope-zoxide",
     config = function()
       require('telescope').load_extension('zoxide')

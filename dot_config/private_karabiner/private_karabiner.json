@@ -617,7 +617,7 @@
                         ]
                     },
                     {
-                        "description": "Cmd-k to ctrl-a + n in Alacritty",
+                        "description": "Cmd-l to ctrl-a + n in Alacritty",
                         "manipulators": [
                             {
                                 "conditions": [
@@ -629,7 +629,7 @@
                                     }
                                 ],
                                 "from": {
-                                    "key_code": "k",
+                                    "key_code": "l",
                                     "modifiers": {
                                         "mandatory": [
                                             "command"
@@ -652,7 +652,7 @@
                         ]
                     },
                     {
-                        "description": "Cmd-j to ctrl-a + p in Alacritty",
+                        "description": "Cmd-h to ctrl-a + p in Alacritty",
                         "manipulators": [
                             {
                                 "conditions": [
@@ -664,7 +664,7 @@
                                     }
                                 ],
                                 "from": {
-                                    "key_code": "j",
+                                    "key_code": "h",
                                     "modifiers": {
                                         "mandatory": [
                                             "command"
@@ -1142,7 +1142,7 @@
                         ]
                     },
                     {
-                        "description": "Cmd-k to ctrl-tab exclude alacritty",
+                        "description": "Cmd-l to ctrl-tab exclude alacritty",
                         "manipulators": [
                             {
                                 "conditions": [
@@ -1154,7 +1154,7 @@
                                     }
                                 ],
                                 "from": {
-                                    "key_code": "k",
+                                    "key_code": "l",
                                     "modifiers": {
                                         "mandatory": [
                                             "command"
@@ -1174,7 +1174,39 @@
                         ]
                     },
                     {
-                        "description": "Cmd-j to ctrl-shift-tab exclude alacritty",
+                        "description": "ctrl-l to cmd-l in chrome",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com\\.google\\.Chrome$"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "l",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "left_control"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "l",
+                                        "modifiers": [
+                                            "left_command"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Cmd-h to ctrl-shift-tab exclude alacritty",
                         "manipulators": [
                             {
                                 "conditions": [
@@ -1186,7 +1218,7 @@
                                     }
                                 ],
                                 "from": {
-                                    "key_code": "j",
+                                    "key_code": "h",
                                     "modifiers": {
                                         "mandatory": [
                                             "command"

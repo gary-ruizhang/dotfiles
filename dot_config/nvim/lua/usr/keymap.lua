@@ -52,5 +52,4 @@ keymap("v", ">", ">gv", opts)
 -- Karabiner remap <shift><shift> -> <C-c>
 keymap("n", "<C-c>", "<cmd>Telescope builtin<CR>", opts)
 -- FIXME find a better keymap or commbine extension's command to Telescope builtin list
-keymap("n", "gh", "<cmd>Telescope neoclip<CR>", opts)
 keymap("n", "gz", "<cmd>Telescope zoxide list<CR>", opts)
