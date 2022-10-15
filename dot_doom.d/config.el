@@ -135,4 +135,8 @@
 (setq org-agenda-custom-commands '(("s" consult-org-agenda)))
 
 (setq org-roam-directory "~/org-roam")
+(setq rmh-elfeed-org-files '("~/org/elfeed.org"))
+;; automatically updating feed when opening elfeed
+(add-hook! 'elfeed-search-mode-hook #'elfeed-update)
+
 (remove-hook 'undo-fu-mode-hook #'global-undo-fu-session-mode)
