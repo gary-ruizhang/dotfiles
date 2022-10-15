@@ -32,6 +32,7 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', 'gr', function () vim.lsp.buf.references    {} end, bufopts)
   vim.keymap.set('n', 'ga', vim.lsp.buf.code_action, bufopts)
 
+  -- press K once show hover, press K again get into the hover doc and able to move around
   vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
 end
 
