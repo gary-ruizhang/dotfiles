@@ -60,6 +60,7 @@ alias g=git
 # z='fc -e -' repeat last command
 # g status -s -> diff
 #
+alias s="git status -s | nl | awk '{\$1=\$1};1'"
 d() {
   # FIXME not test all git status -s situation, like merge conflicts or cherry-pick
   git diff $(git status -s | head -n$1 | awk "NR==$1 { print \$2}")
