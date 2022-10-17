@@ -127,7 +127,6 @@
         :n "s-<return>" '+org/insert-item-below)
   )
 
-
 ;; NOTE should view agenda everywhere not just in org file
 (map! :n
       ;; NOTE this shortcut original used to do attachment
@@ -135,6 +134,8 @@
 (setq org-agenda-custom-commands '(("s" consult-org-agenda)))
 
 (setq org-roam-directory "~/org-roam")
+;; FIXME temporary fixes
+(setq org-fold-core-style "overlays")
 (setq rmh-elfeed-org-files '("~/org/elfeed.org"))
 ;; automatically updating feed when opening elfeed
 (add-hook! 'elfeed-search-mode-hook #'elfeed-update)

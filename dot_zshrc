@@ -60,7 +60,7 @@ alias g=git
 # z='fc -e -' repeat last command
 # g status -s -> diff
 #
-alias s="git status -s | nl | awk '{\$1=\$1};1'"
+alias s="script -q /dev/null git status -s | nl | awk '{\$1=\$1};1'"
 d() {
   # FIXME not test all git status -s situation, like merge conflicts or cherry-pick
   git diff $(git status -s | head -n$1 | awk "NR==$1 { print \$2}")
@@ -131,8 +131,11 @@ eval "$(fnm env)"
 ## fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+# NOTE alacritty on mac not recognize option as alt key
 # alt-c
 bindkey "ç" fzf-cd-widget
+# alt-x
+bindkey "≈" execute-named-cmd
 
 source ~/.config/fzf-tab/fzf-tab.plugin.zsh
 
