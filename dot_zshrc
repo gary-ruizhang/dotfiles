@@ -47,6 +47,9 @@ alias grep=rg
 # alias cat to bat
 alias cat=bat
 
+# navi for ctrl-g
+eval "$(navi widget zsh)"
+
 # alias git to hub
 eval "$(hub alias -s)"
 
@@ -55,7 +58,10 @@ alias g=git
 
 # z='fc -e -' repeat last command
 # use after git diff ..
+# diff -> add
 alias da='fc -e - diff=add'
+# diff -> checkout --
+alias dc='fc -e - diff="checkout --"'
 
 # gcp which used when want to cherry-pick current newest commit to another branch
 # alias not convient for long command
@@ -147,7 +153,6 @@ eval "$(zoxide init zsh)"
 source /Users/ruizhang/.config/broot/launcher/bash/br
 
 eval "$(atuin init zsh)"
-eval "$(navi widget zsh)"
 
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 

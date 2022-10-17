@@ -11,3 +11,4 @@
 *** [[https://tech.meituan.com/feed/][美团技术团队]] :tech:
 *** [[https://www.zhihu.com/rss][知乎每日推送]] :others:
 *** [[https://news.ycombinator.com/rss][hacker news]] :tech:
+*** [[https://mshibanami.github.io/GitHubTrendingRSS/daily/all.xml][github trends]] :tech:
