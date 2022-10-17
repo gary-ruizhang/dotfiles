@@ -72,11 +72,21 @@ git_checkout() {
   git checkout -- $(git status -s | head -n$1 | awk "NR==$1 { print \$2}")
 }
 #
+#useful utilities for d()
+alias d1='d 1'
+alias d2='d 2'
+alias d3='d 3'
+alias d4='d 4'
+alias d5='d 5'
+alias d6='d 6'
+alias d7='d 7'
+alias d8='d 8'
+alias d9='d 9'
 # diff -> add
-# TODO refactor to use d() function
-alias da='fc -e - d=git_add'
+# NOTE extra space to suitable for both `dn` and `d n` operations
+alias da='fc -e - d="git_add "'
 # diff -> checkout --
-alias dc='fc -e - d=git_checkout'
+alias dc='fc -e - d="git_checkout "'
 
 # gcp which used when want to cherry-pick current newest commit to another branch
 # alias not convient for long command
