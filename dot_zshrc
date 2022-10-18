@@ -131,12 +131,6 @@ eval "$(fnm env)"
 ## fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# NOTE alacritty on mac not recognize option as alt key
-# alt-c
-bindkey "ç" fzf-cd-widget
-# alt-x
-bindkey "≈" execute-named-cmd
-
 source ~/.config/fzf-tab/fzf-tab.plugin.zsh
 
 # slow if source but normal for new shell session
