@@ -53,3 +53,9 @@ keymap("v", ">", ">gv", opts)
 keymap("n", "<C-c>", "<cmd>Telescope builtin<CR>", opts)
 -- FIXME find a better keymap or commbine extension's command to Telescope builtin list
 keymap("n", "gz", "<cmd>Telescope zoxide list<CR>", opts)
+
+keymap('n', 'gd', "<cmd>Telescope lsp_definitions<CR>", opts)
+keymap('n', 'g[', "<cmd>Telescope lsp_implementations<CR>", opts)
+keymap('n', 'gr', "<cmd>Telescope lsp_references<CR>", opts)
+keymap('n', 'gm', "<cmd>Telescope lsp_document_symbols<CR>", opts)
+keymap('n', 'gM', "<cmd>Telescope lsp_workspace_symbols<CR>", opts)

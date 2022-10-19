@@ -114,3 +114,10 @@ cmp.setup.cmdline(":", {
     { name = "cmdline" },
   }),
 })
+
+-- FIXME not work at install config position
+require("nvim-autopairs").setup({
+  map_c_h = true,
+  map_c_w = true,
+})
+

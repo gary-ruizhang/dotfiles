@@ -1,5 +1,5 @@
 local nvim_lsp = require('lspconfig')
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities(), { snippetSupport = false })
+local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities(), { snippetSupport = false })
 
 -- TODO seperate each lsp to different config files
 local servers = { 'bashls', 'pyright', 'rust_analyzer', 'sumneko_lua', 'yamlls' }
@@ -27,9 +27,10 @@ local on_attach = function(client, bufnr)
 
   local bufopts = { silent=true, buffer=bufnr }
   vim.keymap.set('n', 'gD', function () vim.lsp.buf.declaration   {} end, bufopts)
-  vim.keymap.set('n', 'gd', function () vim.lsp.buf.definition    {} end, bufopts)
-  vim.keymap.set('n', 'g[', function () vim.lsp.buf.implementation{} end, bufopts)
-  vim.keymap.set('n', 'gr', function () vim.lsp.buf.references    {} end, bufopts)
+  -- NOTE below three keymap use telescope builtin lsp functions instead
+  -- vim.keymap.set('n', 'gd', function () vim.lsp.buf.definition    {} end, bufopts)
+  -- vim.keymap.set('n', 'g[', function () vim.lsp.buf.implementation{} end, bufopts)
+  -- vim.keymap.set('n', 'gr', function () vim.lsp.buf.references    {} end, bufopts)
   vim.keymap.set('n', 'ga', vim.lsp.buf.code_action, bufopts)
 
   -- press K once show hover, press K again get into the hover doc and able to move around

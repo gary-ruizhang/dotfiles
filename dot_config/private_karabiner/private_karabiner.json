@@ -161,13 +161,14 @@
                         ]
                     },
                     {
-                        "description": "Cmd-0 to C-a + 0 in wezterm",
+                        "description": "Cmd-0 to C-a + 0 in terminal",
                         "manipulators": [
                             {
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "^com\\.github\\.wez\\.wezterm$"
+                                            "^com\\.github\\.wez\\.wezterm$",
+                                            "^io\\.alacritty$"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -196,13 +197,14 @@
                         ]
                     },
                     {
-                        "description": "ctrl-q to C-a + 0 in wezterm",
+                        "description": "ctrl-q to C-a + 0 in terminal",
                         "manipulators": [
                             {
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "^com\\.github\\.wez\\.wezterm$"
+                                            "^com\\.github\\.wez\\.wezterm$",
+                                            "^io\\.alacritty$"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -231,13 +233,14 @@
                         ]
                     },
                     {
-                        "description": "Cmd-1 to C-a + 1 in wezterm",
+                        "description": "Cmd-1 to C-a + 1 in terminal",
                         "manipulators": [
                             {
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "^com\\.github\\.wez\\.wezterm$"
+                                            "^com\\.github\\.wez\\.wezterm$",
+                                            "^io\\.alacritty$"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -266,13 +269,14 @@
                         ]
                     },
                     {
-                        "description": "Cmd-2 to C-a + 2 in wezterm",
+                        "description": "Cmd-2 to C-a + 2 in terminal",
                         "manipulators": [
                             {
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "^com\\.github\\.wez\\.wezterm$"
+                                            "^com\\.github\\.wez\\.wezterm$",
+                                            "^io\\.alacritty$"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -301,13 +305,14 @@
                         ]
                     },
                     {
-                        "description": "Cmd-3 to C-a + 3 in wezterm",
+                        "description": "Cmd-3 to C-a + 3 in terminal",
                         "manipulators": [
                             {
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "^com\\.github\\.wez\\.wezterm$"
+                                            "^com\\.github\\.wez\\.wezterm$",
+                                            "^io\\.alacritty$"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -336,13 +341,14 @@
                         ]
                     },
                     {
-                        "description": "Cmd-4 to C-a + 4 in wezterm",
+                        "description": "Cmd-4 to C-a + 4 in terminal",
                         "manipulators": [
                             {
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "^com\\.github\\.wez\\.wezterm$"
+                                            "^com\\.github\\.wez\\.wezterm$",
+                                            "^io\\.alacritty$"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -371,13 +377,14 @@
                         ]
                     },
                     {
-                        "description": "Cmd-5 to C-a + 5 in wezterm",
+                        "description": "Cmd-5 to C-a + 5 in terminal",
                         "manipulators": [
                             {
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "^com\\.github\\.wez\\.wezterm$"
+                                            "^com\\.github\\.wez\\.wezterm$",
+                                            "^io\\.alacritty$"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -406,13 +413,14 @@
                         ]
                     },
                     {
-                        "description": "Cmd-6 to C-a + 6 in wezterm",
+                        "description": "Cmd-6 to C-a + 6 in terminal",
                         "manipulators": [
                             {
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "^com\\.github\\.wez\\.wezterm$"
+                                            "^com\\.github\\.wez\\.wezterm$",
+                                            "^io\\.alacritty$"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -441,13 +449,14 @@
                         ]
                     },
                     {
-                        "description": "Cmd-7 to C-a + 7 in wezterm",
+                        "description": "Cmd-7 to C-a + 7 in terminal",
                         "manipulators": [
                             {
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "^com\\.github\\.wez\\.wezterm$"
+                                            "^com\\.github\\.wez\\.wezterm$",
+                                            "^io\\.alacritty$"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -476,13 +485,14 @@
                         ]
                     },
                     {
-                        "description": "Cmd-8 to C-a + 8 in wezterm",
+                        "description": "Cmd-8 to C-a + 8 in terminal",
                         "manipulators": [
                             {
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "^com\\.github\\.wez\\.wezterm$"
+                                            "^com\\.github\\.wez\\.wezterm$",
+                                            "^io\\.alacritty$"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -511,13 +521,14 @@
                         ]
                     },
                     {
-                        "description": "Cmd-9 to tmux go to last window in wezterm",
+                        "description": "Cmd-9 to tmux go to last window in terminal",
                         "manipulators": [
                             {
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "^com\\.github\\.wez\\.wezterm$"
+                                            "^com\\.github\\.wez\\.wezterm$",
+                                            "^io\\.alacritty$"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -546,13 +557,14 @@
                         ]
                     },
                     {
-                        "description": "ctrl-tab to ctrl-a + n in wezterm",
+                        "description": "ctrl-tab to ctrl-a + n in terminal",
                         "manipulators": [
                             {
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "^com\\.github\\.wez\\.wezterm$"
+                                            "^com\\.github\\.wez\\.wezterm$",
+                                            "^io\\.alacritty$"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -581,13 +593,14 @@
                         ]
                     },
                     {
-                        "description": "ctrl-shift-tab to ctrl-a + p in wezterm",
+                        "description": "ctrl-shift-tab to ctrl-a + p in terminal",
                         "manipulators": [
                             {
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "^com\\.github\\.wez\\.wezterm$"
+                                            "^com\\.github\\.wez\\.wezterm$",
+                                            "^io\\.alacritty$"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -617,13 +630,14 @@
                         ]
                     },
                     {
-                        "description": "Cmd-l to ctrl-a + n in wezterm",
+                        "description": "Cmd-l to ctrl-a + n in terminal",
                         "manipulators": [
                             {
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "^com\\.github\\.wez\\.wezterm$"
+                                            "^com\\.github\\.wez\\.wezterm$",
+                                            "^io\\.alacritty$"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -652,13 +666,14 @@
                         ]
                     },
                     {
-                        "description": "Cmd-h to ctrl-a + p in wezterm",
+                        "description": "Cmd-h to ctrl-a + p in terminal",
                         "manipulators": [
                             {
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "^com\\.github\\.wez\\.wezterm$"
+                                            "^com\\.github\\.wez\\.wezterm$",
+                                            "^io\\.alacritty$"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -687,13 +702,14 @@
                         ]
                     },
                     {
-                        "description": "C-j to <down> in wezterm",
+                        "description": "C-j to <down> in terminal",
                         "manipulators": [
                             {
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "^com\\.github\\.wez\\.wezterm$"
+                                            "^com\\.github\\.wez\\.wezterm$",
+                                            "^io\\.alacritty$"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -716,13 +732,14 @@
                         ]
                     },
                     {
-                        "description": "C-k to <up> in wezterm",
+                        "description": "C-k to <up> in terminal",
                         "manipulators": [
                             {
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "^com\\.github\\.wez\\.wezterm$"
+                                            "^com\\.github\\.wez\\.wezterm$",
+                                            "^io\\.alacritty$"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -745,7 +762,7 @@
                         ]
                     },
                     {
-                        "description": "double left shift to C-c in wezterm",
+                        "description": "double left shift to C-c in terminal",
                         "manipulators": [
                             {
                                 "conditions": [
@@ -756,7 +773,8 @@
                                     },
                                     {
                                         "bundle_identifiers": [
-                                            "^com\\.github\\.wez\\.wezterm$"
+                                            "^com\\.github\\.wez\\.wezterm$",
+                                            "^io\\.alacritty$"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -783,7 +801,8 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "^com\\.github\\.wez\\.wezterm$"
+                                            "^com\\.github\\.wez\\.wezterm$",
+                                            "^io\\.alacritty$"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -1142,13 +1161,14 @@
                         ]
                     },
                     {
-                        "description": "Cmd-l to ctrl-tab exclude wezterm",
+                        "description": "Cmd-l to ctrl-tab exclude terminal",
                         "manipulators": [
                             {
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "^com\\.github\\.wez\\.wezterm$"
+                                            "^com\\.github\\.wez\\.wezterm$",
+                                            "^io\\.alacritty$"
                                         ],
                                         "type": "frontmost_application_unless"
                                     }
@@ -1206,13 +1226,14 @@
                         ]
                     },
                     {
-                        "description": "Cmd-h to ctrl-shift-tab exclude wezterm",
+                        "description": "Cmd-h to ctrl-shift-tab exclude terminal",
                         "manipulators": [
                             {
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "^com\\.github\\.wez\\.wezterm$"
+                                            "^com\\.github\\.wez\\.wezterm$",
+                                            "^io\\.alacritty$"
                                         ],
                                         "type": "frontmost_application_unless"
                                     }

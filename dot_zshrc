@@ -53,6 +53,10 @@ eval "$(navi widget zsh)"
 # alias git to hub
 eval "$(hub alias -s)"
 
+alias chc="chezmoi cd"
+alias cha="chezmoi add"
+alias chd="chezmoi diff"
+
 alias g=git
 
 # workflow: git status -> git diff -> git add or checkout --

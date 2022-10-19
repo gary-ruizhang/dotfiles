@@ -8,6 +8,7 @@ window:
   decorations: "none"
   startup_mode: Maximized
 font:
+  size: 26
   normal:
     family: OperatorMonoSSmLig Nerd Font
     style: Book
@@ -17,7 +18,6 @@ font:
   italic:
     family: OperatorMonoSSmLig Nerd Font
     style: Book Italic
-  size: 26
 schemes:
   # Upstream: https://github.com/edeneast/nightfox.nvim/raw/main/extra/nordfox/nightfox_alacritty.yml
   nordfox: &nordfox
