@@ -4,6 +4,9 @@ if not cmp_status_ok then
 end
 
 local luasnip = require("luasnip")
+luasnip.config.set_config({
+  delete_check_events = "TextChanged,InsertEnter",
+})
 
 local check_backspace = function()
   local col = vim.fn.col(".") - 1
@@ -60,7 +63,7 @@ cmp.setup({
           end
         elseif luasnip.expandable() then
           luasnip.expand()
-        elseif luasnip.expand_or_jumpable() then
+        elseif luasnip.expand_or_locally_jumpable() then
           luasnip.expand_or_jump()
         elseif check_backspace() then
           fallback()

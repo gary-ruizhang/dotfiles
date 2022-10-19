@@ -111,7 +111,8 @@ alias topgrade='topgrade && brew bundle dump --force --file=~/.config/homebrew/B
 # brew bundle install --file=~/.config/homebrew/Brewfile
 
 alias vim=nvim
-alias vi=nvim
+alias  vi=nvim
+alias   v=nvim
 
 ## Tools
 
