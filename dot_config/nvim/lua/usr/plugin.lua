@@ -49,6 +49,13 @@ return packer.startup(function(use)
   }
 
   use {
+    'nvim-telescope/telescope-ui-select.nvim',
+    config = function()
+      require('telescope').load_extension('ui-select')
+    end,
+  }
+
+  use {
     "jvgrootveld/telescope-zoxide",
     config = function()
       require('telescope').load_extension('zoxide')
