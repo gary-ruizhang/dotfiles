@@ -96,6 +96,9 @@ return packer.startup(function(use)
     end
   }
 
+  use { "tpope/vim-repeat" }
+
+  -- company leap.nvim
   use {
     "ggandor/flit.nvim",
     config = function ()

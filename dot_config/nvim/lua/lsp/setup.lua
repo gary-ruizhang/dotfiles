@@ -2,7 +2,7 @@ local nvim_lsp = require('lspconfig')
 local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities(), { snippetSupport = false })
 
 -- TODO seperate each lsp to different config files
-local servers = { 'bashls', 'pyright', 'rust_analyzer', 'sumneko_lua', 'yamlls' }
+local servers = { 'bashls', 'pyright', 'gopls', 'rust_analyzer', 'sumneko_lua', 'yamlls' }
 
 local opts = { silent=true }
 
@@ -87,4 +87,21 @@ require'lspconfig'.sumneko_lua.setup {
   },
   capabilities = capabilities,
   on_attach = on_attach,
+}
+
+lspconfig = require "lspconfig"
+util = require "lspconfig/util"
+
+lspconfig.gopls.setup {
+  cmd = {"gopls", "serve"},
+  filetypes = {"go", "gomod"},
+  root_dir = util.root_pattern("go.work", "go.mod", ".git"),
+  settings = {
+    gopls = {
+      analyses = {
+        unusedparams = true,
+      },
+      staticcheck = true,
+    },
+  },
 }
