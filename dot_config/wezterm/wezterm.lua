@@ -11,7 +11,7 @@ return {
   -- ui
   color_scheme = 'nordfox',
   font = wezterm.font 'OperatorMonoSSmLig Nerd Font',
-  font_size = 20,
+  font_size = 14,
 
   -- window
   window_close_confirmation = "NeverPrompt",

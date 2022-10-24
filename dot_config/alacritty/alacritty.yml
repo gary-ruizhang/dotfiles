@@ -8,7 +8,7 @@ window:
   decorations: "none"
   startup_mode: Maximized
 font:
-  size: 26
+  size: 14
   normal:
     family: OperatorMonoSSmLig Nerd Font
     style: Book
@@ -49,6 +49,7 @@ schemes:
       - { index: 16, color: '0xc9826b' }
       - { index: 17, color: '0xbf88bc' }
 
+  # NOTE use with tmux-nord
   nord: &nord
   # Repository: https://github.com/arcticicestudio/nord-alacritty
     primary:
