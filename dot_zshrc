@@ -64,7 +64,26 @@ alias g=git
 # z='fc -e -' repeat last command
 # g status -s -> diff
 #
-alias s="script -q /dev/null git status -s | nl | awk '{\$1=\$1};1'"
+s() {
+  if [ $# -eq 0 ]
+  then
+    script -q /dev/null git status -s | nl | awk "{\$1=\$1};1"
+  else
+    git status -s | head -n$1 | awk "NR==$1 { printf \$2}" | pbcopy
+  fi
+}
+
+#useful utilities for s()
+alias s1='s 1'
+alias s2='s 2'
+alias s3='s 3'
+alias s4='s 4'
+alias s5='s 5'
+alias s6='s 6'
+alias s7='s 7'
+alias s8='s 8'
+alias s9='s 9'
+
 d() {
   # FIXME not test all git status -s situation, like merge conflicts or cherry-pick
   git diff $(git status -s | head -n$1 | awk "NR==$1 { print \$2}")
