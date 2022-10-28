@@ -7,8 +7,9 @@ env:
 window:
   decorations: "none"
   startup_mode: Maximized
+  dynamic_padding: true
 font:
-  size: 14
+  size: 20
   normal:
     family: OperatorMonoSSmLig Nerd Font
     style: Book

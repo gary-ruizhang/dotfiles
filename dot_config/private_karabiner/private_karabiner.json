@@ -132,6 +132,27 @@
                         ]
                     },
                     {
+                        "description": "ctrl-[ to esc",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "open_bracket",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "left_control"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "escape"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "emacs C-h to delete",
                         "manipulators": [
                             {
@@ -1051,7 +1072,7 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "p",
+                                        "key_code": "slash",
                                         "modifiers": [
                                             "left_command"
                                         ]

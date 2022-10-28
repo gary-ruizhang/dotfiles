@@ -59,6 +59,10 @@ alias chd="chezmoi diff"
 
 alias g=git
 
+gm() {
+  git commit -m $1
+}
+
 # workflow: git status -> git diff -> git add or checkout --
 #
 # z='fc -e -' repeat last command

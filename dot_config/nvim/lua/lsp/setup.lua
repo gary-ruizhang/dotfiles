@@ -2,7 +2,7 @@ local nvim_lsp = require('lspconfig')
 local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities(), { snippetSupport = false })
 
 -- TODO seperate each lsp to different config files
-local servers = { 'bashls', 'pyright', 'gopls', 'rust_analyzer', 'sumneko_lua', 'yamlls' }
+local servers = { 'bashls', 'clangd', 'pyright', 'gopls', 'rust_analyzer', 'sumneko_lua', 'yamlls' }
 
 local opts = { silent=true }
 
