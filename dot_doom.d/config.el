@@ -78,7 +78,7 @@
 (simpleclip-mode 1)
 
 (add-hook 'window-setup-hook #'toggle-frame-fullscreen)
-(setq doom-font (font-spec :family "OperatorMonoSSmLig Nerd Font" :size 14))
+(setq doom-font (font-spec :family "OperatorMonoSSmLig Nerd Font" :size 20))
 ;; sometimes no need to see which key
 ;; (setq which-key-idle-delay 0.3)
 
@@ -102,6 +102,7 @@
       :desc "Org Capture"           "x"    #'org-capture
       ;; NOTE not use git in emacs, magit not impressive at all
       :desc "GTD" "g" (lambda() (interactive)(find-file "~/org/gtd/GTD.org"))
+      :desc "roam rg" "r" #'org-roam-rg-search
       )
 
 (after! company
@@ -127,13 +128,22 @@
         :n "s-<return>" '+org/insert-item-below)
   )
 
+;; TODO find a better way for tags
+(defun org-roam-rg-search ()
+  "Search org-roam directory using consult-ripgrep. With live-preview."
+  (interactive)
+  (let ((consult-ripgrep-command "rg --null --ignore-case --type org --line-buffered --color=always --max-columns=500 --no-heading --line-number . -e ARG OPTS"))
+    (consult-ripgrep "/Users/ruizhang/org-roam/daily")))
+
 ;; NOTE should view agenda everywhere not just in org file
 (map! :n
       ;; NOTE this shortcut original used to do attachment
       "C-c C-a" #'org-agenda)
 (setq org-agenda-custom-commands '(("s" consult-org-agenda)))
 
-(setq org-roam-directory "~/org-roam")
+(setq org-roam-directory "~/org-roam/notes")
+;; NOTE below path is relative to above
+(setq org-roam-dailies-directory "../daily/")
 ;; FIXME temporary fixes
 (setq org-fold-core-style "overlays")
 (setq rmh-elfeed-org-files '("~/org/elfeed.org"))
