@@ -86,6 +86,7 @@
 (map! :n "C-l" 'evil-force-normal-state)
 (map! :n "gp" 'flycheck-previous-error)
 (map! :n "gn" 'flycheck-next-error)
+(map! :n "s-w" 'evil-delete-buffer)
 
 ;; NOTE remove snipe to make avy work
 (remove-hook 'doom-first-input-hook #'evil-snipe-mode)
@@ -144,6 +145,8 @@
 (setq org-roam-directory "~/org-roam/notes")
 ;; NOTE below path is relative to above
 (setq org-roam-dailies-directory "../daily/")
+;; NOTE exclude daily files from org-roam search
+(setq org-roam-file-exclude-regexp "/Users/ruizhang/org-roam/daily")
 ;; FIXME temporary fixes
 (setq org-fold-core-style "overlays")
 (setq rmh-elfeed-org-files '("~/org/elfeed.org"))

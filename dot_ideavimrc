@@ -25,6 +25,7 @@ vnoremap : ;
 nnoremap j gj
 nnoremap k gk
 
+nnoremap gr gd
 nnoremap gn :action GotoNextError<CR>
 nnoremap gp :action GotoPreviousError<CR>
 nnoremap g[ :action GotoImplementation<CR>

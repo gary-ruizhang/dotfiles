@@ -19,6 +19,8 @@ vim.g.mapleader = " "
 
 -- FIXME colon not show immediately after press if no further typing
 keymap("n", ";", ":")
+keymap("n", "<C-M-w>", "<cmd>bd<CR>")
+
 keymap("n", "Y", "y$", opts)
 
 -- Better scroll
