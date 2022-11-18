@@ -93,6 +93,8 @@
 (map! :n "s" 'avy-goto-char-2-below)
 (map! :n "S" 'avy-goto-char-2-above)
 
+(setq avy-keys (number-sequence ?a ?z))
+
 (evil-ex-define-cmd "b" 'consult-buffer)
 (evil-ex-define-cmd "s" 'consult-line)
 

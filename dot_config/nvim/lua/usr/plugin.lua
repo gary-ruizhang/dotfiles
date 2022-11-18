@@ -98,13 +98,22 @@ return packer.startup(function(use)
 
   use { "tpope/vim-repeat" }
 
-  -- company leap.nvim
+  -- leap extensions
+
   use {
     "ggandor/flit.nvim",
     config = function ()
       require('flit').setup()
     end
   }
+
+  -- TODO not understand how to use
+  -- use {
+  --   "ggandor/leap-spooky.nvim",
+  --   config = function ()
+  --     require('leap-spooky').setup()
+  --   end
+  -- }
 
   -- align
   use 'Vonr/align.nvim'
