@@ -202,7 +202,8 @@ eval "$(atuin init zsh)"
 
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-export JAVA_HOME=$(/usr/libexec/java_home)
+# export JAVA_HOME=$(/usr/libexec/java_home)
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home"
 
 clear-ctrl-r() {
   zle autosuggest-clear
@@ -247,3 +248,5 @@ typeset -U path
 
 ##
 # zprof
+
+eval "$(atuin init zsh)"

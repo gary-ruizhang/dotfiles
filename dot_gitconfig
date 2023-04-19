@@ -9,6 +9,7 @@
 [core]
 	excludesFile = ~/.gitignore
   pager = delta
+	quotepath = off
 [safe]
 	directory = /usr/local/Homebrew/Library/Taps/homebrew/homebrew-coreHomebrew/homebrew-core
 	directory = /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core

@@ -30,3 +30,5 @@ nnoremap gn :action GotoNextError<CR>
 nnoremap gp :action GotoPreviousError<CR>
 nnoremap g[ :action GotoImplementation<CR>
 map ga <Action>(ShowIntentionActions)
+nmap <C-o> :action Back<CR>
+nmap <c-i> :action Forward<CR>
