@@ -72,3 +72,5 @@
   merge-conflict-theirs-diff-header-style = "#F1FA8C" bold
   merge-conflict-theirs-diff-header-decoration-style = "#434C5E" box
 
+[credential]
+	helper = store
