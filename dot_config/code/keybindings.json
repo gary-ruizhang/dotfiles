@@ -66,12 +66,4 @@
         "command": "workbench.view.debug",
         "when": "viewContainer.workbench.view.debug.enabled"
     },
-    {
-        "key": "cmd+e",
-        "command": "workbench.action.showAllEditorsByMostRecentlyUsed"
-    },
-    {
-        "key": "cmd+e",
-        "command": "-actions.findWithSelection"
-    },
 ]
