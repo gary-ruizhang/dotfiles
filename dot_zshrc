@@ -58,6 +58,7 @@ alias cha="chezmoi add"
 alias chd="chezmoi diff"
 
 alias g=git
+alias gl="git log"
 
 gm() {
   git commit -m $1
