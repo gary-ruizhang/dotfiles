@@ -1,0 +1,203 @@
+{
+    "editor.fontSize": 26,
+    "editor.fontFamily": "Operator Mono SSm Lig, Menlo, Monaco, 'Courier New', monospace",
+    "editor.acceptSuggestionOnEnter": "smart",
+    "editor.tabCompletion": "on",
+    "editor.acceptSuggestionOnCommitCharacter": false,
+    "editor.fontLigatures": true,
+
+    // vim
+    "vim.incsearch": true,
+    "vim.hlsearch": true,
+    "vim.leader": "<space>",
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "<C-l>"
+            ],
+            "commands": [
+                ":nohl"
+            ]
+        },
+        {
+            "before": [
+                "o"
+            ],
+            "commands": [
+                "editor.action.insertLineAfter",
+                "extension.vim_insert"
+            ]
+        },
+        {
+            "before": [
+                "O"
+            ],
+            "commands": [
+                "editor.action.insertLineBefore",
+                "extension.vim_insert"
+            ]
+        },
+        {
+            "before": [
+                "g",
+                "r"
+            ],
+            "commands": [
+                "editor.action.goToReferences"
+            ]
+        },
+        {
+            "before": [
+                "g",
+                ";"
+            ],
+            "after": [
+                "g",
+                ";",
+                "z",
+                "z"
+            ]
+        },
+        {
+            "before": [
+                "g",
+                ","
+            ],
+            "after": [
+                "g",
+                ",",
+                "z",
+                "z"
+            ]
+        },
+        {
+            "before": [
+                "'"
+            ],
+            "after": [
+                "`"
+            ]
+        },
+        {
+            "before": [
+                "`"
+            ],
+            "after": [
+                "'"
+            ]
+        },
+        {
+            "before": [
+                "*"
+            ],
+            "after": [
+                "*",
+                "z",
+                "z",
+                "z",
+                "v"
+            ]
+        },
+        {
+            "before": [
+                "#"
+            ],
+            "after": [
+                "#",
+                "z",
+                "z",
+                "z",
+                "v"
+            ]
+        },
+        {
+            "before": [
+                "n"
+            ],
+            "after": [
+                "n",
+                "z",
+                "z",
+                "z",
+                "v"
+            ]
+        },
+        {
+            "before": [
+                "N"
+            ],
+            "after": [
+                "N",
+                "z",
+                "z",
+                "z",
+                "v"
+            ]
+        },
+        {
+            "before": [
+                ";"
+            ],
+            "after": [
+                ":"
+            ]
+        },
+        {
+            "before": [
+                ":"
+            ],
+            "after": [
+                ";"
+            ]
+        },
+        {
+            "before": [
+                "j"
+            ],
+            "after": [
+                "g",
+                "j"
+            ]
+        },
+        {
+            "before": [
+                "k"
+            ],
+            "after": [
+                "g",
+                "k"
+            ]
+        }
+    ],
+    "vim.visualModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                ";"
+            ],
+            "after": [
+                ":"
+            ]
+        },
+        {
+            "before": [
+                ":"
+            ],
+            "after": [
+                ";"
+            ]
+        }
+    ],
+    "security.workspace.trust.untrustedFiles": "open",
+    "extensions.ignoreRecommendations": true,
+    "editor.suggestSelection": "first",
+    "editor.inlineSuggest.enabled": true,
+    "workbench.startupEditor": "none",
+    "workbench.colorTheme": "Nord",
+    "tabnine.experimentalAutoImports": true,
+    "terminal.integrated.env.osx": {
+        "FIG_NEW_SESSION": "1"
+    },
+    "debug.allowBreakpointsEverywhere": true,
+    "workbench.iconTheme": "material-icon-theme",
+    "editor.suggest.showSnippets": false,
+}
