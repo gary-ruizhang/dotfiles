@@ -131,10 +131,23 @@ alias c7='c 7'
 alias c8='c 8'
 alias c9='c 9'
 
+gs() {
+  local number=$1
+  local len=${#number}
+  local gs_temp=""
+  for ((i=0; i<len; i++))
+  do
+    local index=${number:$i:1}
+    gs_temp="${gs_temp} $(git status -s | head -n$index | awk "NR==$index { print \$2}" | tr -d '\n')"
+  done
+  # TODO use $gs_temp directly the string will become ':(,prefix:0)' + the real string, need to echo for transform
+  git stash push $(echo $gs_temp)
+}
+
 # gcp which used when want to cherry-pick current newest commit to another branch
 # alias not convient for long command
 gcp() {
-  cherry=$(git show --oneline | head -1 | awk '{ print $1 }')
+  local cherry=$(git show --oneline | head -1 | awk '{ print $1 }')
   echo $cherry | tr -d '\n' | pbcopy
   echo $cherry
 }
@@ -240,7 +253,7 @@ ZSH_AUTOSUGGEST_HISTORY_IGNORE="g stash*"
 # TODO hard code work path, needed change if workspace path changed
 tmux_work() {
   # check if session exists, if not create one, if so attach it
-  session="work"
+  local session="work"
   tmux has-session -t $session 2>/dev/null
 
   if [ $? != 0 ]; then
