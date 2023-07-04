@@ -66,4 +66,13 @@
         "command": "workbench.view.debug",
         "when": "viewContainer.workbench.view.debug.enabled"
     },
+    {
+        "key": "alt+enter",
+        "command": "editor.action.quickFix",
+        "when": "editorHasCodeActionsProvider && textInputFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+s",
+        "command": "workbench.action.gotoSymbol"
+    }
 ]

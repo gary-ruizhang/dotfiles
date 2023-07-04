@@ -57,6 +57,13 @@ alias chc="chezmoi cd"
 alias cha="chezmoi add"
 alias chd="chezmoi diff"
 
+# bash help command for zsh
+unalias run-help
+autoload run-help
+HELPDIR=$(command brew --prefix)/share/zsh/help
+alias help=run-help
+
+alias p=perl
 alias g=git
 alias gl="git log"
 
@@ -66,7 +73,7 @@ gm() {
 
 # workflow: git status -> git diff -> git add or checkout --
 #
-# z='fc -e -' repeat last command
+# r='fc -e -' repeat last command
 # g status -s -> diff
 #
 s() {

@@ -10,6 +10,7 @@
 	excludesFile = ~/.gitignore
   pager = delta
 	quotepath = off
+	safecrlf = true
 [safe]
 	directory = /usr/local/Homebrew/Library/Taps/homebrew/homebrew-coreHomebrew/homebrew-core
 	directory = /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core

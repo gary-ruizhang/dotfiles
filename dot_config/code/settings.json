@@ -1,11 +1,22 @@
 {
+    "workbench.startupEditor": "none",
+    "workbench.colorTheme": "Nord",
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.editor.showTabs": false,
+    "breadcrumbs.enabled": false,
+
     "editor.fontSize": 26,
+    "editor.lineNumbers": "relative",
     "editor.fontFamily": "Operator Mono SSm Lig, Menlo, Monaco, 'Courier New', monospace",
     "editor.acceptSuggestionOnEnter": "smart",
     "editor.tabCompletion": "on",
     "editor.acceptSuggestionOnCommitCharacter": false,
     "editor.fontLigatures": true,
+    "editor.suggest.showSnippets": false,
+    "editor.suggestSelection": "first",
+    "editor.inlineSuggest.enabled": true,
 
+    
     // vim
     "vim.easymotion": true,
     "vim.incsearch": true,
@@ -248,15 +259,8 @@
     ],
     "security.workspace.trust.untrustedFiles": "open",
     "extensions.ignoreRecommendations": true,
-    "editor.suggestSelection": "first",
-    "editor.inlineSuggest.enabled": true,
-    "workbench.startupEditor": "none",
-    "workbench.colorTheme": "Nord",
-    "tabnine.experimentalAutoImports": true,
     "terminal.integrated.env.osx": {
         "FIG_NEW_SESSION": "1"
     },
     "debug.allowBreakpointsEverywhere": true,
-    "workbench.iconTheme": "material-icon-theme",
-    "editor.suggest.showSnippets": false,
 }
