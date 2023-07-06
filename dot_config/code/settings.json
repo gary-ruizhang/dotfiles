@@ -7,7 +7,7 @@
 
     "editor.fontSize": 26,
     "editor.lineNumbers": "relative",
-    "editor.fontFamily": "Operator Mono SSm Lig, Menlo, Monaco, 'Courier New', monospace",
+    "editor.fontFamily": "JetBrains Mono, Menlo, Monaco, 'Courier New', monospace",
     "editor.acceptSuggestionOnEnter": "smart",
     "editor.tabCompletion": "on",
     "editor.acceptSuggestionOnCommitCharacter": false,

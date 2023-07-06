@@ -11,14 +11,17 @@ window:
 font:
   size: 20
   normal:
-    family: OperatorMonoSSmLig Nerd Font
-    style: Book
+    family: JetBrainsMono Nerd Font
+    style: Regular
   bold:
-    family: OperatorMonoSSmLig Nerd Font
-    style: Book Italic
+    family: JetBrainsMono Nerd Font
+    style: Bold
   italic:
-    family: OperatorMonoSSmLig Nerd Font
-    style: Book Italic
+    family: JetBrainsMono Nerd Font
+    style: Italic
+  bold_italic:
+    family: JetBrainsMono Nerd Font
+    style: Bold Italic
 schemes:
   # Upstream: https://github.com/edeneast/nightfox.nvim/raw/main/extra/nordfox/nightfox_alacritty.yml
   nordfox: &nordfox
