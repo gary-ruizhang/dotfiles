@@ -16,6 +16,6 @@ local function map(mode, lhs, rhs, opts)
   end
 end
 
-map("n", ";", ":")
+map("n", ";", ":", { silent = false })
 map("n", "<C-l>", ":nohl<CR>")
 map("n", "<C-c>", "<cmd>Telescope builtin<CR>")

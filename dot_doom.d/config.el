@@ -78,7 +78,7 @@
 (simpleclip-mode 1)
 
 (add-hook 'window-setup-hook #'toggle-frame-fullscreen)
-(setq doom-font (font-spec :family "OperatorMonoSSmLig Nerd Font" :size 20))
+(setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 20))
 ;; sometimes no need to see which key
 ;; (setq which-key-idle-delay 0.3)
 
