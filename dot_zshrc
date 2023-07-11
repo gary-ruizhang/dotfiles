@@ -47,6 +47,8 @@ alias grep=rg
 # alias cat to bat
 alias cat=bat
 
+alias python=python3
+
 # navi for ctrl-g
 eval "$(navi widget zsh)"
 
@@ -58,10 +60,11 @@ alias cha="chezmoi add"
 alias chd="chezmoi diff"
 
 # bash help command for zsh
-unalias run-help
-autoload run-help
-HELPDIR=$(command brew --prefix)/share/zsh/help
-alias help=run-help
+# TODO not work, (no such hash table element: run-help)
+# unalias run-help
+# autoload run-help
+# HELPDIR=$(command brew --prefix)/share/zsh/help
+# alias help=run-help
 
 alias p=perl
 alias g=git

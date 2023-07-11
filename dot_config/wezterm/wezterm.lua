@@ -10,7 +10,7 @@ end)
 return {
 	-- ui
 	color_scheme = "nordfox",
-	font = wezterm.font("JetBrainsMono Nerd Font"),
+	font = wezterm.font("OperatorMonoSSmLig Nerd Font Mono"),
 	font_size = 14,
 
 	-- window
