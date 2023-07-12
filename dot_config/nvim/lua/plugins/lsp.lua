@@ -8,5 +8,8 @@ return {
       keys[#keys + 1] = { "gp", lsp.diagnostic_goto(false) }
       keys[#keys + 1] = { "ga", vim.lsp.buf.code_action }
     end,
+    opts = {
+      autoformat = false,
+    },
   },
 }
