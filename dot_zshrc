@@ -291,3 +291,4 @@ typeset -U path
 # zprof
 
 eval "$(atuin init zsh)"
+

@@ -1,3 +1,5 @@
+command_timeout = 2000
+
 [character]                            # The name of the module we are configuring is "character"
 success_symbol = "[->](bold green)"     # The "success_symbol" segment is being set to "->" with the color "bold green"
 error_symbol = "[->](bold red)"     # The "error_symbol" segment is being set to "->" with the color "bold red"
@@ -7,23 +9,21 @@ vicmd_symbol = "[->](bold green)"     # The "vicmd_symbol" segment is being set 
 # [package]
 # disabled = true
 
-# command_timeout = 2000
+[git_status]
+deleted = "X"
 
-# [git_status]
-# deleted = "X"
-#
-# [jobs]
-# symbol = "+"
+[jobs]
+symbol = "+"
 
 # [kubernetes]
 # disabled = false
 
-# [localip]
-# disabled = false
-#
-# [sudo]
-# disabled = false
-#
-# [status]
-# format = "[$symbol $status]($style) "
-# disabled = false
+[localip]
+disabled = false
+
+[sudo]
+disabled = false
+
+[status]
+format = "[$symbol $status]($style) "
+disabled = false
