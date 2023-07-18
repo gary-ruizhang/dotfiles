@@ -10,6 +10,7 @@ window:
   decorations: "none"
   startup_mode: Maximized
   dynamic_padding: true
+  option_as_alt: "OnlyLeft"
 font:
   size: 20
   normal:

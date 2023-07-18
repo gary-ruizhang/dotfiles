@@ -41,6 +41,7 @@ export GLOB_PATTERN="**/*@(.sh|.inc|.bash|.command|.zsh|zshrc|zsh_*)"
 # alias ls to exa
 alias ls=exa
 alias ll='ls -alF -snewest -I .DS_Store'
+alias l='ls -alF -snewest -I .DS_Store'
 alias awk=gawk
 alias grep=rg
 
