@@ -52,3 +52,4 @@
 ;; make emacs works well with system clipboard
 (package! simpleclip)
 (package! evil-escape :disable t)
+(package! sis)

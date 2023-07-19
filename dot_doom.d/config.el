@@ -156,3 +156,14 @@
 (add-hook! 'elfeed-search-mode-hook #'elfeed-update)
 
 (remove-hook 'undo-fu-mode-hook #'global-undo-fu-session-mode)
+
+(sis-ism-lazyman-config
+ "com.apple.keylayout.ABC"
+ "com.apple.inputmethod.SCIM.Shuangpin")
+(use-package! sis
+  :config
+  (delete "C-h" sis-prefix-override-keys)
+  (sis-global-respect-mode t)
+  (sis-global-inline-mode t)
+  (sis-global-context-mode t)
+  (sis-global-cursor-color-mode t))

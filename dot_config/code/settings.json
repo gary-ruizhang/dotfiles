@@ -22,6 +22,12 @@
     "vim.incsearch": true,
     "vim.hlsearch": true,
     "vim.leader": "<space>",
+
+    "vim.autoSwitchInputMethod.switchIMCmd": "/usr/local/bin/macism {im}",
+    "vim.autoSwitchInputMethod.defaultIM": "com.apple.keylayout.ABC",
+    "vim.autoSwitchInputMethod.enable": true,
+    "vim.autoSwitchInputMethod.obtainIMCmd": "/usr/local/bin/macism",
+    
     "vim.normalModeKeyBindingsNonRecursive": [
         {
             "before": [
