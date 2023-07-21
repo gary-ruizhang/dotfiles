@@ -44,6 +44,7 @@ alias ll='ls -alF -snewest -I .DS_Store'
 alias l='ls -alF -snewest -I .DS_Store'
 alias awk=gawk
 alias grep=rg
+alias find=fd
 
 # alias cat to bat
 alias cat=bat
@@ -284,6 +285,8 @@ tmux_work() {
     tmux attach-session -t $session
   fi
 }
+
+PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
 
 # remove duplicate in $PATH
 typeset -U path

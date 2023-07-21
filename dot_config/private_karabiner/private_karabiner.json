@@ -1192,171 +1192,34 @@
                         ]
                     },
                     {
-                        "description": "double left shift to cmd-p in obsidian",
+                        "description": "ctrl-s to M-x + 'consult' in emacs",
                         "manipulators": [
                             {
                                 "conditions": [
                                     {
-                                        "name": "left_shift pressed",
-                                        "type": "variable_if",
-                                        "value": 1
-                                    },
-                                    {
                                         "bundle_identifiers": [
-                                            "^md\\.obsidian$"
+                                            "^org\\.gnu\\.Emacs$"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
                                 ],
                                 "from": {
-                                    "key_code": "left_shift",
+                                    "key_code": "s",
                                     "modifiers": {
-                                        "optional": [
-                                            "any"
+                                        "mandatory": [
+                                            "left_control"
                                         ]
                                     }
                                 },
                                 "to": [
                                     {
-                                        "key_code": "p",
+                                        "key_code": "x",
                                         "modifiers": [
-                                            "left_command"
+                                            "left_option"
                                         ]
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "^md\\.obsidian$"
-                                        ],
-                                        "type": "frontmost_application_if"
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "left_shift",
-                                    "modifiers": {
-                                        "optional": [
-                                            "any"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "set_variable": {
-                                            "name": "left_shift pressed",
-                                            "value": 1
-                                        }
                                     },
-                                    {
-                                        "key_code": "left_shift"
-                                    }
+                                    {"shell_command":"osascript -e 'set temp to the clipboard \n set the clipboard to \"consult \" \n tell application \"System Events\" \n   keystroke \"v\" using command down \n   delay 0.1 \n end tell \n set the clipboard to temp'"}
                                 ],
-                                "to_delayed_action": {
-                                    "to_if_canceled": [
-                                        {
-                                            "set_variable": {
-                                                "name": "left_shift pressed",
-                                                "value": 0
-                                            }
-                                        }
-                                    ],
-                                    "to_if_invoked": [
-                                        {
-                                            "set_variable": {
-                                                "name": "left_shift pressed",
-                                                "value": 0
-                                            }
-                                        }
-                                    ]
-                                },
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "double left shift to notion",
-                        "manipulators": [
-                            {
-                                "conditions": [
-                                    {
-                                        "name": "left_shift pressed",
-                                        "type": "variable_if",
-                                        "value": 1
-                                    },
-                                    {
-                                        "bundle_identifiers": [
-                                            "^notion\\.id$"
-                                        ],
-                                        "type": "frontmost_application_if"
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "left_shift",
-                                    "modifiers": {
-                                        "optional": [
-                                            "any"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "slash",
-                                        "modifiers": [
-                                            "left_command"
-                                        ]
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "^notion\\.id$"
-                                        ],
-                                        "type": "frontmost_application_if"
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "left_shift",
-                                    "modifiers": {
-                                        "optional": [
-                                            "any"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "set_variable": {
-                                            "name": "left_shift pressed",
-                                            "value": 1
-                                        }
-                                    },
-                                    {
-                                        "key_code": "left_shift"
-                                    }
-                                ],
-                                "to_delayed_action": {
-                                    "to_if_canceled": [
-                                        {
-                                            "set_variable": {
-                                                "name": "left_shift pressed",
-                                                "value": 0
-                                            }
-                                        }
-                                    ],
-                                    "to_if_invoked": [
-                                        {
-                                            "set_variable": {
-                                                "name": "left_shift pressed",
-                                                "value": 0
-                                            }
-                                        }
-                                    ]
-                                },
                                 "type": "basic"
                             }
                         ]

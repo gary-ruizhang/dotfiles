@@ -53,3 +53,7 @@
 (package! simpleclip)
 (package! evil-escape :disable t)
 (package! sis)
+(package! org-modern)
+(package! corfu)
+(package! cape)
+(package! consult-org-roam)
