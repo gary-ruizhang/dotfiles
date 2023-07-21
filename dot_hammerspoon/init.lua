@@ -4,8 +4,6 @@ hs.loadSpoon("EmmyLua")
 hs.loadSpoon("LookupSelection")
 hs.loadSpoon("MouseCircle")
 hs.loadSpoon("MouseFollowsFocus")
--- FIXME not work
--- hs.loadSpoon("MouseFollowsFocus")
 hs.loadSpoon("ReloadConfiguration")
 
 -- hyper mapped by karabiner

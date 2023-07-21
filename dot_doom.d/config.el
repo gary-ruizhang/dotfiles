@@ -61,7 +61,8 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
-(add-hook 'window-setup-hook #'toggle-frame-fullscreen)
+;; TODO remove title bar and maximum window on start with a top margin
+;; (add-hook 'window-setup-hook #'toggle-frame-fullscreen)
 
 ;; NOTE remove snipe to make avy work
 (remove-hook 'doom-first-input-hook #'evil-snipe-mode)

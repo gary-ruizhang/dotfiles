@@ -38,7 +38,15 @@
 (evil-ex-define-cmd "b" 'consult-buffer)
 (evil-ex-define-cmd "s" 'consult-line)
 
-(defun insert-current-month () (insert (format-time-string "[%Y-%m]") (current-time)))
+(require 'recentf)
+;; NOTE exclude path from recentf
+(add-to-list 'recentf-exclude "/private/var/folders/.*")
+(add-to-list 'recentf-exclude "/usr/local/Cellar/emacs-mac/.*")
+(add-to-list 'recentf-exclude "/Users/ruizhang/.config/emacs/.local/etc/workspaces/*")
+
+(defun insert-current-month ()
+  (interactive)
+  (insert (format-time-string "[%Y-%m]") (current-time)))
 
 ;; <leader>
 (map! :leader
