@@ -9,6 +9,27 @@
 (map! :n "s-w" 'evil-delete-buffer)
 (map! :n "s-F" 'consult-line-multi)
 
+(map! :ie "C-h" #'backward-delete-char-untabify)
+
+(map! (:map (minibuffer-local-map
+             minibuffer-local-ns-map
+             minibuffer-local-completion-map
+             minibuffer-local-must-match-map
+             minibuffer-local-isearch-map
+             read-expression-map)
+       "C-h" #'backward-delete-char-untabify)
+
+      (:after evil
+       :map evil-ex-completion-map
+       "C-h" #'backward-delete-char-untabify)
+
+      (:after evil-org
+       :map evil-org-mode-map :i "C-h" #'backward-delete-char-untabify)
+
+      (:after vertico
+       :map vertico-map
+       "C-h" #'backward-delete-char-untabify))
+
 (map! :n "s" 'avy-goto-char-2-below)
 (map! :n "S" 'avy-goto-char-2-above)
 
@@ -16,6 +37,8 @@
 
 (evil-ex-define-cmd "b" 'consult-buffer)
 (evil-ex-define-cmd "s" 'consult-line)
+
+(defun insert-current-month () (insert (format-time-string "[%Y-%m]") (current-time)))
 
 ;; <leader>
 (map! :leader
