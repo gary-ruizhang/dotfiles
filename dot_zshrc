@@ -28,7 +28,7 @@ bindkey '^x^e' edit-command-line
 # only work perfectly solution 
 export WORDCHARS=
 
-export EDITOR=nvim
+export EDITOR=vim
 export LANG=en_US.UTF-8
 
 export BAT_THEME="Nord"

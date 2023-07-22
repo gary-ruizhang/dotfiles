@@ -1,0 +1,7 @@
+" minimum setup for edit in editor command
+nnoremap ; :
+let &t_SI = "\e[6 q"
+let &t_EI = "\e[2 q"
+set ttimeout
+set ttimeoutlen=1
+set ttyfast
