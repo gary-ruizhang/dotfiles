@@ -27,9 +27,6 @@
        ;;ivy               ; a search engine for love and life
        (vertico +icons)           ; t
 
-
-he search engine of the future
-
        :ui
        ;;deft              ; notational velocity for Emacs
        doom              ; what makes DOOM look the way it does

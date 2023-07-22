@@ -1,5 +1,6 @@
 (map! :n ";" 'evil-ex)
 (map! :n "C-l" 'evil-force-normal-state)
+(map! :n "C-u" 'universal-argument)
 (map! :n "C-q" 'consult-recent-file)
 (map! :n "gp" 'flycheck-previous-error)
 (map! :n "gn" 'flycheck-next-error)
@@ -9,6 +10,8 @@
 (map! :n "ga" 'embark-act)
 (map! :n "s-w" 'evil-delete-buffer)
 (map! :n "s-F" 'consult-line-multi)
+(map! :n "C-." 'embark-act)
+(map! :n "M-." 'embark-dwim)
 
 (map! :ie "C-h" #'backward-delete-char-untabify)
 
@@ -29,7 +32,8 @@
 
       (:after vertico
        :map vertico-map
-       "C-h" #'backward-delete-char-untabify))
+       "C-h" #'backward-delete-char-untabify
+       "C-u" #'universal-argument))
 
 (map! :n "s" 'avy-goto-char-2-below)
 (map! :n "S" 'avy-goto-char-2-above)
