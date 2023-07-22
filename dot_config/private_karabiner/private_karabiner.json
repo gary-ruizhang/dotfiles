@@ -1227,39 +1227,6 @@
                         ]
                     },
                     {
-                        "description": "ctrl-s to M-x + 'consult' in emacs",
-                        "manipulators": [
-                            {
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "^org\\.gnu\\.Emacs$"
-                                        ],
-                                        "type": "frontmost_application_if"
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "s",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "left_control"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "x",
-                                        "modifiers": [
-                                            "left_option"
-                                        ]
-                                    },
-                                    {"shell_command":"osascript -e 'set temp to the clipboard \n set the clipboard to \"consult \" \n tell application \"System Events\" \n   keystroke \"v\" using command down \n   delay 0.1 \n end tell \n set the clipboard to temp'"}
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
                         "description": "ctrl-k -> ctrl-p in chrome",
                         "manipulators": [
                             {

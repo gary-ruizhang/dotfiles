@@ -57,3 +57,10 @@
       :desc "roam rg" "r" #'org-roam-rg-search
       )
 
+(defun execute-extended-command-with-initial-input (initial)
+  (interactive)
+  (minibuffer-with-setup-hook
+      (lambda () (insert initial))
+    (command-execute #'execute-extended-command)))
+
+(map! "C-s" #'(lambda () (interactive) (execute-extended-command-with-initial-input "consult ")))
