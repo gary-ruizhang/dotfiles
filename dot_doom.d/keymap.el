@@ -53,8 +53,6 @@
       ;; NOTE switch behavior of these two keys
       :desc "Pop up scratch buffer" "X"    #'doom/open-scratch-buffer
       :desc "Org Capture"           "x"    #'org-capture
-      ;; NOTE not use git in emacs, magit not impressive at all
-      :desc "GTD" "g" (lambda() (interactive)(find-file "~/org/gtd/GTD.org"))
       :desc "roam rg" "r" #'org-roam-rg-search
       )
 

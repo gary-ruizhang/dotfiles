@@ -62,7 +62,7 @@
 ;; they are implemented.
 
 ;; TODO remove title bar and maximum window on start with a top margin
-;; (add-hook 'window-setup-hook #'toggle-frame-fullscreen)
+(add-hook 'window-setup-hook #'toggle-frame-fullscreen)
 
 ;; NOTE remove snipe to make avy work
 (remove-hook 'doom-first-input-hook #'evil-snipe-mode)
