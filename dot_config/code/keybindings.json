@@ -74,5 +74,15 @@
     {
         "key": "ctrl+s",
         "command": "workbench.action.gotoSymbol"
+    },
+    {
+        "key": "shift+enter",
+        "command": "editor.action.showHover",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "cmd+k cmd+i",
+        "command": "-editor.action.showHover",
+        "when": "editorTextFocus"
     }
 ]

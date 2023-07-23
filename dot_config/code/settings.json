@@ -4,7 +4,7 @@
     "workbench.iconTheme": "material-icon-theme",
     "workbench.editor.showTabs": false,
     "breadcrumbs.enabled": false,
-
+    
     "editor.fontSize": 26,
     "editor.lineNumbers": "relative",
     "editor.fontFamily": "OperatorMonoSSmLig Nerd Font Mono, Menlo, Monaco, 'Courier New', monospace",
@@ -16,8 +16,8 @@
     "editor.suggestSelection": "first",
     "editor.inlineSuggest.enabled": true,
     "editor.inlayHints.enabled": "offUnlessPressed",
+    "editor.tabFocusMode": false,
 
-    
     // vim
     "vim.easymotion": true,
     "vim.incsearch": true,
@@ -130,4 +130,5 @@
         "FIG_NEW_SESSION": "1"
     },
     "debug.allowBreakpointsEverywhere": true,
+    "terminal.integrated.tabFocusMode": false,
 }
