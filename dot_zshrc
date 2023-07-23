@@ -128,20 +128,7 @@ alias da='fc -e - d="git_add "'
 # diff -> checkout --
 alias dc='fc -e - d="git_checkout "'
 
-c() {
-  git status -s | head -n$1 | awk "NR==$1 { print \$2}" | tr -d '\n' | pbcopy
-}
-
-#useful utilities for c()
-alias c1='c 1'
-alias c2='c 2'
-alias c3='c 3'
-alias c4='c 4'
-alias c5='c 5'
-alias c6='c 6'
-alias c7='c 7'
-alias c8='c 8'
-alias c9='c 9'
+alias c=cargo
 
 gs() {
   local number=$1

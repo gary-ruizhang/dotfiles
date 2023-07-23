@@ -15,6 +15,7 @@
     "editor.suggest.showSnippets": false,
     "editor.suggestSelection": "first",
     "editor.inlineSuggest.enabled": true,
+    "editor.inlayHints.enabled": "offUnlessPressed",
 
     
     // vim
@@ -43,24 +44,6 @@
             ],
             "commands": [
                 ":nohl"
-            ]
-        },
-        {
-            "before": [
-                "o"
-            ],
-            "commands": [
-                "editor.action.insertLineAfter",
-                "extension.vim_insert"
-            ]
-        },
-        {
-            "before": [
-                "O"
-            ],
-            "commands": [
-                "editor.action.insertLineBefore",
-                "extension.vim_insert"
             ]
         },
         // easymotion
@@ -124,126 +107,12 @@
         },
         {
             "before": [
-                "g",
-                ";"
-            ],
-            "after": [
-                "g",
-                ";",
-                "z",
-                "z"
-            ]
-        },
-        {
-            "before": [
-                "g",
-                ","
-            ],
-            "after": [
-                "g",
-                ",",
-                "z",
-                "z"
-            ]
-        },
-        {
-            "before": [
-                "'"
-            ],
-            "after": [
-                "`"
-            ]
-        },
-        {
-            "before": [
-                "`"
-            ],
-            "after": [
-                "'"
-            ]
-        },
-        {
-            "before": [
-                "*"
-            ],
-            "after": [
-                "*",
-                "z",
-                "z",
-                "z",
-                "v"
-            ]
-        },
-        {
-            "before": [
-                "#"
-            ],
-            "after": [
-                "#",
-                "z",
-                "z",
-                "z",
-                "v"
-            ]
-        },
-        {
-            "before": [
-                "n"
-            ],
-            "after": [
-                "n",
-                "z",
-                "z",
-                "z",
-                "v"
-            ]
-        },
-        {
-            "before": [
-                "N"
-            ],
-            "after": [
-                "N",
-                "z",
-                "z",
-                "z",
-                "v"
-            ]
-        },
-        {
-            "before": [
                 ";"
             ],
             "after": [
                 ":"
             ]
         },
-        {
-            "before": [
-                ":"
-            ],
-            "after": [
-                ";"
-            ]
-        },
-        {
-            "before": [
-                "j"
-            ],
-            "after": [
-                "g",
-                "j"
-            ]
-        },
-        {
-            "before": [
-                "k"
-            ],
-            "after": [
-                "g",
-                "k"
-            ]
-        }
     ],
     "vim.visualModeKeyBindingsNonRecursive": [
         {
@@ -254,14 +123,6 @@
                 ":"
             ]
         },
-        {
-            "before": [
-                ":"
-            ],
-            "after": [
-                ";"
-            ]
-        }
     ],
     "security.workspace.trust.untrustedFiles": "open",
     "extensions.ignoreRecommendations": true,

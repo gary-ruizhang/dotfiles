@@ -4,12 +4,11 @@
   ;; (corfu-cycle t)                ;; Enable cycling for `corfu-next/previous'
   (corfu-auto t)                 ;; Enable auto completion
   (corfu-auto-delay 0)
-  (corfu-auto-prefix 2)
+  (corfu-auto-prefix 1)
   ;; (corfu-separator ?\s)          ;; Orderless field separator
   ;; (corfu-quit-at-boundary 'separator) ;; Automatically quit at word boundary
   (corfu-preview-current nil)       ;; Disable current candidate preview
-  ;; (corfu-quit-no-match nil)      ;; Never quit, even if there is no match
-  ;; (corfu-preview-current nil)    ;; Disable current candidate preview
+  (corfu-quit-no-match t)      ;; Never quit, even if there is no match
   ;; (corfu-preselect 'prompt)      ;; Preselect the prompt
   ;; (corfu-on-exact-match nil)     ;; Configure handling of exact matches
   ;; (corfu-scroll-margin 5)        ;; Use scroll margin
@@ -20,13 +19,15 @@
   ;;        (eshell-mode . corfu-mode))
 
   :bind
-  (:map corfu-map ("SPC" . corfu-insert-separator))
+  (:map corfu-map ("C-i" . corfu-insert-separator))
 
   ;; Recommended: Enable Corfu globally.
   ;; This is recommended since Dabbrev can be used globally (M-/).
   ;; See also `corfu-exclude-modes'.
   :init
   (global-corfu-mode))
+
+(map! :ie "C-i" 'corfu-insert-separator)
 
 ;; A few more useful configurations...
 (use-package emacs
@@ -85,17 +86,6 @@
   ;;(add-to-list 'completion-at-point-functions #'cape-line)
 )
 
-(use-package lsp-mode
-  :custom
-  (lsp-completion-provider :none) ;; we use Corfu!
-  :init
-  (defun my/lsp-mode-setup-completion ()
-    (setf (alist-get 'styles (alist-get 'lsp-capf completion-category-defaults))
-          '(orderless))) ;; Configure orderless
-  :hook
-  (lsp-completion-mode . my/lsp-mode-setup-completion))
-
-
 (use-package embark
   :ensure t
 
@@ -123,6 +113,7 @@
 
 ;; TODO disable debug log output
 (setq consult-locate-args "mdfind -name")
+(setq consult-preview-key nil)
 
 ;; Consult users will also want the embark-consult package.
 (use-package embark-consult
@@ -130,7 +121,6 @@
   :hook
   (embark-collect-mode . consult-preview-at-point-mode))
 
-;; accept completion from copilot and fallback to company
 (use-package! copilot
   :hook (prog-mode . copilot-mode)
   :bind (:map copilot-completion-map

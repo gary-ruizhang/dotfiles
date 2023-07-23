@@ -7,7 +7,6 @@
 (map! :n "gm" '+evil/next-beginning-of-method)
 (map! :n "gM" '+evil/previous-beginning-of-method)
 (map! :n "gr" '+lookup/references)
-(map! :n "ga" 'embark-act)
 (map! :n "s-w" 'evil-delete-buffer)
 (map! :n "s-F" 'consult-line-multi)
 (map! :n "C-." 'embark-act)
