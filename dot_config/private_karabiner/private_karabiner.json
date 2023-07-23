@@ -806,40 +806,7 @@
                         ]
                     },
                     {
-                        "description": "C-j to C-n in terminal",
-                        "manipulators": [
-                            {
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "^com\\.github\\.wez\\.wezterm$",
-                                            "^org\\.alacritty$"
-                                        ],
-                                        "type": "frontmost_application_if"
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "j",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "control"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "n",
-                                        "modifiers": [
-                                            "left_control"
-                                        ]
-                                    }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "C-k to C-p in everywhere",
+                        "description": "C-k to up in everywhere",
                         "manipulators": [
                             {
                                 "from": {
@@ -852,10 +819,7 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "p",
-                                        "modifiers": [
-                                            "left_control"
-                                        ]
+                                        "key_code": "up_arrow"
                                     }
                                 ],
                                 "type": "basic"
@@ -863,7 +827,7 @@
                         ]
                     },
                     {
-                        "description": "C-j to C-n in everywhere",
+                        "description": "C-j to down in everywhere",
                         "manipulators": [
                             {
                                 "from": {
@@ -876,10 +840,49 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "n",
-                                        "modifiers": [
-                                            "left_control"
+                                        "key_code": "down_arrow"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "C-p to up in everywhere",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "p",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "control"
                                         ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "up_arrow"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "C-n to down in everywhere",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "n",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "control"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "down_arrow"
                                     }
                                 ],
                                 "type": "basic"
