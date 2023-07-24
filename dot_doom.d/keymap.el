@@ -2,8 +2,11 @@
 (map! :n "C-l" 'evil-force-normal-state)
 (map! :n "C-u" 'universal-argument)
 (map! :n "C-q" 'consult-recent-file)
-(map! :n "gp" 'flycheck-previous-error)
-(map! :n "gn" 'flycheck-next-error)
+;; NOTE emacs is not for coding, so flycheck error is not used that much
+(map! :n "[e" 'flycheck-previous-error)
+(map! :n "]e" 'flycheck-next-error)
+(map! :n "gp" 'previous-error)
+(map! :n "gn" 'next-error)
 (map! :n "gm" '+evil/next-beginning-of-method)
 (map! :n "gM" '+evil/previous-beginning-of-method)
 (map! :n "gr" '+lookup/references)

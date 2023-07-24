@@ -243,6 +243,8 @@ clear-ctrl-r() {
 
 zle -N clear-ctrl-r
 
+export ATUIN_NOBIND="true"
+eval "$(atuin init zsh)"
 bindkey '^R' clear-ctrl-r
 
 # ignore commands for zsh-autosuggestions plugin
@@ -280,6 +282,3 @@ typeset -U path
 
 ##
 # zprof
-
-eval "$(atuin init zsh)"
-

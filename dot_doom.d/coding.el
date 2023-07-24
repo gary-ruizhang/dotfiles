@@ -113,7 +113,6 @@
 
 ;; TODO disable debug log output
 (setq consult-locate-args "mdfind -name")
-(setq consult-preview-key nil)
 
 ;; Consult users will also want the embark-consult package.
 (use-package embark-consult

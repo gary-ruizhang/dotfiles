@@ -848,9 +848,17 @@
                         ]
                     },
                     {
-                        "description": "C-p to up in everywhere",
+                        "description": "C-p to up exclude qq",
                         "manipulators": [
                             {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com\\.tencent\\.qq$"
+                                        ],
+                                        "type": "frontmost_application_unless"
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "p",
                                     "modifiers": {
@@ -869,9 +877,17 @@
                         ]
                     },
                     {
-                        "description": "C-n to down in everywhere",
+                        "description": "C-n to down exclude qq",
                         "manipulators": [
                             {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com\\.tencent\\.qq$"
+                                        ],
+                                        "type": "frontmost_application_unless"
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "n",
                                     "modifiers": {
@@ -1356,8 +1372,7 @@
                                     {
                                         "key_code": "f2",
                                         "modifiers": [
-                                            "left_control",
-                                            "fn"
+                                            "left_control"
                                         ]
                                     }
                                 ],
