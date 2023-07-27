@@ -3,16 +3,16 @@ local check_backspace = function()
   return col == 0 or vim.fn.getline("."):sub(col, col):match("%s")
 end
 
-local luasnip = require("luasnip")
-luasnip.config.set_config({
-  delete_check_events = "TextChanged,InsertEnter",
-})
+-- local luasnip = require("luasnip")
+-- luasnip.config.set_config({
+--   delete_check_events = "TextChanged,InsertEnter",
+-- })
 
 return {
   {
     "hrsh7th/nvim-cmp",
     dependencies = {
-      "hrsh7th/cmp-nvim-lsp",
+      -- "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
     },
@@ -26,11 +26,11 @@ return {
         completion = {
           completeopt = "menu,menuone,noinsert",
         },
-        snippet = {
-          expand = function(args)
-            luasnip.lsp_expand(args.body)
-          end,
-        },
+        -- snippet = {
+        --   expand = function(args)
+        --     luasnip.lsp_expand(args.body)
+        --   end,
+        -- },
         mapping = cmp.mapping.preset.insert({
           ["<C-k>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
           ["<C-j>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
@@ -45,10 +45,10 @@ return {
               else
                 cmp.confirm()
               end
-            elseif luasnip.expandable() then
-              luasnip.expand()
-            elseif luasnip.expand_or_locally_jumpable() then
-              luasnip.expand_or_jump()
+            -- elseif luasnip.expandable() then
+            --   luasnip.expand()
+            -- elseif luasnip.expand_or_locally_jumpable() then
+            --   luasnip.expand_or_jump()
             elseif check_backspace() then
               fallback()
             else
@@ -60,8 +60,8 @@ return {
           }),
         }),
         sources = cmp.config.sources({
-          { name = "nvim_lsp" },
-          { name = "luasnip" },
+          -- { name = "nvim_lsp" },
+          -- { name = "luasnip" },
           { name = "buffer" },
           { name = "path" },
         }),

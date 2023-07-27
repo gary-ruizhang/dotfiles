@@ -44,8 +44,6 @@
 ;; automatically updating feed when opening elfeed
 (add-hook! 'elfeed-search-mode-hook #'elfeed-update)
 
-(global-org-modern-mode)
-
 (use-package consult-org-roam
    :ensure t
    :after org-roam
@@ -56,3 +54,9 @@
    :custom
    ;; Use `ripgrep' for searching with `consult-org-roam-search'
    (consult-org-roam-grep-func #'consult-ripgrep))
+
+(defun my/hook (hook)
+  "Create an org-link target string using `hook://` url scheme."
+  (shell-command (concat "open hook:\"" hook "\"")))
+
+  (org-add-link-type "hook" 'my/hook)

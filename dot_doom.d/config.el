@@ -87,3 +87,8 @@
 
 (display-time-mode 1)
 (simpleclip-mode 1)
+
+;; benchmark
+;; (when init-file-debug
+;;   (require 'benchmark-init)
+;;   (add-hook 'doom-first-input-hook #'benchmark-init/deactivate))
