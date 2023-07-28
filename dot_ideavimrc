@@ -34,12 +34,5 @@ map ga <Action>(ShowIntentionActions)
 nmap <C-o> :action Back<CR>
 nmap <c-i> :action Forward<CR>
 
+nmap s <Action>(AceAction)
 
-" Press `f` to activate AceJump
-nmap f <Action>(AceAction)
-" Press `F` to activate Target Mode
-nmap F <Action>(AceTargetAction)
-" Press `S` in normal mode to activate AceJump mode before the caret
-nmap S <Action>(AceBackwardAction)
-" Press `s` in normal mode to activate AceJump mode after the caret
-nmap s <Action>(AceForwardAction)

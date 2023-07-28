@@ -1,6 +1,6 @@
 {
     "workbench.startupEditor": "none",
-    "workbench.colorTheme": "Nord",
+    "workbench.colorTheme": "Dracula Pro",
     "workbench.iconTheme": "material-icon-theme",
     "workbench.editor.showTabs": false,
     "breadcrumbs.enabled": false,

@@ -1,10 +1,12 @@
 return {
-  { "EdenEast/nightfox.nvim" },
+  -- add gruvbox
+  { "gary-ruizhang/dracula_pro" },
 
+  -- Configure LazyVim to load gruvbo
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "nordfox",
+      colorscheme = "dracula_pro",
     },
-  },
+  }
 }

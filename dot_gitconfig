@@ -23,7 +23,7 @@
 [delta]
   navigate = true    # use n and N to move between diff sections
   light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
-  features = nord-future
+  features = dracula
 [merge]
   conflictstyle = diff3
 [diff]
@@ -32,12 +32,12 @@
 	template = /Users/ruizhang/.gitmessage
 [rebase]
   autoStash = true
-[delta "nord-future"]
+[delta "dracula"]
   #author: https://github.com/AirOnSkin
   dark = true
   line-numbers = true
   keep-plus-minus-markers = false
-  syntax-theme = Nord
+  syntax-theme = Dracula
   file-added-label = [+]
   file-copied-label = [C]
   file-decoration-style = none

@@ -38,8 +38,7 @@
        "C-h" #'backward-delete-char-untabify
        "C-u" #'universal-argument))
 
-(map! :n "s" 'avy-goto-char-2-below)
-(map! :n "S" 'avy-goto-char-2-above)
+(map! :n "s" 'avy-goto-char-2)
 
 (setq avy-keys (number-sequence ?a ?z))
 

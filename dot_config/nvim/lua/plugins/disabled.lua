@@ -6,6 +6,6 @@ return {
   { "nvim-pack/nvim-spectre", enabled = false },
   { "folke/tokyonight.nvim", enabled = false },
   { "catppuccin/nvim", enabled = false },
-  { "folke/flash.nvim", enabled = false },
   { "neovim/nvim-lspconfig", enabled = false },
+  { "tpope/vim-repeat", enabled = false },
 }

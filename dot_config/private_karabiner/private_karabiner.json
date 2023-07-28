@@ -1293,19 +1293,19 @@
                         ]
                     },
                     {
-                        "description": "ctrl-k -> ctrl-p in chrome",
+                        "description": "ctrl-q -> cmd-[ in preview",
                         "manipulators": [
                             {
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "^com\\.microsoft\\.VSCode$"
+                                            "^com\\.apple\\.Preview$"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
                                 ],
                                 "from": {
-                                    "key_code": "k",
+                                    "key_code": "q",
                                     "modifiers": {
                                         "mandatory": [
                                             "left_control"
@@ -1314,9 +1314,9 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "p",
+                                        "key_code": "open_bracket",
                                         "modifiers": [
-                                            "left_control"
+                                            "left_command"
                                         ]
                                     }
                                 ],
