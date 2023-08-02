@@ -131,4 +131,5 @@
     },
     "debug.allowBreakpointsEverywhere": true,
     "terminal.integrated.tabFocusMode": false,
+    "git.openRepositoryInParentFolders": "never",
 }

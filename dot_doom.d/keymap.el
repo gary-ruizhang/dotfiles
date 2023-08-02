@@ -49,7 +49,7 @@
 ;; NOTE exclude path from recentf
 (add-to-list 'recentf-exclude "/private/var/folders/.*")
 (add-to-list 'recentf-exclude "/usr/local/Cellar/emacs-mac/.*")
-(add-to-list 'recentf-exclude "/Users/ruizhang/.config/emacs/.local/etc/workspaces/*")
+(add-to-list 'recentf-exclude "/Users/ruizhang/.config/emacs/*")
 
 (defun insert-current-month ()
   (interactive)

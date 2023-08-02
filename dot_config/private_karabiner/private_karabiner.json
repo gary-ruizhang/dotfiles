@@ -229,7 +229,7 @@
                         ]
                     },
                     {
-                        "description": "C-z to C-a + z in terminal",
+                        "description": "S-z to C-a + z in terminal",
                         "manipulators": [
                             {
                                 "conditions": [
@@ -245,7 +245,7 @@
                                     "key_code": "z",
                                     "modifiers": {
                                         "mandatory": [
-                                            "left_control"
+                                            "left_command"
                                         ]
                                     }
                                 },
@@ -1479,6 +1479,38 @@
                         ]
                     },
                     {
+                        "description": "ctrl-q to cmd-e in intellij-idea",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com\\.jetbrains\\.intellij$"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "q",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "left_control"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "e",
+                                        "modifiers": [
+                                            "left_command"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "Cmd-l to ctrl-tab exclude terminal",
                         "manipulators": [
                             {
@@ -1512,13 +1544,14 @@
                         ]
                     },
                     {
-                        "description": "ctrl-l to cmd-l in chrome",
+                        "description": "ctrl-l to cmd-l in chrome and dash",
                         "manipulators": [
                             {
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "^com\\.google\\.Chrome$"
+                                            "^com\\.google\\.Chrome$",
+                                            "^com\\.kapeli\\.dashdoc$"
                                         ],
                                         "type": "frontmost_application_if"
                                     }

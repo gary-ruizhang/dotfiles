@@ -56,7 +56,7 @@
 (package! org-modern)
 (package! corfu)
 (package! cape)
-(package! jinx)
+(package! wakatime-mode)
 (package! consult-org-roam)
 (package! copilot
   :recipe (:host github :repo "zerolfx/copilot.el" :files ("*.el" "dist")))

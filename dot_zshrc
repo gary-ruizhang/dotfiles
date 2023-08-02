@@ -44,7 +44,6 @@ alias ll='ls -alF -snewest -I .DS_Store'
 alias l='ls -alF -snewest -I .DS_Store'
 alias awk=gawk
 alias grep=rg
-alias find=fd
 # alias cat to bat
 alias cat=bat
 
@@ -206,6 +205,8 @@ eval "$(starship init zsh)"
 
 # solve tmux term color
 # export TERM=alacritty
+
+source /Users/ruizhang/.config/bash-wakatime/bash-wakatime.sh
 
 # highlight
 source /Users/ruizhang/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

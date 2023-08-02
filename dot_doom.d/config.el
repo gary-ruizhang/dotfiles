@@ -88,6 +88,11 @@
 (display-time-mode 1)
 (simpleclip-mode 1)
 
+(use-package wakatime-mode
+  :ensure t)
+
+(global-wakatime-mode)
+
 ;; benchmark
 ;; (when init-file-debug
 ;;   (require 'benchmark-init)

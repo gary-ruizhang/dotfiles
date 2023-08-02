@@ -58,5 +58,7 @@
 (defun my/hook (hook)
   "Create an org-link target string using `hook://` url scheme."
   (shell-command (concat "open hook:\"" hook "\"")))
-
   (org-add-link-type "hook" 'my/hook)
+
+;; NOTE disable org-roam completion everywhere, it should be disabled by default, don't know why enabled
+(setq org-roam-completion-everywhere nil)
