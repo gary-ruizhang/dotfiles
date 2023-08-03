@@ -111,8 +111,8 @@
                  nil
                  (window-parameters (mode-line-format . none)))))
 
-;; TODO disable debug log output
-(setq consult-locate-args "mdfind -name")
+;; NOTE: use mdfind -name to replace locate and custom mdfind command to remove the warning message
+(setq consult-locate-args "/Users/ruizhang/.config/bin/locate")
 
 ;; Consult users will also want the embark-consult package.
 (use-package embark-consult

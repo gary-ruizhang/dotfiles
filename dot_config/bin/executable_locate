@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+/usr/bin/mdfind $@ 2> >(grep --invert-match ' \[UserQueryParser\] ' >&2)

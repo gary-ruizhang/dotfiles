@@ -206,8 +206,6 @@ eval "$(starship init zsh)"
 # solve tmux term color
 # export TERM=alacritty
 
-source /Users/ruizhang/.config/bash-wakatime/bash-wakatime.sh
-
 # highlight
 source /Users/ruizhang/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
