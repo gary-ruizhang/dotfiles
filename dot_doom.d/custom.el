@@ -3,7 +3,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(wakatime-api-key "waka_02d744c1-c185-4519-8ed8-836bd8b1c3ae")
+ '(wakatime-api-key "waka_a495da86-5d87-4f0a-9fce-27b6859a4bab")
  '(wakatime-cli-path "/usr/local/bin/wakatime-cli")
  '(warning-suppress-types '((initialization) (defvaralias))))
 (custom-set-faces
