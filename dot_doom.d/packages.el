@@ -57,7 +57,5 @@
 (package! corfu)
 (package! cape)
 (package! consult-org-roam)
-(package! copilot
-  :recipe (:host github :repo "zerolfx/copilot.el" :files ("*.el" "dist")))
 ;; profiling
 ;; (package! benchmark-init)
