@@ -141,6 +141,13 @@ The theme has to be reloaded after changing anything in this group."
                (company-tooltip-common-selection :foreground ,dracula-pro-pro-yellow)
                (company-tooltip-mouse :inherit highlight)
                (company-tooltip-selection :background ,dracula-pro-pro-bg3 :foreground ,dracula-pro-pro-fg3)
+               ;; corfu
+               (corfu-preview-current :background ,dracula-pro-pro-bg :foreground ,dracula-pro-pro-alt-blue)
+               (corfu-default :foreground ,dracula-pro-pro-fg2 :background ,dracula-pro-pro-bg :weight bold)
+               (corfu-bar :background ,dracula-pro-pro-pink)
+               (corfu-annotations :foreground ,dracula-pro-pro-cyan)
+               ;; vertico
+               (vertico-current :background ,dracula-pro-pro-current :extend t)
                ;; diff-hl
                (diff-hl-change :foreground ,dracula-pro-pro-orange :background ,dracula-pro-pro-orange)
                (diff-hl-delete :foreground ,dracula-pro-pro-red :background ,dracula-pro-pro-red)
