@@ -622,7 +622,7 @@ The theme has to be reloaded after changing anything in this group."
                                (t                       ; should be only tty-like envs
                                 ,(funcall expand-for-kind tty-colors spec))))))))
 
-
+
 ;;;###autoload
 (when load-file-name
   (add-to-list 'custom-theme-load-path

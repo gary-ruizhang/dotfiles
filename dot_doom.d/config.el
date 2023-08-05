@@ -76,7 +76,6 @@
   :config
   (delete "C-h" sis-prefix-override-keys)
   (sis-global-respect-mode t)
-  (sis-global-inline-mode t)
   (sis-global-context-mode t)
   (sis-global-cursor-color-mode t))
 
