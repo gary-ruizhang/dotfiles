@@ -69,6 +69,8 @@
 
 (remove-hook 'undo-fu-mode-hook #'global-undo-fu-session-mode)
 
+(customize-set-variable 'org-anki-default-deck "vocabulary")
+
 (sis-ism-lazyman-config
  "com.apple.keylayout.ABC"
  "com.apple.inputmethod.SCIM.Shuangpin")

@@ -10,7 +10,7 @@ end)
 return {
 	-- ui
 	color_scheme = "nordfox",
-	font = wezterm.font("OperatorMonoSSmLig Nerd Font Mono"),
+	font = wezterm.font("MonoLisaStaticScript Nerd Font"),
 	font_size = 20,
 
   window_background_image = "/Users/ruizhang/FUCK/nordfox.jpeg",

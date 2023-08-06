@@ -56,6 +56,7 @@
 (package! org-modern)
 (package! corfu)
 (package! cape)
+(package! org-anki)
 (package! consult-org-roam)
 ;; profiling
 ;; (package! benchmark-init)

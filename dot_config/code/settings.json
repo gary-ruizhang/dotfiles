@@ -7,16 +7,26 @@
     
     "editor.fontSize": 26,
     "editor.lineNumbers": "relative",
-    "editor.fontFamily": "OperatorMonoSSmLig Nerd Font Mono, Menlo, Monaco, 'Courier New', monospace",
+    "editor.fontFamily": "MonoLisa Static-Script, Menlo, Monaco, 'Courier New', monospace",
     "editor.acceptSuggestionOnEnter": "smart",
     "editor.tabCompletion": "on",
     "editor.acceptSuggestionOnCommitCharacter": false,
-    "editor.fontLigatures": true,
+    "editor.fontLigatures": "'ss02' on",
     "editor.suggest.showSnippets": false,
     "editor.suggestSelection": "first",
     "editor.inlineSuggest.enabled": true,
     "editor.inlayHints.enabled": "offUnlessPressed",
     "editor.tabFocusMode": false,
+    "editor.tokenColorCustomizations": {
+        "textMateRules": [
+          {
+            "scope": "comment",
+            "settings": {
+              "fontStyle": "italic"
+            }
+          }
+        ]
+      },
 
     // vim
     "vim.easymotion": true,

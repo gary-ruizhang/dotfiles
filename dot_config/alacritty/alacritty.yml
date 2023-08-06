@@ -14,16 +14,16 @@ window:
 font:
   size: 20
   normal:
-    family: OperatorMonoSSmLig Nerd Font Mono
+    family: MonoLisa Static-Script
     style: Regular
   bold:
-    family: OperatorMonoSSmLig Nerd Font Mono
+    family: MonoLisa Static-Script
     style: Bold
   italic:
-    family: OperatorMonoSSmLig Nerd Font Mono
+    family: MonoLisa Static-Script
     style: Italic
   bold_italic:
-    family: OperatorMonoSSmLig Nerd Font Mono
+    family: MonoLisa Static-Script
     style: Bold Italic
 schemes:
 # Dracula Pro

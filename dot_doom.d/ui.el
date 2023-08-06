@@ -9,7 +9,7 @@
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type 'relative)
 
-(setq doom-font (font-spec :family "OperatorMonoSSmLig Nerd Font Mono" :size 20 :weight 'book))
+(setq doom-font (font-spec :family "MonoLisa Static-Script" :size 20))
 ;; sometimes no need to see which key
 ;; (setq which-key-idle-delay 0.3)
 
