@@ -14,16 +14,16 @@ window:
 font:
   size: 20
   normal:
-    family: OperatorMonoSSmLig Nerd Font Mono
+    family: Mono Lisa NF
     style: Regular
   bold:
-    family: OperatorMonoSSmLig Nerd Font Mono
+    family: Mono Lisa NF
     style: Bold
   italic:
-    family: OperatorMonoSSmLig Nerd Font Mono
+    family: Mono Lisa NF
     style: Italic
   bold_italic:
-    family: OperatorMonoSSmLig Nerd Font Mono
+    family: Mono Lisa NF
     style: Bold Italic
 schemes:
 # Dracula Pro
