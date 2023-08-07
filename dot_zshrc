@@ -69,6 +69,7 @@ alias chd="chezmoi diff"
 alias p=perl
 alias g=git
 alias gl="git log"
+eval $(thefuck --alias f)
 
 gm() {
   git commit -m $1
@@ -232,6 +233,8 @@ source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # export JAVA_HOME=$(/usr/libexec/java_home)
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home"
+
+export BW_SESSION="XNhzIzxFPV+7GXjEgRgbNoF7N5LSQobUewEjC/7UiD1QdBBCjTjblTldAKMnd4z8wEzYmUNrH1roR7eV22+PLw=="
 
 clear-ctrl-r() {
   zle autosuggest-clear
