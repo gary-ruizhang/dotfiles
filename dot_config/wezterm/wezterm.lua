@@ -2,50 +2,63 @@ local wezterm = require("wezterm")
 local mux = wezterm.mux
 
 wezterm.on("gui-startup", function()
-	local tab, pane, window = mux.spawn_window({})
+  -- TODO: find better way to create workspace
+	local first_tab, pane, window = mux.spawn_window({
+    workspace = 'work',
+    cwd = "/Users/ruizhang/Work/workspace/ivoss_web",
+  })
+  first_tab:set_title "npm"
+  local tab = window:spawn_tab {
+    cwd = "/Users/ruizhang/Work/workspace/ivoss_web"
+  }
+  tab:set_title "front"
+  local tab = window:spawn_tab {
+    cwd = "/Users/ruizhang/Work/workspace/ivoss_web_service"
+  }
+  tab:set_title "back"
+  local tab = window:spawn_tab {
+    cwd = "/Users/ruizhang/Work/ivoss_bigdata"
+  }
+  tab:set_title "bss/bigdata"
+  local tab = window:spawn_tab {
+    cwd = "/Users/ruizhang"
+  }
+  tab:set_title "other"
+  local tab = window:spawn_tab {
+    cwd = "/Users/ruizhang"
+  }
+  tab:set_title "ssh"
+  first_tab:activate()
 	-- window:gui_window():maximize()
 	window:gui_window():toggle_fullscreen()
+
+	window:gui_window():set_left_status(
+		wezterm.format({
+			{Foreground={Color="#F8F8F2"}},
+			{Background={Color="#44475A"}},
+			{Text= " " .. window:get_workspace() .. " "},
+		})
+	);
 end)
-
--- The filled in variant of the < symbol
-local SOLID_LEFT_ARROW = wezterm.nerdfonts.pl_right_hard_divider
-
--- The filled in variant of the > symbol
-local SOLID_RIGHT_ARROW = wezterm.nerdfonts.pl_left_hard_divider
-
--- This function returns the suggested title for a tab.
--- It prefers the title that was set via `tab:set_title()`
--- or `wezterm cli set-tab-title`, but falls back to the
--- title of the active pane in that tab.
-function tab_title(tab_info)
-  local title = tab_info.tab_title
-  -- if the tab title is explicitly set, take that
-  if title and #title > 0 then
-    return title
-  end
-  -- Otherwise, use the title from the active pane
-  -- in that tab
-  return tab_info.active_pane.title
-end
 
 wezterm.on("update-right-status", function(window, pane)
 	local cwd = " "..pane:get_current_working_dir():sub(8).." "; -- remove file:// uri prefix
-	local date = wezterm.strftime(" %R  %a  %m-%d");
+	local date = wezterm.strftime(" %R %a %m-%d");
 	local hostname = " "..wezterm.hostname().." ";
 
 	window:set_right_status(
 		wezterm.format({
-			{Foreground={Color="#8be9fd"}},
+			{Foreground={Color="#8BE9FD"}},
 			{Text=""},
 		})..
 		wezterm.format({
-			{Foreground={Color="#282a36"}},
-			{Background={Color="#8be9fd"}},
+			{Foreground={Color="#282A36"}},
+			{Background={Color="#8BE9FD"}},
 			{Text=cwd},
 		})..
 		wezterm.format({
 			{Foreground={Color="#6272A4"}},
-			{Background={Color="#8be9fd"}},
+			{Background={Color="#8BE9FD"}},
 			-- {Background={Color="#F8F8F2"}},
 			{Text=""},
 		})..
@@ -55,11 +68,51 @@ wezterm.on("update-right-status", function(window, pane)
 			{Text=date},
 		})..
 		wezterm.format({
-			{Foreground={Color="#00af87"}},
-			{Background={Color="#00875f"}},
+			{Foreground={Color="#00AF87"}},
+			{Background={Color="#00875F"}},
 		})
 	);
 end);
+
+local copy_mode = nil
+local search_mode = nil
+if wezterm.gui then
+  copy_mode = wezterm.gui.default_key_tables().copy_mode
+  search_mode = wezterm.gui.default_key_tables().search_mode
+
+  -- Enter search mode to edit the pattern.
+  -- When the search pattern is an empty string the existing pattern is preserved
+  table.insert(
+    copy_mode,
+    {key="/", mods="NONE", action=wezterm.action{Search={CaseInSensitiveString=""}}}
+  )
+  table.insert(
+    copy_mode,
+    -- navigate any search mode results
+    {key="n", mods="NONE", action=wezterm.action{CopyMode="NextMatch"}}
+  )
+  -- NOTE: work for mouse cursor not the terminal cursor
+  table.insert(
+    copy_mode,
+    {key="*", mods="NONE", action=wezterm.action{SelectTextAtMouseCursor='Word'}}
+  )
+  table.insert(
+    copy_mode,
+    -- navigate any search mode results
+    {key="N", mods="SHIFT", action=wezterm.action{CopyMode="PriorMatch"}}
+  )
+
+  table.insert(
+    search_mode,
+    {key="Escape", mods="NONE", action=wezterm.action{CopyMode="Close"}}
+  )
+  table.insert(
+    search_mode,
+    -- Go back to copy mode when pressing enter, so that we can use unmodified keys like "n"
+    -- to navigate search results without conflicting with typing into the search area.
+    {key="Enter", mods="NONE", action="ActivateCopyMode"}
+  )
+end
 
 return {
 	-- ui
@@ -121,9 +174,16 @@ return {
     { key = "7", mods = "LEADER",       action=wezterm.action{ActivateTab=6}},
     { key = "8", mods = "LEADER",       action=wezterm.action{ActivateTab=7}},
     { key = "9", mods = "LEADER",       action=wezterm.action{ActivateTab=-1}},
+    { key = "0", mods = "LEADER",       action=wezterm.action.ActivateLastTab },
 
     { key = "n", mods = "LEADER",       action=wezterm.action{ActivateTabRelative=1} },
     { key = "p", mods = "LEADER",       action=wezterm.action{ActivateTabRelative=-1} },
+    { key = "[", mods = "LEADER",       action=wezterm.action.ActivateCopyMode },
+  },
+
+  key_tables = {
+    copy_mode = copy_mode,
+    search_mode = search_mode,
   },
 
   -- utilities
