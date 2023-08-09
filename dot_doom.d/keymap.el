@@ -1,7 +1,7 @@
 (map! :n ";" 'evil-ex)
 (map! :n "C-l" 'evil-force-normal-state)
 (map! :n "C-u" 'universal-argument)
-(map! :n "C-q" 'consult-recent-file)
+;; (map! :n "C-q" 'consult-recent-file)
 ;; NOTE emacs is not for coding, so flycheck error is not used that much
 (map! :n "[e" 'flycheck-previous-error)
 (map! :n "]e" 'flycheck-next-error)
@@ -52,6 +52,32 @@
 (add-to-list 'recentf-exclude "/private/var/folders/.*")
 (add-to-list 'recentf-exclude "/usr/local/Cellar/emacs-mac/.*")
 (add-to-list 'recentf-exclude "/Users/ruizhang/.config/emacs/*")
+
+;; sort recentf-list by access time
+(add-hook 'buffer-list-update-hook 'recentf-track-opened-file)
+
+(defun consult-recent-file-by-access ()
+  "Find recent file using `completing-read'."
+  (interactive)
+  (let ((recentf-list-cdr (cdr recentf-list)))
+   (find-file
+   (consult--read
+    (or
+     (mapcar #'consult--fast-abbreviate-file-name (bound-and-true-p recentf-list-cdr))
+     (user-error "No recent files, `recentf-mode' is %s"
+                 (if recentf-mode "enabled" "disabled")))
+    :prompt "Find recent file: "
+    :sort nil
+    :require-match t
+    :category 'file
+    ;; no need preview for function
+    ;; :state (consult--file-preview)
+    :history 'file-name-history)))
+  )
+
+(map! (:after consult
+       :n "C-q" #'consult-recent-file-by-access
+              ))
 
 (defun insert-current-month ()
   (interactive)
