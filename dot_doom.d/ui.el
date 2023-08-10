@@ -21,6 +21,7 @@
 ;; (add-hook 'window-setup-hook #'toggle-frame-fullscreen)
 
 ;; Minimal UI
+;; org-modern
 (package-initialize)
 
 ;; Choose some fonts

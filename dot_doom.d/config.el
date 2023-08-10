@@ -90,6 +90,7 @@
 (simpleclip-mode 1)
 ;; NOTE need for custom consult-recent-file-by-access function
 (recentf-mode 1)
+(global-eldoc-mode -1)
 
 ;; benchmark
 ;; (when init-file-debug

@@ -11,7 +11,6 @@
 (map! :n "gM" '+evil/previous-beginning-of-method)
 (map! :n "gr" '+lookup/references)
 (map! :n "s-w" 'evil-delete-buffer)
-(map! :n "s-f" 'consult-ripgrep)
 (map! :n "s-i" 'consult-imenu)
 (map! :n "s-I" 'consult-imenu-multi)
 (map! :n "C-." 'embark-act)
@@ -52,10 +51,12 @@
 (add-to-list 'recentf-exclude "/private/var/folders/.*")
 (add-to-list 'recentf-exclude "/usr/local/Cellar/emacs-mac/.*")
 (add-to-list 'recentf-exclude "/Users/ruizhang/.config/emacs/*")
+(add-to-list 'recentf-exclude "/Users/ruizhang/org-roam/daily/*")
 
 ;; sort recentf-list by access time
 (add-hook 'buffer-list-update-hook 'recentf-track-opened-file)
 
+;; NOTE fork from consult-recent-file
 (defun consult-recent-file-by-access ()
   "Find recent file using `completing-read'."
   (interactive)
