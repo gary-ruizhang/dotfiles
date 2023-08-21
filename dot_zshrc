@@ -183,6 +183,7 @@ export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:/Users/ruizhang/.local/bin
 export PATH=$PATH:~/.emacs.d/bin
 export PATH=$PATH:/Users/ruizhang/.config/shell-utils
+export PATH=$PATH:/Users/ruizhang/.config/bin
 # ~/.tmux/plugins
 export PATH=$HOME/.tmux/plugins/t-smart-tmux-session-manager/bin:$PATH
 
@@ -282,8 +283,6 @@ tmux_work() {
     tmux attach-session -t $session
   fi
 }
-
-PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
 
 ## nnn
 export NNN_BMS="b:$HOME/Downloads/book/;f:$HOME/FUCK/;g:$HOME/go/;p:$HOME/python/;r:$HOME/rust/"

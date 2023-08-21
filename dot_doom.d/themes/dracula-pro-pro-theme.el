@@ -16,7 +16,6 @@
 (deftheme dracula-pro-pro
   "Dracula PRO - Pro Variant")
 
-
 ;;;; Configuration options:
 
 (defgroup dracula-pro-pro nil
@@ -55,7 +54,6 @@ The theme has to be reloaded after changing anything in this group."
   :type 'boolean
   :group 'dracula-pro-pro)
 
-
 ;;;; Theme definition:
 
 ;; Assigment form: VARIABLE COLOR [TTY-COLOR]
@@ -93,7 +91,8 @@ The theme has to be reloaded after changing anything in this group."
                (lazy-highlight :foreground ,dracula-pro-pro-fg2 :background ,dracula-pro-pro-bg2)
                (link :foreground ,dracula-pro-pro-cyan :underline t)
                (linum :slant italic :foreground ,dracula-pro-pro-bg4 :background ,dracula-pro-pro-bg)
-               (line-number :slant italic :foreground ,dracula-pro-pro-bg4 :background ,dracula-pro-pro-bg)
+               (line-number :foreground ,dracula-pro-pro-comment)
+               (line-number-current-line :slant italic :background ,dracula-pro-pro-bg :foreground ,dracula-pro-pro-fg)
                (match :background ,dracula-pro-pro-yellow :foreground ,dracula-pro-pro-bg)
                (minibuffer-prompt
                 ,@(if dracula-pro-pro-alternate-mode-line-and-minibuffer

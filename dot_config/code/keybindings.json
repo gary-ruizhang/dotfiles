@@ -3,10 +3,6 @@
     // work like intellij
     {
         "key": "shift shift",
-        "command": "workbench.action.quickOpen"
-    },
-    {
-        "key": "ctrl ctrl",
         "command": "workbench.action.showCommands"
     },
     
@@ -84,5 +80,23 @@
         "key": "cmd+k cmd+i",
         "command": "-editor.action.showHover",
         "when": "editorTextFocus"
-    }
+    },
+    {
+        "key": "ctrl+q",
+        "command": "-workbench.action.quickOpenNavigateNextInViewPicker",
+        "when": "inQuickOpen && inViewsPicker"
+    },
+    {
+        "key": "ctrl+q",
+        "command": "-workbench.action.quickOpenView"
+    },
+    {
+        "key": "ctrl+q",
+        "command": "-extension.vim_winCtrlQ",
+        "when": "editorTextFocus && vim.active && vim.use<C-q> && !inDebugRepl"
+    },
+    {
+        "key": "ctrl+q",
+        "command": "workbench.action.quickOpen"
+    },
 ]

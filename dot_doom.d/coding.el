@@ -120,19 +120,30 @@
   :hook
   (embark-collect-mode . consult-preview-at-point-mode))
 
-;; NOTE use consult-line to search in evil-ex and add the search pattern to evil search history
-;; https://github.com/minad/consult/issues/318#issuecomment-882067919
-;; FIXME consult-line sometimes have weird issues with consult-preview
-;; (defun noct-consult-line-evil-history (&rest _)
-;;   "Add latest `consult-line' search pattern to the evil search history ring.
-;; This only works with orderless and for the first component of the search."
-;;   (when (and (bound-and-true-p evil-mode)
-;;              (eq evil-search-module 'evil-search))
-;;     (let ((pattern (car (orderless-pattern-compiler (car consult--line-history)))))
-;;       (add-to-history 'evil-ex-search-history pattern)
-;;       (setq evil-ex-search-pattern (list pattern t t))
-;;       (setq evil-ex-search-direction 'forward)
-;;       (when evil-ex-search-persistent-highlight
-;;         (evil-ex-search-activate-highlight evil-ex-search-pattern)))))
+;; magit
+(setq magit-repository-directories
+        '(("/Users/ruizhang/Work/workspace" . 1)
+          ("/Users/ruizhang/Work/ivoss_bigdata" . 0)))
 
-;; (advice-add #'consult-line :after #'noct-consult-line-evil-history)
+(setq magit-repolist-columns
+      '(("Name" 25 magit-repolist-column-ident nil)))
+
+;; switch repo inside magit status
+;; FIXME not work
+(defun consult-magit ()
+  (interactive)
+  ;; inside magit: q command and then magit-status, Otherwise just magit-status
+  (if (eq major-mode 'magit-status-mode)
+      ;; magit-status-mode is on
+      (progn
+        (+magit/quit)
+        (message "fuck")
+        )
+      ;; magit-status-mode is off
+        (message "fuck")))
+
+(add-to-list 'consult-buffer-filter "magit-process*")
+(add-to-list 'consult-buffer-filter "magit-diff*")
+(add-to-list 'consult-buffer-filter "magit-revision*")
+(add-to-list 'consult-buffer-filter "magit-log*")
+(add-to-list 'consult-buffer-filter "magit-refs*")

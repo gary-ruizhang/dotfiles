@@ -7,8 +7,6 @@
         ;; NOTE just one big GTD file to start
   (setq org-agenda-files (list "~/org/gtd/GTD.org")
         org-todo-keywords '((sequence "TODO(t)" "WAIT(w)" "PROJ(p)" "|" "DONE(d)" "KILL(k)"))
-        ;; FIXME not work
-        ;; org-todo-keywords-for-agenda '("TODO" "WAIT" "DONE" "KILL")
         +org-capture-todo-file "~/org/gtd/GTD.org"
         org-show-notification-handler 'message)
   )
