@@ -38,9 +38,6 @@
 (setq org-roam-file-exclude-regexp "/Users/ruizhang/org-roam/daily")
 ;; FIXME temporary fixes
 (setq org-fold-core-style "overlays")
-(setq rmh-elfeed-org-files '("~/org/elfeed.org"))
-;; automatically updating feed when opening elfeed
-(add-hook! 'elfeed-search-mode-hook #'elfeed-update)
 
 (use-package consult-org-roam
    :ensure t
@@ -60,3 +57,5 @@
 
 ;; NOTE disable org-roam completion everywhere, it should be disabled by default, don't know why enabled
 (setq org-roam-completion-everywhere nil)
+
+(setq org-archive-location "/Users/ruizhang/org-roam/archives/%s_archive::")

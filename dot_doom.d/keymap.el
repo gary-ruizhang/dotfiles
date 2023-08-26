@@ -55,6 +55,7 @@
 (add-to-list 'recentf-exclude "/usr/local/Cellar/emacs-mac/.*")
 (add-to-list 'recentf-exclude "/Users/ruizhang/.config/emacs/*")
 (add-to-list 'recentf-exclude "/Users/ruizhang/org-roam/daily/*")
+(add-to-list 'recentf-exclude "/Users/ruizhang/org-roam/archives/*")
 
 (defun insert-current-month ()
   (interactive)
