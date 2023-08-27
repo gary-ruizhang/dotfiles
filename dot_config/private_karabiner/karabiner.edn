@@ -10,16 +10,33 @@
 :dash ["^com\\.kapeli\\.dashdoc$"]
 }
 
+:templates 
+{
+:alfred "osascript -e 'tell application id \"com.runningwithcrayons.Alfred\" to run trigger \"%s\" in workflow \"%s\" with argument \"%s\"'"
+:km "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"%s\"'"
+:open "open \"%s\""
+}
+
+:layers
+{
+:tab-mode {:key :tab}
+}
+
+:simlayers
+{
+:w-mode {:key :w}
+}
+
 :main 
 [
 ;; hyper key
-{:des "ctrl-v to hyper-v" :rules [[:!Tv :!!v]]}
-{:des "ctrl-s to hyper-s" :rules [[:!Ts :!!s]]}
+{:des "left_control to hyper" :rules [[:##left_control :!CTOleft_shift]]}
 
 ;; normal
 {:des "caps_lock to ctrl" :rules [[:##caps_lock :left_control]]}
 {:des "ctrl-[ to esc" :rules [[:!Topen_bracket :escape]]}
 {:des "ctrl-m to toggle menu bar" :rules [[:!Tm :!Tf2]]}
+{:des "right_command to launch alfred" :rules [[:right_command :!Cspacebar]]}
 
 ;; app
 {:des "cmd-f to ctrl-a + tab in terminal" :rules [[:!Cf [:!Ta :tab] [:terminal]]]}
@@ -48,7 +65,7 @@
 
 ;; tmux
 {
-:des "quick switch between tabs in tmux" 
+:des "quickly switch between tabs in tmux" 
 :rules [
 [:!Ttab [:!Ta :n] [:terminal]]
 [:!TStab [:!Ta :p] [:terminal]]
@@ -65,6 +82,24 @@
 [:!C7 [:!Ta :7] [:terminal]]
 [:!C8 [:!Ta :8] [:terminal]]
 [:!C9 [:!Ta :9] [:terminal]]
+]}
+
+;;;; layers
+;; tab mode
+{
+:des "layer"
+:rules [:tab-mode
+[:e [:km "open: emacs"]]
+[:r [:km "open: rss"]]
+]}
+
+;;;; simlayers
+;; window mode
+{
+:des "quick switch between windows"
+:rules [:w-mode
+[:e [:km "open: emacs"]]
+[:r [:km "open: rss"]]
 ]}
 
 ]

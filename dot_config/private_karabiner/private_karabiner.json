@@ -15,32 +15,40 @@
         "basic.to_if_held_down_threshold_milliseconds" : 500
       },
       "rules" : [ {
-        "description" : "ctrl-v to hyper-v",
+        "description" : "Auto generated layer conditions",
         "manipulators" : [ {
-          "from" : {
-            "key_code" : "v",
-            "modifiers" : {
-              "mandatory" : [ "left_control" ]
-            }
-          },
+          "type" : "basic",
           "to" : [ {
-            "key_code" : "v",
-            "modifiers" : [ "left_command", "left_control", "left_option", "left_shift" ]
+            "set_variable" : {
+              "name" : "tab-mode",
+              "value" : 1
+            }
           } ],
-          "type" : "basic"
+          "from" : {
+            "key_code" : "tab"
+          },
+          "to_after_key_up" : [ {
+            "set_variable" : {
+              "name" : "tab-mode",
+              "value" : 0
+            }
+          } ],
+          "to_if_alone" : [ {
+            "key_code" : "tab"
+          } ]
         } ]
       }, {
-        "description" : "ctrl-s to hyper-s",
+        "description" : "left_control to hyper",
         "manipulators" : [ {
           "from" : {
-            "key_code" : "s",
+            "key_code" : "left_control",
             "modifiers" : {
-              "mandatory" : [ "left_control" ]
+              "optional" : [ "any" ]
             }
           },
           "to" : [ {
-            "key_code" : "s",
-            "modifiers" : [ "left_command", "left_control", "left_option", "left_shift" ]
+            "key_code" : "left_shift",
+            "modifiers" : [ "left_command", "left_control", "left_option" ]
           } ],
           "type" : "basic"
         } ]
@@ -84,6 +92,18 @@
           "to" : [ {
             "key_code" : "f2",
             "modifiers" : [ "left_control" ]
+          } ],
+          "type" : "basic"
+        } ]
+      }, {
+        "description" : "right_command to launch alfred",
+        "manipulators" : [ {
+          "from" : {
+            "key_code" : "right_command"
+          },
+          "to" : [ {
+            "key_code" : "spacebar",
+            "modifiers" : [ "left_command" ]
           } ],
           "type" : "basic"
         } ]
@@ -525,7 +545,7 @@
           "type" : "basic"
         } ]
       }, {
-        "description" : "quick switch between tabs in tmux",
+        "description" : "quickly switch between tabs in tmux",
         "manipulators" : [ {
           "from" : {
             "key_code" : "tab",
@@ -796,6 +816,128 @@
             "bundle_identifiers" : [ "^com\\.github\\.wez\\.wezterm$", "^org\\.alacritty$" ]
           } ],
           "type" : "basic"
+        } ]
+      }, {
+        "description" : "layer",
+        "manipulators" : [ {
+          "from" : {
+            "key_code" : "e"
+          },
+          "to" : [ {
+            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"open: emacs\"'"
+          } ],
+          "conditions" : [ {
+            "name" : "tab-mode",
+            "value" : 1,
+            "type" : "variable_if"
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "r"
+          },
+          "to" : [ {
+            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"open: rss\"'"
+          } ],
+          "conditions" : [ {
+            "name" : "tab-mode",
+            "value" : 1,
+            "type" : "variable_if"
+          } ],
+          "type" : "basic"
+        } ]
+      }, {
+        "description" : "quick switch between windows",
+        "manipulators" : [ {
+          "from" : {
+            "key_code" : "e"
+          },
+          "to" : [ {
+            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"open: emacs\"'"
+          } ],
+          "conditions" : [ {
+            "name" : "w-mode",
+            "value" : 1,
+            "type" : "variable_if"
+          } ],
+          "type" : "basic"
+        }, {
+          "type" : "basic",
+          "parameters" : {
+            "basic.simultaneous_threshold_milliseconds" : 250
+          },
+          "to" : [ {
+            "set_variable" : {
+              "name" : "w-mode",
+              "value" : 1
+            }
+          }, {
+            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"open: emacs\"'"
+          } ],
+          "from" : {
+            "simultaneous" : [ {
+              "key_code" : "w"
+            }, {
+              "key_code" : "e"
+            } ],
+            "simultaneous_options" : {
+              "detect_key_down_uninterruptedly" : true,
+              "key_down_order" : "strict",
+              "key_up_order" : "strict_inverse",
+              "key_up_when" : "any",
+              "to_after_key_up" : [ {
+                "set_variable" : {
+                  "name" : "w-mode",
+                  "value" : 0
+                }
+              } ]
+            }
+          }
+        }, {
+          "from" : {
+            "key_code" : "r"
+          },
+          "to" : [ {
+            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"open: rss\"'"
+          } ],
+          "conditions" : [ {
+            "name" : "w-mode",
+            "value" : 1,
+            "type" : "variable_if"
+          } ],
+          "type" : "basic"
+        }, {
+          "type" : "basic",
+          "parameters" : {
+            "basic.simultaneous_threshold_milliseconds" : 250
+          },
+          "to" : [ {
+            "set_variable" : {
+              "name" : "w-mode",
+              "value" : 1
+            }
+          }, {
+            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"open: rss\"'"
+          } ],
+          "from" : {
+            "simultaneous" : [ {
+              "key_code" : "w"
+            }, {
+              "key_code" : "r"
+            } ],
+            "simultaneous_options" : {
+              "detect_key_down_uninterruptedly" : true,
+              "key_down_order" : "strict",
+              "key_up_order" : "strict_inverse",
+              "key_up_when" : "any",
+              "to_after_key_up" : [ {
+                "set_variable" : {
+                  "name" : "w-mode",
+                  "value" : 0
+                }
+              } ]
+            }
+          }
         } ]
       } ]
     },
