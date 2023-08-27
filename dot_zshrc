@@ -190,6 +190,9 @@ export PATH=$HOME/.tmux/plugins/t-smart-tmux-session-manager/bin:$PATH
 # bigdata
 export SPARK_HOME="/Users/ruizhang/bigdata/spark-3.2.1-bin-hadoop3.2"
 export PATH=$PATH:$SPARK_HOME/bin
+
+export GOKU_EDN_CONFIG_FILE=$HOME/.config/karabiner/karabiner.edn
+
 # HomeBrew END
 
 ## fnm

@@ -1,0 +1,71 @@
+{
+:applications 
+{
+:chrome ["^com\\.google\\.Chrome$"]
+:terminal ["^com\\.github\\.wez\\.wezterm$", "^org\\.alacritty$"]
+:qq ["^com\\.tencent\\.qq$"]
+:skim ["^net\\.sourceforge\\.skim-app\\.skim$"]
+:emacs ["^org\\.gnu\\.Emacs$"]
+:idea ["^com\\.jetbrains\\.intellij$"]
+:dash ["^com\\.kapeli\\.dashdoc$"]
+}
+
+:main 
+[
+;; hyper key
+{:des "ctrl-v to hyper-v" :rules [[:!Tv :!!v]]}
+{:des "ctrl-s to hyper-s" :rules [[:!Ts :!!s]]}
+
+;; normal
+{:des "caps_lock to ctrl" :rules [[:##caps_lock :left_control]]}
+{:des "ctrl-[ to esc" :rules [[:!Topen_bracket :escape]]}
+{:des "ctrl-m to toggle menu bar" :rules [[:!Tm :!Tf2]]}
+
+;; app
+{:des "cmd-f to ctrl-a + tab in terminal" :rules [[:!Cf [:!Ta :tab] [:terminal]]]}
+{:des "cmd-shift-f to ctrl-a + F in terminal" :rules [[:!CSf [:!Ta :!Sf] [:terminal]]]}
+{:des "cmd-z to ctrl-a + z in terminal" :rules [[:!Cz [:!Ta :z] [:terminal]]]}
+{:des "ctrl-k to up exclude qq" :rules [[:!Tk :up_arrow [:!qq]]]}
+{:des "ctrl-j to down exclude qq" :rules [[:!Tj :down_arrow [:!qq]]]}
+{:des "ctrl-p to up exclude qq" :rules [[:!Tp :up_arrow [:!qq]]]}
+{:des "ctrl-n to down exclude qq" :rules [[:!Tn :down_arrow [:!qq]]]}
+{:des "ctrl-k to up in qq" :rules [[:!Tk :!Cup_arrow [:qq]]]}
+{:des "ctrl-j to down in qq" :rules [[:!Tj :!Cdown_arrow [:qq]]]}
+{:des "ctrl-p to up in qq" :rules [[:!Tp :!Cup_arrow [:qq]]]}
+{:des "ctrl-n to down in qq" :rules [[:!Tn :!Cdown_arrow [:qq]]]}
+{:des "cmd-1 to shift-cmd-t in skim" :rules [[:!C1 :!CSt [:skim]]]}
+{:des "cmd-2 to shift-cmd-o in skim" :rules [[:!C2 :!CSo [:skim]]]}
+{:des "ctrl-o to cmd-[ in skim" :rules [[:!To :!Copen_bracket [:skim]]]}
+{:des "ctrl-i to cmd-] in skim" :rules [[:!Ti :!Cclose_bracket [:skim]]]}
+{:des "ctrl-d to ctrl-g in emacs" :rules [[:!Td :!Tg [:emacs]]]}
+{:des "cmd-e to cmd-shift-a in chrome" :rules [[:!Ce :!CSa [:chrome]]]}
+{:des "cmd-0 to ctrl-q in idea" :rules [[:!C0 :!Tq [:chrome]]]}
+{:des "ctrl-q to cmd-e in idea" :rules [[:!Tq :!Ce [:idea]]]}
+{:des "cmd-l to ctrl-tab exclude terminal" :rules [[:!Cl :!Ttab [:!terminal]]]}
+{:des "cmd-h to ctrl-shift-tab exclude terminal" :rules [[:!Ch :!TStab [:!terminal]]]}
+{:des "ctrl-l to cmd-l in chrome and dash" :rules [[:!Tl :!Cl [:chrome]]]}
+{:des "ctrl-l to cmd-l in chrome and dash" :rules [[:!Tl :!Cl [:dash]]]}
+
+;; tmux
+{
+:des "quick switch between tabs in tmux" 
+:rules [
+[:!Ttab [:!Ta :n] [:terminal]]
+[:!TStab [:!Ta :p] [:terminal]]
+[:!Cl [:!Ta :n] [:terminal]]
+[:!Ch [:!Ta :p] [:terminal]]
+[:!Tq [:!Ta :0] [:terminal]]
+[:!C0 [:!Ta :0] [:terminal]]
+[:!C1 [:!Ta :1] [:terminal]]
+[:!C2 [:!Ta :2] [:terminal]]
+[:!C3 [:!Ta :3] [:terminal]]
+[:!C4 [:!Ta :4] [:terminal]]
+[:!C5 [:!Ta :5] [:terminal]]
+[:!C6 [:!Ta :6] [:terminal]]
+[:!C7 [:!Ta :7] [:terminal]]
+[:!C8 [:!Ta :8] [:terminal]]
+[:!C9 [:!Ta :9] [:terminal]]
+]}
+
+]
+}
