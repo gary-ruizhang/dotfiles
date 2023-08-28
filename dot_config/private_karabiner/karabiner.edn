@@ -19,12 +19,7 @@
 
 :layers
 {
-:tab-mode {:key :tab}
-}
-
-:simlayers
-{
-:w-mode {:key :w}
+:god-mode {:key :tab}
 }
 
 :main 
@@ -33,10 +28,9 @@
 {:des "left_control to hyper" :rules [[:##left_control :!CTOleft_shift]]}
 
 ;; normal
-{:des "caps_lock to ctrl" :rules [[:##caps_lock :left_control]]}
+{:des "caps_lock to ctrl" :rules [[:##caps_lock :left_control nil {:alone :escape}]]}
 {:des "ctrl-[ to esc" :rules [[:!Topen_bracket :escape]]}
 {:des "ctrl-m to toggle menu bar" :rules [[:!Tm :!Tf2]]}
-{:des "right_command to launch alfred" :rules [[:right_command :!Cspacebar]]}
 
 ;; app
 {:des "cmd-f to ctrl-a + tab in terminal" :rules [[:!Cf [:!Ta :tab] [:terminal]]]}
@@ -85,21 +79,14 @@
 ]}
 
 ;;;; layers
-;; tab mode
+;; god mode
 {
-:des "layer"
-:rules [:tab-mode
+:des "god mode"
+:rules [:god-mode
 [:e [:km "open: emacs"]]
 [:r [:km "open: rss"]]
-]}
-
-;;;; simlayers
-;; window mode
-{
-:des "quick switch between windows"
-:rules [:w-mode
-[:e [:km "open: emacs"]]
-[:r [:km "open: rss"]]
+[:q [:km "open: qq"]]
+[:w [:km "open: wechat"]]
 ]}
 
 ]
