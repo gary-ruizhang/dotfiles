@@ -9,3 +9,4 @@ opt.clipboard = ""
 opt.laststatus = 0
 opt.undofile = false
 opt.conceallevel = 0
+opt.mouse = ""

@@ -136,6 +136,7 @@ alias dc='fc -e - d="git_checkout "'
 
 alias c=cargo
 
+# stash specific file path
 gs() {
   local number=$1
   local len=${#number}
@@ -212,7 +213,6 @@ export FZF_ALT_C_COMMAND="fd --type d"
 
 ## UI
 
-# starship
 source $(brew --prefix)/opt/powerlevel10k/powerlevel10k.zsh-theme
 
 # solve tmux term color
@@ -224,12 +224,12 @@ source /Users/ruizhang/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fpath=(/Users/ruizhang/.zsh/zsh-completions/src $fpath)
 fpath+=~/.zfunc
 
-autoload -Uz compinit
-if [ $(date +'%j') != $(stat -f '%Sm' -t '%j' ~/.zcompdump) ]; then
-  compinit
-else
-  compinit -C
-fi
+autoload -Uz compinit && compinit
+# if [ $(date +'%j') != $(stat -f '%Sm' -t '%j' ~/.zcompdump) ]; then
+#   compinit
+# else
+#   compinit -C
+# fi
 
 source <(kubectl completion zsh)
 

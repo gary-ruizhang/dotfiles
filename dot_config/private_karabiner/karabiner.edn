@@ -1,3 +1,4 @@
+;; goku!
 {
 :applications 
 {
@@ -8,6 +9,7 @@
 :emacs ["^org\\.gnu\\.Emacs$"]
 :idea ["^com\\.jetbrains\\.intellij$"]
 :dash ["^com\\.kapeli\\.dashdoc$"]
+:pd ["^com\\.parallels\\.desktop\\.console$"]
 }
 
 :templates 
@@ -28,7 +30,7 @@
 {:des "left_control to hyper" :rules [[:##left_control :!CTOleft_shift]]}
 
 ;; normal
-{:des "caps_lock to ctrl" :rules [[:##caps_lock :left_control nil {:alone :escape}]]}
+{:des "caps_lock to ctrl" :rules [[:##caps_lock :left_control]]}
 {:des "ctrl-[ to esc" :rules [[:!Topen_bracket :escape]]}
 {:des "ctrl-m to toggle menu bar" :rules [[:!Tm :!Tf2]]}
 
@@ -56,6 +58,11 @@
 {:des "cmd-h to ctrl-shift-tab exclude terminal" :rules [[:!Ch :!TStab [:!terminal]]]}
 {:des "ctrl-l to cmd-l in chrome and dash" :rules [[:!Tl :!Cl [:chrome]]]}
 {:des "ctrl-l to cmd-l in chrome and dash" :rules [[:!Tl :!Cl [:dash]]]}
+{:des "cmd-c to ctrl-shift-c in pd" :rules [[:!Cc :!TSc [:pd]]]}
+{:des "cmd-v to ctrl-shift-v in pd" :rules [[:!Cv :!TSv [:pd]]]}
+{:des "ctrl-w to ctrl-alt-delete in pd" :rules [[:!Tw :!TOdelete_or_backspace [:pd]]]}
+{:des "ctrl-a to fn-left in pd" :rules [[:!Ta :!Fleft_arrow [:pd]]]}
+{:des "ctrl-e to fn-right in pd" :rules [[:!Te :!Fright_arrow [:pd]]]}
 
 ;; tmux
 {
