@@ -77,24 +77,6 @@
           "type" : "basic"
         } ]
       }, {
-        "description" : "shift alone toggle input sources",
-        "manipulators" : [ {
-          "to_if_alone" : [ {
-            "key_code" : "spacebar",
-            "modifiers" : [ "left_control" ]
-          } ],
-          "from" : {
-            "key_code" : "left_shift",
-            "modifiers" : {
-              "optional" : [ "any" ]
-            }
-          },
-          "to" : [ {
-            "key_code" : "left_shift"
-          } ],
-          "type" : "basic"
-        } ]
-      }, {
         "description" : "ctrl-[ to esc",
         "manipulators" : [ {
           "from" : {

@@ -36,7 +36,6 @@
 
 ;; normal
 {:des "caps_lock to ctrl" :rules [[:##caps_lock :left_control]]}
-{:des "shift alone toggle input sources" :rules [[:##left_shift :left_shift nil {:alone :!Tspacebar}]]}
 {:des "ctrl-[ to esc" :rules [[:!Topen_bracket :escape]]}
 {:des "ctrl-m to toggle menu bar" :rules [[:!Tm :!Tf2]]}
 
@@ -101,6 +100,5 @@
 [:q [:km "open: qq"]]
 [:w [:km "open: wechat"]]
 ]}
-
 ]
 }
