@@ -73,7 +73,8 @@ alias chd="chezmoi diff"
 # HELPDIR=$(command brew --prefix)/share/zsh/help
 # alias help=run-help
 
-alias p=perl
+alias p=python
+alias t=touch
 alias g=git
 alias gl="git log"
 eval $(thefuck --alias f)

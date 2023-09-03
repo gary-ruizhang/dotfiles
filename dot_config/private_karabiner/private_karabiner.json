@@ -50,6 +50,16 @@
             "key_code" : "left_shift",
             "modifiers" : [ "left_command", "left_control", "left_option" ]
           } ],
+          "conditions" : [ {
+            "identifiers" : [ {
+              "vendor_id" : 1452,
+              "product_id" : 832
+            }, {
+              "vendor_id" : 1452,
+              "product_id" : 34304
+            } ],
+            "type" : "device_if"
+          } ],
           "type" : "basic"
         } ]
       }, {
@@ -63,6 +73,24 @@
           },
           "to" : [ {
             "key_code" : "left_control"
+          } ],
+          "type" : "basic"
+        } ]
+      }, {
+        "description" : "shift alone toggle input sources",
+        "manipulators" : [ {
+          "to_if_alone" : [ {
+            "key_code" : "spacebar",
+            "modifiers" : [ "left_control" ]
+          } ],
+          "from" : {
+            "key_code" : "left_shift",
+            "modifiers" : {
+              "optional" : [ "any" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "left_shift"
           } ],
           "type" : "basic"
         } ]
@@ -981,6 +1009,19 @@
       },
       "ignore" : true,
       "manipulate_caps_lock_led" : false,
+      "simple_modifications" : [ ],
+      "treat_as_built_in_keyboard" : false
+    }, {
+      "disable_built_in_keyboard_if_exists" : false,
+      "fn_function_keys" : [ ],
+      "identifiers" : {
+        "is_keyboard" : true,
+        "is_pointing_device" : false,
+        "product_id" : 33,
+        "vendor_id" : 1278
+      },
+      "ignore" : false,
+      "manipulate_caps_lock_led" : true,
       "simple_modifications" : [ ],
       "treat_as_built_in_keyboard" : false
     }, {
