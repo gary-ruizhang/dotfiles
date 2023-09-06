@@ -10,6 +10,7 @@
 :idea ["^com\\.jetbrains\\.intellij$"]
 :dash ["^com\\.kapeli\\.dashdoc$"]
 :pd ["^com\\.parallels\\.desktop\\.console$"]
+:code ["^com\\.microsoft\\.VSCode$"]
 }
 
 :devices
@@ -26,13 +27,19 @@
 
 :layers
 {
-:god-mode {:key :tab}
+:god-mode {:key :right_command}
+}
+
+:tos
+{
+:lazy_hyper {:key :!CTOleft_shift :lazy true}
 }
 
 :main 
 [
 ;; hyper key
 {:des "left_control to hyper" :rules [[:##left_control :!CTOleft_shift [:mac]]]}
+{:des "tab to hyper" :rules [[:##tab :lazy_hyper nil {:alone :tab} ]]}
 
 ;; normal
 {:des "caps_lock to ctrl" :rules [[:##caps_lock :left_control]]}

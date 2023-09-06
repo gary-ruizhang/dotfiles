@@ -25,7 +25,7 @@
             }
           } ],
           "from" : {
-            "key_code" : "tab"
+            "key_code" : "right_command"
           },
           "to_after_key_up" : [ {
             "set_variable" : {
@@ -34,7 +34,7 @@
             }
           } ],
           "to_if_alone" : [ {
-            "key_code" : "tab"
+            "key_code" : "right_command"
           } ]
         } ]
       }, {
@@ -59,6 +59,25 @@
               "product_id" : 34304
             } ],
             "type" : "device_if"
+          } ],
+          "type" : "basic"
+        } ]
+      }, {
+        "description" : "tab to hyper",
+        "manipulators" : [ {
+          "to_if_alone" : [ {
+            "key_code" : "tab"
+          } ],
+          "from" : {
+            "key_code" : "tab",
+            "modifiers" : {
+              "optional" : [ "any" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "left_shift",
+            "modifiers" : [ "left_command", "left_control", "left_option" ],
+            "lazy" : true
           } ],
           "type" : "basic"
         } ]

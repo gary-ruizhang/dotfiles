@@ -1,11 +1,5 @@
 // Place your key bindings in this file to override the defaults
 [
-    // work like intellij
-    {
-        "key": "shift shift",
-        "command": "workbench.action.showCommands"
-    },
-    
     // switch tab
     {
         "key": "ctrl+tab",
@@ -98,5 +92,18 @@
     {
         "key": "ctrl+q",
         "command": "workbench.action.quickOpen"
+    },
+    {
+        "key": "alt+x",
+        "command": "workbench.action.showCommands"
+    },
+    {
+        "key": "shift shift",
+        "command": "workbench.action.showCommands"
+    },
+    {
+        "key": "shift+cmd+w",
+        "command": "workbench.action.closeFolder",
+        "when": "emptyWorkspaceSupport && workbenchState != 'empty'"
     },
 ]

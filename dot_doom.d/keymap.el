@@ -18,7 +18,7 @@
 (map! :n "s-F" 'consult-ripgrep)
 (map! :n "C-." 'embark-act)
 (map! :n "M-." 'embark-dwim)
-(map! :n "C-z" 'delete-other-windows)
+(map! :n "s-z" 'delete-other-windows)
 
 (map! :ie "C-h" #'backward-delete-char-untabify)
 
