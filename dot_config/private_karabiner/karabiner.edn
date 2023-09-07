@@ -23,23 +23,35 @@
 :alfred "osascript -e 'tell application id \"com.runningwithcrayons.Alfred\" to run trigger \"%s\" in workflow \"%s\" with argument \"%s\"'"
 :km "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"%s\"'"
 :open "open \"%s\""
+:temp_cp "osascript -e 'set temp to the clipboard \n set the clipboard to \"%s\" \n tell application \"System Events\" \n   keystroke \"v\" using command down \n   delay 0.1 \n end tell \n set the clipboard to temp'"
 }
 
 :layers
 {
-:god-mode {:key :right_command}
+:god_mode {:key :right_command}
 }
 
 :tos
 {
-:lazy_hyper {:key :!CTOleft_shift :lazy true}
+;; ⌃⌥⇧⌘
+:hyper {:key :!CTOleft_shift :lazy true}
+;; ⌥⇧⌘
+:no_ctrl {:key :!COleft_shift :lazy true}
+;; ⌃⇧⌘
+:no_alt {:key :!CTleft_shift :lazy true}
+;; ⌃⌥⌘
+:no_shift {:key :!CTleft_option :lazy true}
+;; ⌃⌥⇧
+:no_cmd {:key :!TOleft_shift :lazy true}
 }
 
 :main 
 [
+;; add test here
+
 ;; hyper key
 {:des "left_control to hyper" :rules [[:##left_control :!CTOleft_shift [:mac]]]}
-{:des "tab to hyper" :rules [[:##tab :lazy_hyper nil {:alone :tab} ]]}
+{:des "tab to hyper" :rules [[:##tab :hyper nil {:alone :tab} ]]}
 
 ;; normal
 {:des "caps_lock to ctrl" :rules [[:##caps_lock :left_control]]}
@@ -64,7 +76,7 @@
 {:des "ctrl-i to cmd-] in skim" :rules [[:!Ti :!Cclose_bracket [:skim]]]}
 {:des "ctrl-d to ctrl-g in emacs" :rules [[:!Td :!Tg [:emacs]]]}
 {:des "cmd-e to cmd-shift-a in chrome" :rules [[:!Ce :!CSa [:chrome]]]}
-{:des "cmd-0 to ctrl-q in idea" :rules [[:!C0 :!Tq [:chrome]]]}
+{:des "cmd-0 to ctrl-q in chrome" :rules [[:!C0 :!Tq [:chrome]]]}
 {:des "ctrl-q to cmd-e in idea" :rules [[:!Tq :!Ce [:idea]]]}
 {:des "cmd-l to ctrl-tab exclude terminal" :rules [[:!Cl :!Ttab [:!terminal]]]}
 {:des "cmd-h to ctrl-shift-tab exclude terminal" :rules [[:!Ch :!TStab [:!terminal]]]}
@@ -80,6 +92,7 @@
 {
 :des "quickly switch between tabs in tmux" 
 :rules [
+[:!Cw :vk_none [:terminal]]
 [:!Ttab [:!Ta :n] [:terminal]]
 [:!TStab [:!Ta :p] [:terminal]]
 [:!Cl [:!Ta :n] [:terminal]]
@@ -101,7 +114,7 @@
 ;; god mode
 {
 :des "god mode"
-:rules [:god-mode
+:rules [:god_mode
 [:e [:km "open: emacs"]]
 [:r [:km "open: rss"]]
 [:q [:km "open: qq"]]

@@ -59,3 +59,12 @@
 (setq org-roam-completion-everywhere nil)
 
 (setq org-archive-location "/Users/ruizhang/org-roam/archives/%s_archive::")
+
+(defun org-copy-blocks ()
+  (interactive)
+  (let ((code ""))
+    (save-restriction
+      (org-narrow-to-subtree)
+      (org-babel-map-src-blocks nil
+    (setq code (concat code (org-no-properties body)))))
+    (kill-new code)))

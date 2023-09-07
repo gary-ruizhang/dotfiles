@@ -20,7 +20,7 @@
           "type" : "basic",
           "to" : [ {
             "set_variable" : {
-              "name" : "god-mode",
+              "name" : "god_mode",
               "value" : 1
             }
           } ],
@@ -29,7 +29,7 @@
           },
           "to_after_key_up" : [ {
             "set_variable" : {
-              "name" : "god-mode",
+              "name" : "god_mode",
               "value" : 0
             }
           } ],
@@ -451,7 +451,7 @@
           "type" : "basic"
         } ]
       }, {
-        "description" : "cmd-0 to ctrl-q in idea",
+        "description" : "cmd-0 to ctrl-q in chrome",
         "manipulators" : [ {
           "from" : {
             "key_code" : "0",
@@ -659,6 +659,21 @@
       }, {
         "description" : "quickly switch between tabs in tmux",
         "manipulators" : [ {
+          "from" : {
+            "key_code" : "w",
+            "modifiers" : {
+              "mandatory" : [ "left_command" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "vk_none"
+          } ],
+          "conditions" : [ {
+            "type" : "frontmost_application_if",
+            "bundle_identifiers" : [ "^com\\.github\\.wez\\.wezterm$", "^org\\.alacritty$" ]
+          } ],
+          "type" : "basic"
+        }, {
           "from" : {
             "key_code" : "tab",
             "modifiers" : {
@@ -939,7 +954,7 @@
             "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"open: emacs\"'"
           } ],
           "conditions" : [ {
-            "name" : "god-mode",
+            "name" : "god_mode",
             "value" : 1,
             "type" : "variable_if"
           } ],
@@ -952,7 +967,7 @@
             "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"open: rss\"'"
           } ],
           "conditions" : [ {
-            "name" : "god-mode",
+            "name" : "god_mode",
             "value" : 1,
             "type" : "variable_if"
           } ],
@@ -965,7 +980,7 @@
             "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"open: qq\"'"
           } ],
           "conditions" : [ {
-            "name" : "god-mode",
+            "name" : "god_mode",
             "value" : 1,
             "type" : "variable_if"
           } ],
@@ -978,7 +993,7 @@
             "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"open: wechat\"'"
           } ],
           "conditions" : [ {
-            "name" : "god-mode",
+            "name" : "god_mode",
             "value" : 1,
             "type" : "variable_if"
           } ],

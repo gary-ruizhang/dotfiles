@@ -92,6 +92,8 @@
 ;; (recentf-mode 1)
 (global-eldoc-mode -1)
 
+(remove-hook 'text-mode-hook #'visual-line-mode)
+
 ;; benchmark
 ;; (when init-file-debug
 ;;   (require 'benchmark-init)
