@@ -53,6 +53,15 @@
 {:des "left_control to hyper" :rules [[:##left_control :!CTOleft_shift [:mac]]]}
 {:des "tab to hyper" :rules [[:##tab :hyper nil {:alone :tab} ]]}
 
+{:des "hyper-w open application switcher" :rules [[:!!w :!Ospacebar]]}
+
+;; ⌥⇧⌘
+{:des "semicolon to no_ctrl" :rules [[:##semicolon :no_ctrl nil {:alone :semicolon} ]]}
+;; TODO disable no_ctrl-q to nothing in keyboard maestro, remap to other shortcut
+
+;; ⌃⇧⌘
+; :no_alt {:key :!CTleft_shift :lazy true}
+
 ;; normal
 {:des "caps_lock to ctrl" :rules [[:##caps_lock :left_control]]}
 {:des "ctrl-[ to esc" :rules [[:!Topen_bracket :escape]]}
@@ -87,6 +96,11 @@
 {:des "ctrl-w to ctrl-alt-delete in pd" :rules [[:!Tw :!TOdelete_or_backspace [:pd]]]}
 {:des "ctrl-a to fn-left in pd" :rules [[:!Ta :!Fleft_arrow [:pd]]]}
 {:des "ctrl-e to fn-right in pd" :rules [[:!Te :!Fright_arrow [:pd]]]}
+
+;; FIXME use only when play turing
+; {:des "cmd-e to F4" :rules [[:!Ce :f4]]}
+; {:des "cmd-f to F5" :rules [[:!Cf :f5]]}
+; {:des "cmd-r to F6" :rules [[:!Cr :f6]]}
 
 ;; tmux
 {

@@ -82,6 +82,40 @@
           "type" : "basic"
         } ]
       }, {
+        "description" : "hyper-w open application switcher",
+        "manipulators" : [ {
+          "from" : {
+            "key_code" : "w",
+            "modifiers" : {
+              "mandatory" : [ "left_command", "left_control", "left_option", "left_shift" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "spacebar",
+            "modifiers" : [ "left_option" ]
+          } ],
+          "type" : "basic"
+        } ]
+      }, {
+        "description" : "semicolon to no_ctrl",
+        "manipulators" : [ {
+          "to_if_alone" : [ {
+            "key_code" : "semicolon"
+          } ],
+          "from" : {
+            "key_code" : "semicolon",
+            "modifiers" : {
+              "optional" : [ "any" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "left_shift",
+            "modifiers" : [ "left_command", "left_option" ],
+            "lazy" : true
+          } ],
+          "type" : "basic"
+        } ]
+      }, {
         "description" : "caps_lock to ctrl",
         "manipulators" : [ {
           "from" : {
