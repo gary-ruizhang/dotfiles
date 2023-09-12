@@ -11,6 +11,8 @@
 :dash ["^com\\.kapeli\\.dashdoc$"]
 :pd ["^com\\.parallels\\.desktop\\.console$"]
 :code ["^com\\.microsoft\\.VSCode$"]
+:devutils ["^tonyapp\\.devutils$"]
+:telegram ["^com\\.tdesktop\\.Telegram$"]
 }
 
 :devices
@@ -24,11 +26,6 @@
 :km "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"%s\"'"
 :open "open \"%s\""
 :temp_cp "osascript -e 'set temp to the clipboard \n set the clipboard to \"%s\" \n tell application \"System Events\" \n   keystroke \"v\" using command down \n   delay 0.1 \n end tell \n set the clipboard to temp'"
-}
-
-:layers
-{
-:god_mode {:key :right_command}
 }
 
 :tos
@@ -59,48 +56,62 @@
 {:des "semicolon to no_ctrl" :rules [[:##semicolon :no_ctrl nil {:alone :semicolon} ]]}
 ;; TODO disable no_ctrl-q to nothing in keyboard maestro, remap to other shortcut
 
+;; TODO these three hypor key is no big deal, find the best choice, all the shortcut config stuff is at keyboard maestro
 ;; ⌃⇧⌘
-; :no_alt {:key :!CTleft_shift :lazy true}
+{:des "right_option to no_alt" :rules [[:##right_option :no_alt nil {:alone :right_option} ]]}
+
+;; ⌃⌥⌘
+{:des "right_shift to no_shift" :rules [[:##right_shift :no_shift nil {:alone :right_shift} ]]}
+
+;; ⌃⌥⇧
+{:des "right_command to no_cmd" :rules [[:##right_command :no_cmd nil {:alone :right_command} ]]}
 
 ;; normal
 {:des "caps_lock to ctrl" :rules [[:##caps_lock :left_control]]}
 {:des "ctrl-[ to esc" :rules [[:!Topen_bracket :escape]]}
 {:des "ctrl-m to toggle menu bar" :rules [[:!Tm :!Tf2]]}
+{:des "cmd-x to no_ctrl-x" :rules [[:!Cx :!CSOx]]}
 
 ;; app
 {:des "cmd-f to ctrl-a + tab in terminal" :rules [[:!Cf [:!Ta :tab] [:terminal]]]}
 {:des "cmd-shift-f to ctrl-a + F in terminal" :rules [[:!CSf [:!Ta :!Sf] [:terminal]]]}
 {:des "cmd-z to ctrl-a + z in terminal" :rules [[:!Cz [:!Ta :z] [:terminal]]]}
-{:des "ctrl-k to up exclude qq" :rules [[:!Tk :up_arrow [:!qq]]]}
-{:des "ctrl-j to down exclude qq" :rules [[:!Tj :down_arrow [:!qq]]]}
-{:des "ctrl-p to up exclude qq" :rules [[:!Tp :up_arrow [:!qq]]]}
-{:des "ctrl-n to down exclude qq" :rules [[:!Tn :down_arrow [:!qq]]]}
-{:des "ctrl-k to up in qq" :rules [[:!Tk :!Cup_arrow [:qq]]]}
-{:des "ctrl-j to down in qq" :rules [[:!Tj :!Cdown_arrow [:qq]]]}
-{:des "ctrl-p to up in qq" :rules [[:!Tp :!Cup_arrow [:qq]]]}
-{:des "ctrl-n to down in qq" :rules [[:!Tn :!Cdown_arrow [:qq]]]}
+
+{:des "ctrl-k to up exclude qq, telegram" :rules [[:!Tk :up_arrow [:!qq :!telegram]]]}
+{:des "ctrl-j to down exclude qq, telegram" :rules [[:!Tj :down_arrow [:!qq :!telegram]]]}
+{:des "ctrl-p to up exclude qq, telegram" :rules [[:!Tp :up_arrow [:!qq :!telegram]]]}
+{:des "ctrl-n to down exclude qq, telegram" :rules [[:!Tn :down_arrow [:!qq :!telegram]]]}
+
+{:des "ctrl-k to ctrl-up in qq" :rules [[:!Tk :!Cup_arrow [:qq]]]}
+{:des "ctrl-j to ctrl-down in qq" :rules [[:!Tj :!Cdown_arrow [:qq]]]}
+{:des "ctrl-p to ctrl-up in qq" :rules [[:!Tp :!Cup_arrow [:qq]]]}
+{:des "ctrl-n to ctrl-down in qq" :rules [[:!Tn :!Cdown_arrow [:qq]]]}
+
+{:des "ctrl-k to alt-up in telegram" :rules [[:!Tk :!Oup_arrow [:telegram]]]}
+{:des "ctrl-j to alt-down in telegram" :rules [[:!Tj :!Odown_arrow [:telegram]]]}
+{:des "ctrl-p to alt-up in telegram" :rules [[:!Tp :!Oup_arrow [:telegram]]]}
+{:des "ctrl-n to alt-down in telegram" :rules [[:!Tn :!Odown_arrow [:telegram]]]}
+
 {:des "cmd-1 to shift-cmd-t in skim" :rules [[:!C1 :!CSt [:skim]]]}
 {:des "cmd-2 to shift-cmd-o in skim" :rules [[:!C2 :!CSo [:skim]]]}
 {:des "ctrl-o to cmd-[ in skim" :rules [[:!To :!Copen_bracket [:skim]]]}
 {:des "ctrl-i to cmd-] in skim" :rules [[:!Ti :!Cclose_bracket [:skim]]]}
+
 {:des "ctrl-d to ctrl-g in emacs" :rules [[:!Td :!Tg [:emacs]]]}
 {:des "cmd-e to cmd-shift-a in chrome" :rules [[:!Ce :!CSa [:chrome]]]}
 {:des "cmd-0 to ctrl-q in chrome" :rules [[:!C0 :!Tq [:chrome]]]}
 {:des "ctrl-q to cmd-e in idea" :rules [[:!Tq :!Ce [:idea]]]}
 {:des "cmd-l to ctrl-tab exclude terminal" :rules [[:!Cl :!Ttab [:!terminal]]]}
 {:des "cmd-h to ctrl-shift-tab exclude terminal" :rules [[:!Ch :!TStab [:!terminal]]]}
-{:des "ctrl-l to cmd-l in chrome and dash" :rules [[:!Tl :!Cl [:chrome]]]}
-{:des "ctrl-l to cmd-l in chrome and dash" :rules [[:!Tl :!Cl [:dash]]]}
+{:des "ctrl-l to cmd-l in chrome" :rules [[:!Tl :!Cl [:chrome]]]}
+{:des "ctrl-l to cmd-l in dash" :rules [[:!Tl :!Cl [:dash]]]}
+{:des "ctrl-l to cmd-shift-f in devutils" :rules [[:!Tl :!CSf [:devutils]]]}
+
 {:des "cmd-c to ctrl-shift-c in pd" :rules [[:!Cc :!TSc [:pd]]]}
 {:des "cmd-v to ctrl-shift-v in pd" :rules [[:!Cv :!TSv [:pd]]]}
 {:des "ctrl-w to ctrl-alt-delete in pd" :rules [[:!Tw :!TOdelete_or_backspace [:pd]]]}
 {:des "ctrl-a to fn-left in pd" :rules [[:!Ta :!Fleft_arrow [:pd]]]}
 {:des "ctrl-e to fn-right in pd" :rules [[:!Te :!Fright_arrow [:pd]]]}
-
-;; FIXME use only when play turing
-; {:des "cmd-e to F4" :rules [[:!Ce :f4]]}
-; {:des "cmd-f to F5" :rules [[:!Cf :f5]]}
-; {:des "cmd-r to F6" :rules [[:!Cr :f6]]}
 
 ;; tmux
 {
@@ -124,15 +135,5 @@
 [:!C9 [:!Ta :9] [:terminal]]
 ]}
 
-;;;; layers
-;; god mode
-{
-:des "god mode"
-:rules [:god_mode
-[:e [:km "open: emacs"]]
-[:r [:km "open: rss"]]
-[:q [:km "open: qq"]]
-[:w [:km "open: wechat"]]
-]}
 ]
 }

@@ -17,8 +17,8 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:
 zstyle ':completion:*:descriptions' format '[%d]'
 # set list-colors to enable filename colorizing
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-# preview directory's content with exa when completing cd
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
+# preview directory's content with eza when completing cd
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
 zstyle ':fzf-tab:*' fzf-command fzf
 
 # Enable Ctrl-x-e to edit command line
@@ -46,8 +46,8 @@ export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export GLOB_PATTERN="**/*@(.sh|.inc|.bash|.command|.zsh|zshrc|zsh_*)"
 
 ## Alias
-# alias ls to exa
-alias ls=exa
+# alias ls to eza
+alias ls=eza
 alias ll='ls -alF -snewest -I .DS_Store'
 alias l='ls -alF -snewest -I .DS_Store'
 alias awk=gawk
@@ -81,7 +81,12 @@ alias gl="git log"
 eval $(thefuck --alias f)
 
 gm() {
-  git commit -m $1
+  if [ $# -eq 0 ]
+  then
+    git commit
+  else
+    git commit -m $1
+  fi
 }
 
 # workflow: git status -> git diff -> git add or checkout --
@@ -225,7 +230,7 @@ precmd() {
 }
 
 # solve tmux term color
-export TERM=alacritty
+# export TERM=alacritty
 
 # highlight
 source /Users/ruizhang/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
