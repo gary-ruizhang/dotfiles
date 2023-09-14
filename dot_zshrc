@@ -74,10 +74,10 @@ alias chd="chezmoi diff"
 # HELPDIR=$(command brew --prefix)/share/zsh/help
 # alias help=run-help
 
-alias p=python
+alias p=perl
 alias t=touch
 alias g=git
-alias gl="git log"
+alias gl="git log --date=format-local:'%Y-%m-%d %H:%M:%S'"
 eval $(thefuck --alias f)
 
 gm() {
@@ -255,6 +255,10 @@ eval "$(zoxide init zsh)"
 source /Users/ruizhang/.config/broot/launcher/bash/br
 
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/.zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
+
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
 
 # export JAVA_HOME=$(/usr/libexec/java_home)
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home"

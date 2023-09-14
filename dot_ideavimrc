@@ -29,6 +29,10 @@ nnoremap j gj
 nnoremap k gk
 
 nnoremap gr gd
+nnoremap }  :action EditorForwardParagraph<CR>
+nnoremap {  :action EditorBackwardParagraph<CR>
+vnoremap }  :action EditorForwardParagraphWithSelection<CR>
+vnoremap {  :action EditorBackwardParagraphWithSelection<CR>
 nnoremap ]m :action MethodDown<CR>
 nnoremap [m :action MethodUp<CR>
 nnoremap gn :action GotoNextError<CR>
