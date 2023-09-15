@@ -35,6 +35,8 @@ vnoremap }  :action EditorForwardParagraphWithSelection<CR>
 vnoremap {  :action EditorBackwardParagraphWithSelection<CR>
 nnoremap ]m :action MethodDown<CR>
 nnoremap [m :action MethodUp<CR>
+nnoremap gm :action MethodDown<CR>
+nnoremap gM :action MethodUp<CR>
 nnoremap gn :action GotoNextError<CR>
 nnoremap gp :action GotoPreviousError<CR>
 nnoremap g[ :action GotoImplementation<CR>

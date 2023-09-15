@@ -59,21 +59,6 @@
           "type" : "basic"
         } ]
       }, {
-        "description" : "hyper-w open application switcher",
-        "manipulators" : [ {
-          "from" : {
-            "key_code" : "w",
-            "modifiers" : {
-              "mandatory" : [ "left_command", "left_control", "left_option", "left_shift" ]
-            }
-          },
-          "to" : [ {
-            "key_code" : "spacebar",
-            "modifiers" : [ "left_option" ]
-          } ],
-          "type" : "basic"
-        } ]
-      }, {
         "description" : "semicolon to no_ctrl",
         "manipulators" : [ {
           "to_if_alone" : [ {
@@ -1134,6 +1119,60 @@
           "conditions" : [ {
             "type" : "frontmost_application_if",
             "bundle_identifiers" : [ "^com\\.github\\.wez\\.wezterm$", "^org\\.alacritty$" ]
+          } ],
+          "type" : "basic"
+        } ]
+      }, {
+        "description" : "no_ctrl-s",
+        "manipulators" : [ {
+          "from" : {
+            "key_code" : "s",
+            "modifiers" : {
+              "mandatory" : [ "left_command", "left_option", "left_shift" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "s",
+            "modifiers" : [ "left_command", "left_control", "left_option", "left_shift" ]
+          } ],
+          "conditions" : [ {
+            "type" : "frontmost_application_if",
+            "bundle_identifiers" : [ "^com\\.github\\.wez\\.wezterm$", "^org\\.alacritty$" ]
+          } ],
+          "type" : "basic"
+        } ]
+      }, {
+        "description" : "no_ctrl-c",
+        "manipulators" : [ {
+          "from" : {
+            "key_code" : "c",
+            "modifiers" : {
+              "mandatory" : [ "left_command", "left_option", "left_shift" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "c",
+            "modifiers" : [ "left_command", "left_control", "left_option", "left_shift" ]
+          } ],
+          "conditions" : [ {
+            "type" : "frontmost_application_if",
+            "bundle_identifiers" : [ "^com\\.github\\.wez\\.wezterm$", "^org\\.alacritty$" ]
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "c",
+            "modifiers" : {
+              "mandatory" : [ "left_command", "left_option", "left_shift" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "c",
+            "modifiers" : [ "left_command", "left_control", "left_option", "left_shift" ]
+          } ],
+          "conditions" : [ {
+            "type" : "frontmost_application_if",
+            "bundle_identifiers" : [ "^org\\.gnu\\.Emacs$" ]
           } ],
           "type" : "basic"
         } ]
