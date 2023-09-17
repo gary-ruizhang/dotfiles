@@ -11,6 +11,7 @@ set noerrorbells
 set keep-english-in-normal
 set relativenumber
 set number
+set ideajoin
 
 nnoremap <silent> <C-l> :<C-u>nohl<CR><C-l>
 nnoremap g; g;zz

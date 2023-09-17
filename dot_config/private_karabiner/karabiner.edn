@@ -70,7 +70,6 @@
 {:des "caps_lock to ctrl" :rules [[:##caps_lock :left_control]]}
 {:des "ctrl-[ to esc" :rules [[:!Topen_bracket :escape]]}
 {:des "ctrl-m to toggle menu bar" :rules [[:!Tm :!Tf2]]}
-{:des "cmd-x to no_ctrl-x" :rules [[:!Cx :!CSOx]]}
 
 ;; app
 {:des "cmd-f to ctrl-a + tab in terminal" :rules [[:!Cf [:!Ta :tab] [:terminal]]]}
@@ -139,6 +138,10 @@
 ;; FIXME workaround for homerow
 {:des "no_ctrl-s" :rules [[:!COSs :!!s [:terminal]]]}
 {:des "no_ctrl-c" :rules [[:!COSc :!!c [:terminal]]]}
+
+{:des "no_ctrl-s" :rules [[:!COSs :!!s [:skim]]]}
+{:des "no_ctrl-c" :rules [[:!COSc :!!c [:skim]]]}
+
 ;; scoll is usefull but not click
 {:des "no_ctrl-c" :rules [[:!COSc :!!c [:emacs]]]}
 

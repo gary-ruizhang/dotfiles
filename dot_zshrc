@@ -54,6 +54,7 @@ alias awk=gawk
 alias grep=rg
 # alias cat to bat
 alias cat=bat
+alias top=btop
 
 alias python=python3
 
