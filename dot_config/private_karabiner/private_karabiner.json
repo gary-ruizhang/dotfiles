@@ -163,27 +163,6 @@
           "type" : "basic"
         } ]
       }, {
-        "description" : "simultaneous jk to esc",
-        "manipulators" : [ {
-          "from" : {
-            "simultaneous" : [ {
-              "key_code" : "j"
-            }, {
-              "key_code" : "k"
-            } ],
-            "simultaneous_options" : {
-              "detect_key_down_uninterruptedly" : false,
-              "key_down_order" : "insensitive",
-              "key_up_order" : "insensitive",
-              "key_up_when" : "any"
-            }
-          },
-          "to" : [ {
-            "key_code" : "escape"
-          } ],
-          "type" : "basic"
-        } ]
-      }, {
         "description" : "ctrl-m to toggle menu bar",
         "manipulators" : [ {
           "from" : {
