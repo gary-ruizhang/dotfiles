@@ -86,3 +86,5 @@
 
 (map! :n "}" 'goto-next-empty-line)
 (map! :n "{" 'goto-last-empty-line)
+(map! :v "}" 'goto-next-empty-line)
+(map! :v "{" 'goto-last-empty-line)

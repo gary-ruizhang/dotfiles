@@ -24,8 +24,6 @@ nnoremap n nzzzv
 nnoremap N Nzzzv
 nnoremap ; :
 vnoremap ; :
-nnoremap : ;
-vnoremap : ;
 nnoremap j gj
 nnoremap k gk
 

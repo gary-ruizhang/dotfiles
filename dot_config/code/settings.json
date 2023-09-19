@@ -150,4 +150,5 @@
     "search.exclude": {
         "**/target": true
     },
+    "editor.accessibilitySupport": "off",
 }
