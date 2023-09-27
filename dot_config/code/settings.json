@@ -70,26 +70,6 @@
         },
         {
             "before": [
-                "f"
-            ],
-            "after": [
-                "<leader>",
-                "<leader>",
-                "f"
-            ]
-        },
-        {
-            "before": [
-                "F"
-            ],
-            "after": [
-                "<leader>",
-                "<leader>",
-                "F"
-            ]
-        },
-        {
-            "before": [
                 "g",
                 "r"
             ],

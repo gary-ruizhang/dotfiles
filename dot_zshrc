@@ -166,6 +166,11 @@ gcp() {
   echo $cherry
 }
 
+gr() {
+  git reset
+  git checkout -- .idea
+}
+
 alias lg=lazygit
 alias k=kubectl
 alias ks='kubectl -n kube-system'

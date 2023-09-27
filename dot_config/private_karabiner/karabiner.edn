@@ -138,12 +138,15 @@
 ;; FIXME workaround for homerow
 {:des "no_ctrl-s" :rules [[:!COSs :!!s [:terminal]]]}
 {:des "no_ctrl-c" :rules [[:!COSc :!!c [:terminal]]]}
+{:des "no_ctrl-f" :rules [[:!COSf :!!f [:terminal]]]}
 
 {:des "no_ctrl-s" :rules [[:!COSs :!!s [:skim]]]}
 {:des "no_ctrl-c" :rules [[:!COSc :!!c [:skim]]]}
+{:des "no_ctrl-f" :rules [[:!COSf :!!f [:skim]]]}
 
 ;; scoll is usefull but not click
 {:des "no_ctrl-c" :rules [[:!COSc :!!c [:emacs]]]}
+{:des "no_ctrl-f" :rules [[:!COSf :!!f [:emacs]]]}
 
 ]
 }

@@ -62,7 +62,7 @@
         "when": "editorHasCodeActionsProvider && textInputFocus && !editorReadonly"
     },
     {
-        "key": "ctrl+s",
+        "key": "cmd+i",
         "command": "workbench.action.gotoSymbol"
     },
     {
@@ -105,5 +105,17 @@
         "key": "shift+cmd+w",
         "command": "workbench.action.closeFolder",
         "when": "emptyWorkspaceSupport && workbenchState != 'empty'"
+    },
+    {
+        "key": "shift+cmd+o",
+        "command": "-workbench.action.gotoSymbol"
+    },
+    {
+        "key": "shift+cmd+i",
+        "command": "workbench.action.showAllSymbols"
+    },
+    {
+        "key": "cmd+t",
+        "command": "-workbench.action.showAllSymbols"
     },
 ]
