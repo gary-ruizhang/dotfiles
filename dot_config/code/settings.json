@@ -13,10 +13,11 @@
     "editor.acceptSuggestionOnCommitCharacter": false,
     "editor.fontLigatures": "'ss02' on",
     "editor.suggest.showSnippets": false,
-    "editor.suggestSelection": "first",
+    "editor.suggestSelection": "recentlyUsed",
     "editor.inlineSuggest.enabled": true,
     "editor.inlayHints.enabled": "offUnlessPressed",
     "editor.tabFocusMode": false,
+    "editor.accessibilitySupport": "off",
     "editor.tokenColorCustomizations": {
         "textMateRules": [
           {
@@ -130,5 +131,4 @@
     "search.exclude": {
         "**/target": true
     },
-    "editor.accessibilitySupport": "off",
 }
