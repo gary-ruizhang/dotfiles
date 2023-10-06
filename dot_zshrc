@@ -51,7 +51,6 @@ alias ls=eza
 alias ll='ls -alF -snewest -I .DS_Store'
 alias l='ls -alF -snewest -I .DS_Store'
 alias awk=gawk
-alias grep=rg
 # alias cat to bat
 alias cat=bat
 alias top=btop

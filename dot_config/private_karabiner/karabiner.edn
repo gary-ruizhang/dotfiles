@@ -13,6 +13,7 @@
 :code ["^com\\.microsoft\\.VSCode$"]
 :devutils ["^tonyapp\\.devutils$"]
 :telegram ["^com\\.tdesktop\\.Telegram$"]
+:iina ["com.colliderli.iina"]
 }
 
 :devices
@@ -112,11 +113,15 @@
 {:des "ctrl-a to fn-left in pd" :rules [[:!Ta :!Fleft_arrow [:pd]]]}
 {:des "ctrl-e to fn-right in pd" :rules [[:!Te :!Fright_arrow [:pd]]]}
 
+{:des "cmd-1 to cmd-[ in iina" :rules [[:!C1 :!Copen_bracket [:iina]]]}
+{:des "cmd-2 to cmd-] in iina" :rules [[:!C2 :!Cclose_bracket [:iina]]]}
+
 ;; tmux
 {
 :des "quickly switch between tabs in tmux" 
 :rules [
 [:!Cw :vk_none [:terminal]]
+[:!Ce [:!Ta :w] [:terminal]]
 [:!Ttab [:!Ta :n] [:terminal]]
 [:!TStab [:!Ta :p] [:terminal]]
 [:!Cl [:!Ta :n] [:terminal]]

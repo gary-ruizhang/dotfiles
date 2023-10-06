@@ -147,3 +147,5 @@
 (add-to-list 'consult-buffer-filter "magit-revision*")
 (add-to-list 'consult-buffer-filter "magit-log*")
 (add-to-list 'consult-buffer-filter "magit-refs*")
+
+(setq consult-preview-key nil)

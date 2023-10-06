@@ -1,2 +1,5 @@
 [target.x86_64-apple-darwin]
 linker = "clang"
+
+[expand]
+theme = "Dracula"
