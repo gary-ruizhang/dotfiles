@@ -2,8 +2,8 @@
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
 
-(add-to-list 'custom-theme-load-path "~/.doom.d/themes/")
-(load-theme 'dracula-pro-pro t)
+;; (add-to-list 'custom-theme-load-path "~/.doom.d/themes/")
+(load-theme 'catppuccin t)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.

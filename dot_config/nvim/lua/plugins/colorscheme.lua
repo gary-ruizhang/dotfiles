@@ -1,12 +1,10 @@
 return {
-  -- add gruvbox
-  { "gary-ruizhang/dracula_pro" },
+  { "catppuccin/nvim" },
 
-  -- Configure LazyVim to load gruvbo
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "dracula_pro",
+      colorscheme = "catppuccin-mocha",
     },
   }
 }

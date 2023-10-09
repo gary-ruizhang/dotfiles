@@ -23,7 +23,7 @@
 [delta]
   navigate = true    # use n and N to move between diff sections
   light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
-  features = dracula
+  features = catppuccin
 [merge]
   conflictstyle = diff3
 [diff]
@@ -32,12 +32,12 @@
 	template = /Users/ruizhang/.gitmessage
 [rebase]
   autoStash = true
-[delta "dracula"]
+[delta "catppuccin"]
   #author: https://github.com/AirOnSkin
   dark = true
   line-numbers = true
   keep-plus-minus-markers = false
-  syntax-theme = Dracula
+  syntax-theme = Catppuccin-mocha
   file-added-label = [+]
   file-copied-label = [C]
   file-decoration-style = none

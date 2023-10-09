@@ -58,5 +58,6 @@
 (package! cape)
 (package! org-anki)
 (package! consult-org-roam)
+(package! catppuccin-theme)
 ;; profiling
 ;; (package! benchmark-init)
