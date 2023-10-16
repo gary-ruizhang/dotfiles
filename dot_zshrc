@@ -174,6 +174,8 @@ alias lg=lazygit
 alias k=kubectl
 alias ks='kubectl -n kube-system'
 alias cc='cargo clippy'
+alias ct='cargo test'
+alias cr='cargo run'
 # TODO topgrade just upgrade not install new packages so brew dump file maybe no changes
 alias topgrade='topgrade && brew bundle dump --force --file=~/.config/homebrew/Brewfile'
 # install on new machine
@@ -187,6 +189,9 @@ alias   v=nvim
 
 export ZOOKEEPER_HOME=/opt/zookeeper-3.4.12
 export KAFKA_HOME=/opt/kafka_2.11-2.0.0
+
+# for ssh
+export LC_ALL="en_US.UTF-8"
 
 # HomeBrew
 export PATH="/usr/local/bin:$PATH"

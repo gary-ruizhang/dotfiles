@@ -139,14 +139,6 @@
 [:!C9 [:!Ta :9] [:terminal]]
 ]}
 
-;; no_ctrl
-;; no_ctrl-NUM to select NUMth item of context menu
-{:des "no_ctrl-1" :rules [[:!COS1 [:down_arrow :return_or_enter]]]}
-{:des "no_ctrl-2" :rules [[:!COS2 [:down_arrow :down_arrow :return_or_enter]]]}
-{:des "no_ctrl-3" :rules [[:!COS3 [:down_arrow :down_arrow :down_arrow :return_or_enter]]]}
-{:des "no_ctrl-4" :rules [[:!COS4 [:down_arrow :down_arrow :down_arrow :down_arrow :return_or_enter]]]}
-{:des "no_ctrl-5" :rules [[:!COS5 [:down_arrow :down_arrow :down_arrow :down_arrow :down_arrow :return_or_enter]]]}
-
 ;; Fallback for hypor-key, if want to disable hypor shortcut, just map it to hyper shortcut
 ;; FIXME workaround for homerow
 {:des "no_ctrl-s" :rules [[:!COSs :!!s [:terminal]]]}
