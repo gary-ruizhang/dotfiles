@@ -91,6 +91,7 @@
 ;; NOTE need for custom consult-recent-file-by-access function
 ;; (recentf-mode 1)
 (global-eldoc-mode -1)
+(global-hide-mode-line-mode 1)
 
 (remove-hook 'text-mode-hook #'visual-line-mode)
 
