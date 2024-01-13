@@ -56,6 +56,7 @@ alias cat=bat
 alias top=btop
 
 alias python=python3
+alias td='echo 164517 | sudo -S tcpdump'
 
 # navi for ctrl-g
 eval "$(navi widget zsh)"
@@ -318,7 +319,7 @@ eval "$(atuin init zsh)"
 bindkey '^R' clear-ctrl-r
 
 # ignore commands for zsh-autosuggestions plugin
-ZSH_AUTOSUGGEST_HISTORY_IGNORE="g stash*"
+# ZSH_AUTOSUGGEST_HISTORY_IGNORE="g stash*"
 
 # create tmux session
 # TODO hard code work path, needed change if workspace path changed

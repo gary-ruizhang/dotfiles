@@ -1,0 +1,29 @@
+import = ["/Users/ruizhang/.config/alacritty/catppuccin/catppuccin-mocha.toml"]
+
+[env]
+TERM = "xterm-256color"
+
+[font]
+size = 20
+
+[font.bold]
+family = "Mono Lisa NF"
+style = "Bold"
+
+[font.bold_italic]
+family = "Mono Lisa NF"
+style = "Bold Italic"
+
+[font.italic]
+family = "Mono Lisa NF"
+style = "Italic"
+
+[font.normal]
+family = "Mono Lisa NF"
+style = "Regular"
+
+[window]
+decorations = "none"
+dynamic_padding = true
+option_as_alt = "OnlyLeft"
+startup_mode = "Maximized"

@@ -21,6 +21,6 @@ map("n", "<C-l>", ":nohl<CR>")
 map("n", "<C-c>", "<cmd>Telescope builtin<CR>")
 
 -- map mini.surround to vim.surround
-vim.keymap.del('x', 'ys')
-vim.keymap.set('x', 'S', [[:<C-u>lua MiniSurround.add('visual')<CR>]], { silent = true })
-vim.keymap.set('n', 'yss', 'ys_', { remap = true })
+vim.keymap.del("x", "ys")
+vim.keymap.set("x", "S", [[:<C-u>lua MiniSurround.add('visual')<CR>]], { silent = true })
+vim.keymap.set("n", "yss", "ys_", { remap = true })

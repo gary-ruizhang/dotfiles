@@ -118,4 +118,24 @@
         "key": "cmd+t",
         "command": "-workbench.action.showAllSymbols"
     },
+    {
+        "key": "ctrl+w",
+        "command": "-workbench.action.switchWindow"
+    },
+    {
+        "key": ";",
+        "command": "runCommands",
+        "when": "inputFocus && vim.mode == 'Insert'",
+        "args": {
+            "commands": [
+                "cursorEnd",
+                {
+                    "command": "type",
+                    "args": {
+                        "text": ";"
+                    }
+                }
+            ]
+        }
+    }
 ]

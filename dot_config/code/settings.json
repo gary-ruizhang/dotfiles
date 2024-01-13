@@ -1,8 +1,8 @@
 {
     "workbench.startupEditor": "none",
-    "workbench.colorTheme": "Dracula Pro",
-    "workbench.iconTheme": "material-icon-theme",
-    "workbench.editor.showTabs": false,
+    "workbench.iconTheme": "catppuccin-mocha",
+    "workbench.colorTheme": "Catppuccin Mocha",
+    "workbench.editor.showTabs": "single",
     "breadcrumbs.enabled": false,
     
     "editor.fontSize": 26,
@@ -39,6 +39,23 @@
     "vim.autoSwitchInputMethod.defaultIM": "com.apple.keylayout.ABC",
     "vim.autoSwitchInputMethod.enable": true,
     "vim.autoSwitchInputMethod.obtainIMCmd": "/usr/local/bin/macism",
+    
+    "vim.insertModeKeyBindingsNonRecursive": [
+        {
+            // "before": [
+            //     ";"
+            // ],
+            "commands": [
+                // {
+                //     "command": "cursorEnd"
+                // },
+                {
+                    "command": "type",
+                    "args": [";"]
+                }
+            ]
+        },
+    ],
     
     "vim.normalModeKeyBindingsNonRecursive": [
         {
@@ -129,7 +146,6 @@
         "FIG_NEW_SESSION": "1"
     },
     "debug.allowBreakpointsEverywhere": true,
-    "terminal.integrated.tabFocusMode": false,
     "git.openRepositoryInParentFolders": "never",
     "files.watcherExclude": {
         "**/.bloop": true,
@@ -139,4 +155,5 @@
     "search.exclude": {
         "**/target": true
     },
+    "C_Cpp.autocompleteAddParentheses": true,
 }

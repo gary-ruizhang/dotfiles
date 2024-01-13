@@ -554,25 +554,6 @@
           "type" : "basic"
         } ]
       }, {
-        "description" : "ctrl-d to ctrl-g in emacs",
-        "manipulators" : [ {
-          "from" : {
-            "key_code" : "d",
-            "modifiers" : {
-              "mandatory" : [ "left_control" ]
-            }
-          },
-          "to" : [ {
-            "key_code" : "g",
-            "modifiers" : [ "left_control" ]
-          } ],
-          "conditions" : [ {
-            "type" : "frontmost_application_if",
-            "bundle_identifiers" : [ "^org\\.gnu\\.Emacs$" ]
-          } ],
-          "type" : "basic"
-        } ]
-      }, {
         "description" : "cmd-e to cmd-shift-a in chrome",
         "manipulators" : [ {
           "from" : {
@@ -611,7 +592,45 @@
           "type" : "basic"
         } ]
       }, {
-        "description" : "ctrl-q to cmd-e in idea",
+        "description" : "ctrl-l to cmd-l in chrome",
+        "manipulators" : [ {
+          "from" : {
+            "key_code" : "l",
+            "modifiers" : {
+              "mandatory" : [ "left_control" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "l",
+            "modifiers" : [ "left_command" ]
+          } ],
+          "conditions" : [ {
+            "type" : "frontmost_application_if",
+            "bundle_identifiers" : [ "^com\\.google\\.Chrome$" ]
+          } ],
+          "type" : "basic"
+        } ]
+      }, {
+        "description" : "ctrl-d to ctrl-g in emacs",
+        "manipulators" : [ {
+          "from" : {
+            "key_code" : "d",
+            "modifiers" : {
+              "mandatory" : [ "left_control" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "g",
+            "modifiers" : [ "left_control" ]
+          } ],
+          "conditions" : [ {
+            "type" : "frontmost_application_if",
+            "bundle_identifiers" : [ "^org\\.gnu\\.Emacs$" ]
+          } ],
+          "type" : "basic"
+        } ]
+      }, {
+        "description" : "ctrl-q to cmd-shift-e in idea",
         "manipulators" : [ {
           "from" : {
             "key_code" : "q",
@@ -621,11 +640,30 @@
           },
           "to" : [ {
             "key_code" : "e",
-            "modifiers" : [ "left_command" ]
+            "modifiers" : [ "left_command", "left_shift" ]
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_if",
-            "bundle_identifiers" : [ "^com\\.jetbrains\\.intellij$" ]
+            "bundle_identifiers" : [ "^com\\.jetbrains\\.intellij$", "^com\\.jetbrains\\.CLion$" ]
+          } ],
+          "type" : "basic"
+        } ]
+      }, {
+        "description" : "cmd-r to alt-ctrl-r in idea",
+        "manipulators" : [ {
+          "from" : {
+            "key_code" : "r",
+            "modifiers" : {
+              "mandatory" : [ "left_command" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "r",
+            "modifiers" : [ "left_control", "left_option" ]
+          } ],
+          "conditions" : [ {
+            "type" : "frontmost_application_if",
+            "bundle_identifiers" : [ "^com\\.jetbrains\\.intellij$", "^com\\.jetbrains\\.CLion$" ]
           } ],
           "type" : "basic"
         } ]
@@ -668,25 +706,6 @@
           "type" : "basic"
         } ]
       }, {
-        "description" : "ctrl-l to cmd-l in chrome",
-        "manipulators" : [ {
-          "from" : {
-            "key_code" : "l",
-            "modifiers" : {
-              "mandatory" : [ "left_control" ]
-            }
-          },
-          "to" : [ {
-            "key_code" : "l",
-            "modifiers" : [ "left_command" ]
-          } ],
-          "conditions" : [ {
-            "type" : "frontmost_application_if",
-            "bundle_identifiers" : [ "^com\\.google\\.Chrome$" ]
-          } ],
-          "type" : "basic"
-        } ]
-      }, {
         "description" : "ctrl-l to cmd-l in dash",
         "manipulators" : [ {
           "from" : {
@@ -721,6 +740,25 @@
           "conditions" : [ {
             "type" : "frontmost_application_if",
             "bundle_identifiers" : [ "^tonyapp\\.devutils$" ]
+          } ],
+          "type" : "basic"
+        } ]
+      }, {
+        "description" : "ctrl-e to cmd-right in vscode",
+        "manipulators" : [ {
+          "from" : {
+            "key_code" : "e",
+            "modifiers" : {
+              "mandatory" : [ "left_control" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "right_arrow",
+            "modifiers" : [ "left_command" ]
+          } ],
+          "conditions" : [ {
+            "type" : "frontmost_application_if",
+            "bundle_identifiers" : [ "^com\\.microsoft\\.VSCode$" ]
           } ],
           "type" : "basic"
         } ]

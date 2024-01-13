@@ -7,7 +7,7 @@
 :qq ["^com\\.tencent\\.qq$"]
 :skim ["^net\\.sourceforge\\.skim-app\\.skim$"]
 :emacs ["^org\\.gnu\\.Emacs$"]
-:idea ["^com\\.jetbrains\\.intellij$"]
+:idea ["^com\\.jetbrains\\.intellij$", "^com\\.jetbrains\\.CLion$"]
 :dash ["^com\\.kapeli\\.dashdoc$"]
 :pd ["^com\\.parallels\\.desktop\\.console$"]
 :code ["^com\\.microsoft\\.VSCode$"]
@@ -97,13 +97,15 @@
 {:des "ctrl-o to cmd-[ in skim" :rules [[:!To :!Copen_bracket [:skim]]]}
 {:des "ctrl-i to cmd-] in skim" :rules [[:!Ti :!Cclose_bracket [:skim]]]}
 
-{:des "ctrl-d to ctrl-g in emacs" :rules [[:!Td :!Tg [:emacs]]]}
 {:des "cmd-e to cmd-shift-a in chrome" :rules [[:!Ce :!CSa [:chrome]]]}
 {:des "cmd-0 to ctrl-q in chrome" :rules [[:!C0 :!Tq [:chrome]]]}
-{:des "ctrl-q to cmd-e in idea" :rules [[:!Tq :!Ce [:idea]]]}
+{:des "ctrl-l to cmd-l in chrome" :rules [[:!Tl :!Cl [:chrome]]]}
+
+{:des "ctrl-d to ctrl-g in emacs" :rules [[:!Td :!Tg [:emacs]]]}
+{:des "ctrl-q to cmd-shift-e in idea" :rules [[:!Tq :!CSe [:idea]]]}
+{:des "cmd-r to alt-ctrl-r in idea" :rules [[:!Cr :!OTr [:idea]]]}
 {:des "cmd-l to ctrl-tab exclude terminal" :rules [[:!Cl :!Ttab [:!terminal]]]}
 {:des "cmd-h to ctrl-shift-tab exclude terminal" :rules [[:!Ch :!TStab [:!terminal]]]}
-{:des "ctrl-l to cmd-l in chrome" :rules [[:!Tl :!Cl [:chrome]]]}
 {:des "ctrl-l to cmd-l in dash" :rules [[:!Tl :!Cl [:dash]]]}
 {:des "ctrl-l to cmd-shift-f in devutils" :rules [[:!Tl :!CSf [:devutils]]]}
 
