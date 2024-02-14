@@ -13,7 +13,7 @@
 :code ["^com\\.microsoft\\.VSCode$"]
 :devutils ["^tonyapp\\.devutils$"]
 :telegram ["^com\\.tdesktop\\.Telegram$"]
-:iina ["com.colliderli.iina"]
+:iina ["^com\\.colliderli\\.iina$"]
 }
 
 :devices
@@ -51,7 +51,17 @@
 {:des "left_control to hyper" :rules [[:##left_control :!CTOleft_shift [:mac]]]}
 {:des "tab to hyper" :rules [[:##tab :hyper nil {:alone :tab} ]]}
 
+;; change modify key to lazy
+{:des "ctrl to lazy" :rules [[:left_control {:key :left_control :lazy true}]]}
+{:des "alt to lazy" :rules [[:left_option {:key :left_option :lazy true}]]}
+{:des "command to lazy" :rules [[:left_command {:key :left_command :lazy true}]]}
+{:des "shift to lazy" :rules [[:left_shift {:key :left_shift :lazy true}]]}
+
 ; {:des "no_ctrl-w open application switcher" :rules [[:!COSw :!Ospacebar]]}
+
+;; volume up/down
+{:des "hyper - to volume down" :rules [[:!!hyphen :volume_down]]}
+{:des "hyper + to volume up" :rules [[:!!equal_sign :volume_up]]}
 
 ;; ⌥⇧⌘
 {:des "semicolon to no_ctrl" :rules [[:##semicolon :no_ctrl nil {:alone :semicolon} ]]}

@@ -25,7 +25,24 @@
   ;; This is recommended since Dabbrev can be used globally (M-/).
   ;; See also `corfu-exclude-modes'.
   :init
-  (global-corfu-mode))
+  (global-corfu-mode)
+
+  ;; FIXME https://github.com/emacs-evil/evil-collection/issues/766
+  (advice-remove 'corfu--setup 'evil-normalize-keymaps)
+  (advice-remove 'corfu--teardown 'evil-normalize-keymaps)
+
+  (advice-add 'corfu--setup :after (lambda (&rest r) (evil-normalize-keymaps)))
+  (advice-add 'corfu--teardown :after  (lambda (&rest r) (evil-normalize-keymaps)))
+  )
+
+(setq debug-on-error t)
+
+(defun force-debug (func &rest args)
+  (condition-case e
+      (apply func args)
+    ((debug error) (signal (car e) (cdr e)))))
+
+(advice-add #'corfu--post-command :around #'force-debug)
 
 (map! :ie "C-i" 'corfu-insert-separator)
 

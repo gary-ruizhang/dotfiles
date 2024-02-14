@@ -59,6 +59,82 @@
           "type" : "basic"
         } ]
       }, {
+        "description" : "ctrl to lazy",
+        "manipulators" : [ {
+          "from" : {
+            "key_code" : "left_control"
+          },
+          "to" : [ {
+            "key_code" : "left_control",
+            "lazy" : true
+          } ],
+          "type" : "basic"
+        } ]
+      }, {
+        "description" : "alt to lazy",
+        "manipulators" : [ {
+          "from" : {
+            "key_code" : "left_option"
+          },
+          "to" : [ {
+            "key_code" : "left_option",
+            "lazy" : true
+          } ],
+          "type" : "basic"
+        } ]
+      }, {
+        "description" : "command to lazy",
+        "manipulators" : [ {
+          "from" : {
+            "key_code" : "left_command"
+          },
+          "to" : [ {
+            "key_code" : "left_command",
+            "lazy" : true
+          } ],
+          "type" : "basic"
+        } ]
+      }, {
+        "description" : "shift to lazy",
+        "manipulators" : [ {
+          "from" : {
+            "key_code" : "left_shift"
+          },
+          "to" : [ {
+            "key_code" : "left_shift",
+            "lazy" : true
+          } ],
+          "type" : "basic"
+        } ]
+      }, {
+        "description" : "hyper - to volume down",
+        "manipulators" : [ {
+          "from" : {
+            "key_code" : "hyphen",
+            "modifiers" : {
+              "mandatory" : [ "left_command", "left_control", "left_option", "left_shift" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "volume_down"
+          } ],
+          "type" : "basic"
+        } ]
+      }, {
+        "description" : "hyper + to volume up",
+        "manipulators" : [ {
+          "from" : {
+            "key_code" : "equal_sign",
+            "modifiers" : {
+              "mandatory" : [ "left_command", "left_control", "left_option", "left_shift" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "volume_up"
+          } ],
+          "type" : "basic"
+        } ]
+      }, {
         "description" : "semicolon to no_ctrl",
         "manipulators" : [ {
           "to_if_alone" : [ {
@@ -744,25 +820,6 @@
           "type" : "basic"
         } ]
       }, {
-        "description" : "ctrl-e to cmd-right in vscode",
-        "manipulators" : [ {
-          "from" : {
-            "key_code" : "e",
-            "modifiers" : {
-              "mandatory" : [ "left_control" ]
-            }
-          },
-          "to" : [ {
-            "key_code" : "right_arrow",
-            "modifiers" : [ "left_command" ]
-          } ],
-          "conditions" : [ {
-            "type" : "frontmost_application_if",
-            "bundle_identifiers" : [ "^com\\.microsoft\\.VSCode$" ]
-          } ],
-          "type" : "basic"
-        } ]
-      }, {
         "description" : "cmd-c to ctrl-shift-c in pd",
         "manipulators" : [ {
           "from" : {
@@ -872,7 +929,7 @@
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_if",
-            "bundle_identifiers" : [ "com.colliderli.iina" ]
+            "bundle_identifiers" : [ "^com\\.colliderli\\.iina$" ]
           } ],
           "type" : "basic"
         } ]
@@ -891,7 +948,7 @@
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_if",
-            "bundle_identifiers" : [ "com.colliderli.iina" ]
+            "bundle_identifiers" : [ "^com\\.colliderli\\.iina$" ]
           } ],
           "type" : "basic"
         } ]
