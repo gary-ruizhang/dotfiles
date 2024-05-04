@@ -7,13 +7,14 @@
 :qq ["^com\\.tencent\\.qq$"]
 :skim ["^net\\.sourceforge\\.skim-app\\.skim$"]
 :emacs ["^org\\.gnu\\.Emacs$"]
-:idea ["^com\\.jetbrains\\.intellij$", "^com\\.jetbrains\\.CLion$"]
+:idea ["^com\\.jetbrains\\.intellij$", "^com\\.jetbrains\\.CLion$", "^com\\.jetbrains\\.rustrover-EAP$"]
 :dash ["^com\\.kapeli\\.dashdoc$"]
 :pd ["^com\\.parallels\\.desktop\\.console$"]
 :code ["^com\\.microsoft\\.VSCode$"]
 :devutils ["^tonyapp\\.devutils$"]
 :telegram ["^com\\.tdesktop\\.Telegram$"]
 :iina ["^com\\.colliderli\\.iina$"]
+:wireshark ["^org\\.wireshark\\.Wireshark$"]
 }
 
 :devices
@@ -27,6 +28,12 @@
 :km "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"%s\"'"
 :open "open \"%s\""
 :temp_cp "osascript -e 'set temp to the clipboard \n set the clipboard to \"%s\" \n tell application \"System Events\" \n   keystroke \"v\" using command down \n   delay 0.1 \n end tell \n set the clipboard to temp'"
+}
+
+:input-sources
+{
+:abc {:input_source_id "^com\\.apple\\.keylayout\\.ABC$"}
+:cn  {:input_source_id "^com\\.apple\\.inputmethod\\.SCIM\\.Shuangpin$"}
 }
 
 :tos
@@ -49,19 +56,26 @@
 
 ;; hyper key
 {:des "left_control to hyper" :rules [[:##left_control :!CTOleft_shift [:mac]]]}
-{:des "tab to hyper" :rules [[:##tab :hyper nil {:alone :tab} ]]}
+{:des "tab to hyper outside wireshark" :rules [[:##tab :hyper :!wireshark {:alone :tab}]]}
+;; map tab in wireshark to enter
+{:des "tab to hyper inside wireshark"  :rules [[:##tab :hyper :wireshark  {:alone :return_or_enter}]]}
 
-;; change modify key to lazy
+;; change ctrl to lazy
 {:des "ctrl to lazy" :rules [[:left_control {:key :left_control :lazy true}]]}
 {:des "alt to lazy" :rules [[:left_option {:key :left_option :lazy true}]]}
+;; TODO shift cannot be lazy because double shift in intellij
+; {:des "shift to lazy" :rules [[:left_shift {:key :left_shift :lazy true}]]}
 {:des "command to lazy" :rules [[:left_command {:key :left_command :lazy true}]]}
-{:des "shift to lazy" :rules [[:left_shift {:key :left_shift :lazy true}]]}
 
 ; {:des "no_ctrl-w open application switcher" :rules [[:!COSw :!Ospacebar]]}
 
 ;; volume up/down
 {:des "hyper - to volume down" :rules [[:!!hyphen :volume_down]]}
 {:des "hyper + to volume up" :rules [[:!!equal_sign :volume_up]]}
+
+;; keycue
+{:des "hyper k to double command" :rules [[:!!k [:left_command :left_command]]]}
+{:des "hyper m to double alt" :rules [[:!!m [:left_option :left_option]]]}
 
 ;; ⌥⇧⌘
 {:des "semicolon to no_ctrl" :rules [[:##semicolon :no_ctrl nil {:alone :semicolon} ]]}
@@ -86,6 +100,8 @@
 {:des "cmd-f to ctrl-a + tab in terminal" :rules [[:!Cf [:!Ta :tab] [:terminal]]]}
 {:des "cmd-shift-f to ctrl-a + F in terminal" :rules [[:!CSf [:!Ta :!Sf] [:terminal]]]}
 {:des "cmd-z to ctrl-a + z in terminal" :rules [[:!Cz [:!Ta :z] [:terminal]]]}
+{:des "cmd-i to alt-i in terminal" :rules [[:!Ci [:!Oi] [:terminal]]]}
+{:des "cmd-shift-i to alt-shift-i in terminal" :rules [[:!CSi [:!OSi] [:terminal]]]}
 
 {:des "ctrl-k to up exclude qq, telegram" :rules [[:!Tk :up_arrow [:!qq :!telegram]]]}
 {:des "ctrl-j to down exclude qq, telegram" :rules [[:!Tj :down_arrow [:!qq :!telegram]]]}
@@ -114,6 +130,7 @@
 {:des "ctrl-d to ctrl-g in emacs" :rules [[:!Td :!Tg [:emacs]]]}
 {:des "ctrl-q to cmd-shift-e in idea" :rules [[:!Tq :!CSe [:idea]]]}
 {:des "cmd-r to alt-ctrl-r in idea" :rules [[:!Cr :!OTr [:idea]]]}
+{:des "cmd-d to alt-ctrl-d in idea" :rules [[:!Cd :!OTd [:idea]]]}
 {:des "cmd-l to ctrl-tab exclude terminal" :rules [[:!Cl :!Ttab [:!terminal]]]}
 {:des "cmd-h to ctrl-shift-tab exclude terminal" :rules [[:!Ch :!TStab [:!terminal]]]}
 {:des "ctrl-l to cmd-l in dash" :rules [[:!Tl :!Cl [:dash]]]}
@@ -127,6 +144,11 @@
 
 {:des "cmd-1 to cmd-[ in iina" :rules [[:!C1 :!Copen_bracket [:iina]]]}
 {:des "cmd-2 to cmd-] in iina" :rules [[:!C2 :!Cclose_bracket [:iina]]]}
+
+{:des "ctrl-l to cmd-/ in wireshark" :rules [[:!Tl :!Cslash [:wireshark]]]}
+{:des "ctrl-u to cmd-a delete in wireshark" :rules [[:!Tu [:!Ca :delete_or_backspace] [:wireshark]]]}
+{:des "cmd-delete to cmd-a delete in wireshark" :rules [[:!Cdelete_or_backspace [:!Ca :delete_or_backspace] [:wireshark]]]}
+{:des "no_ctrl-f to no_ctrl-t in wireshark" :rules [[:!COSf :!COSt [:wireshark]]]}
 
 ;; tmux
 {

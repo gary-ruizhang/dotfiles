@@ -40,7 +40,7 @@
           "type" : "basic"
         } ]
       }, {
-        "description" : "tab to hyper",
+        "description" : "tab to hyper outside wireshark",
         "manipulators" : [ {
           "to_if_alone" : [ {
             "key_code" : "tab"
@@ -55,6 +55,33 @@
             "key_code" : "left_shift",
             "modifiers" : [ "left_command", "left_control", "left_option" ],
             "lazy" : true
+          } ],
+          "conditions" : [ {
+            "type" : "frontmost_application_unless",
+            "bundle_identifiers" : [ "^org\\.wireshark\\.Wireshark$" ]
+          } ],
+          "type" : "basic"
+        } ]
+      }, {
+        "description" : "tab to hyper inside wireshark",
+        "manipulators" : [ {
+          "to_if_alone" : [ {
+            "key_code" : "return_or_enter"
+          } ],
+          "from" : {
+            "key_code" : "tab",
+            "modifiers" : {
+              "optional" : [ "any" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "left_shift",
+            "modifiers" : [ "left_command", "left_control", "left_option" ],
+            "lazy" : true
+          } ],
+          "conditions" : [ {
+            "type" : "frontmost_application_if",
+            "bundle_identifiers" : [ "^org\\.wireshark\\.Wireshark$" ]
           } ],
           "type" : "basic"
         } ]
@@ -95,18 +122,6 @@
           "type" : "basic"
         } ]
       }, {
-        "description" : "shift to lazy",
-        "manipulators" : [ {
-          "from" : {
-            "key_code" : "left_shift"
-          },
-          "to" : [ {
-            "key_code" : "left_shift",
-            "lazy" : true
-          } ],
-          "type" : "basic"
-        } ]
-      }, {
         "description" : "hyper - to volume down",
         "manipulators" : [ {
           "from" : {
@@ -131,6 +146,38 @@
           },
           "to" : [ {
             "key_code" : "volume_up"
+          } ],
+          "type" : "basic"
+        } ]
+      }, {
+        "description" : "hyper k to double command",
+        "manipulators" : [ {
+          "from" : {
+            "key_code" : "k",
+            "modifiers" : {
+              "mandatory" : [ "left_command", "left_control", "left_option", "left_shift" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "left_command"
+          }, {
+            "key_code" : "left_command"
+          } ],
+          "type" : "basic"
+        } ]
+      }, {
+        "description" : "hyper m to double alt",
+        "manipulators" : [ {
+          "from" : {
+            "key_code" : "m",
+            "modifiers" : {
+              "mandatory" : [ "left_command", "left_control", "left_option", "left_shift" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "left_option"
+          }, {
+            "key_code" : "left_option"
           } ],
           "type" : "basic"
         } ]
@@ -310,6 +357,44 @@
             "modifiers" : [ "left_control" ]
           }, {
             "key_code" : "z"
+          } ],
+          "conditions" : [ {
+            "type" : "frontmost_application_if",
+            "bundle_identifiers" : [ "^com\\.github\\.wez\\.wezterm$", "^org\\.alacritty$" ]
+          } ],
+          "type" : "basic"
+        } ]
+      }, {
+        "description" : "cmd-i to alt-i in terminal",
+        "manipulators" : [ {
+          "from" : {
+            "key_code" : "i",
+            "modifiers" : {
+              "mandatory" : [ "left_command" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "i",
+            "modifiers" : [ "left_option" ]
+          } ],
+          "conditions" : [ {
+            "type" : "frontmost_application_if",
+            "bundle_identifiers" : [ "^com\\.github\\.wez\\.wezterm$", "^org\\.alacritty$" ]
+          } ],
+          "type" : "basic"
+        } ]
+      }, {
+        "description" : "cmd-shift-i to alt-shift-i in terminal",
+        "manipulators" : [ {
+          "from" : {
+            "key_code" : "i",
+            "modifiers" : {
+              "mandatory" : [ "left_command", "left_shift" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "i",
+            "modifiers" : [ "left_option", "left_shift" ]
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_if",
@@ -720,7 +805,7 @@
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_if",
-            "bundle_identifiers" : [ "^com\\.jetbrains\\.intellij$", "^com\\.jetbrains\\.CLion$" ]
+            "bundle_identifiers" : [ "^com\\.jetbrains\\.intellij$", "^com\\.jetbrains\\.CLion$", "^com\\.jetbrains\\.rustrover-EAP$" ]
           } ],
           "type" : "basic"
         } ]
@@ -739,7 +824,26 @@
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_if",
-            "bundle_identifiers" : [ "^com\\.jetbrains\\.intellij$", "^com\\.jetbrains\\.CLion$" ]
+            "bundle_identifiers" : [ "^com\\.jetbrains\\.intellij$", "^com\\.jetbrains\\.CLion$", "^com\\.jetbrains\\.rustrover-EAP$" ]
+          } ],
+          "type" : "basic"
+        } ]
+      }, {
+        "description" : "cmd-d to alt-ctrl-d in idea",
+        "manipulators" : [ {
+          "from" : {
+            "key_code" : "d",
+            "modifiers" : {
+              "mandatory" : [ "left_command" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "d",
+            "modifiers" : [ "left_control", "left_option" ]
+          } ],
+          "conditions" : [ {
+            "type" : "frontmost_application_if",
+            "bundle_identifiers" : [ "^com\\.jetbrains\\.intellij$", "^com\\.jetbrains\\.CLion$", "^com\\.jetbrains\\.rustrover-EAP$" ]
           } ],
           "type" : "basic"
         } ]
@@ -949,6 +1053,86 @@
           "conditions" : [ {
             "type" : "frontmost_application_if",
             "bundle_identifiers" : [ "^com\\.colliderli\\.iina$" ]
+          } ],
+          "type" : "basic"
+        } ]
+      }, {
+        "description" : "ctrl-l to cmd-/ in wireshark",
+        "manipulators" : [ {
+          "from" : {
+            "key_code" : "l",
+            "modifiers" : {
+              "mandatory" : [ "left_control" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "slash",
+            "modifiers" : [ "left_command" ]
+          } ],
+          "conditions" : [ {
+            "type" : "frontmost_application_if",
+            "bundle_identifiers" : [ "^org\\.wireshark\\.Wireshark$" ]
+          } ],
+          "type" : "basic"
+        } ]
+      }, {
+        "description" : "ctrl-u to cmd-a delete in wireshark",
+        "manipulators" : [ {
+          "from" : {
+            "key_code" : "u",
+            "modifiers" : {
+              "mandatory" : [ "left_control" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "a",
+            "modifiers" : [ "left_command" ]
+          }, {
+            "key_code" : "delete_or_backspace"
+          } ],
+          "conditions" : [ {
+            "type" : "frontmost_application_if",
+            "bundle_identifiers" : [ "^org\\.wireshark\\.Wireshark$" ]
+          } ],
+          "type" : "basic"
+        } ]
+      }, {
+        "description" : "cmd-delete to cmd-a delete in wireshark",
+        "manipulators" : [ {
+          "from" : {
+            "key_code" : "delete_or_backspace",
+            "modifiers" : {
+              "mandatory" : [ "left_command" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "a",
+            "modifiers" : [ "left_command" ]
+          }, {
+            "key_code" : "delete_or_backspace"
+          } ],
+          "conditions" : [ {
+            "type" : "frontmost_application_if",
+            "bundle_identifiers" : [ "^org\\.wireshark\\.Wireshark$" ]
+          } ],
+          "type" : "basic"
+        } ]
+      }, {
+        "description" : "no_ctrl-f to no_ctrl-t in wireshark",
+        "manipulators" : [ {
+          "from" : {
+            "key_code" : "f",
+            "modifiers" : {
+              "mandatory" : [ "left_command", "left_option", "left_shift" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "t",
+            "modifiers" : [ "left_command", "left_option", "left_shift" ]
+          } ],
+          "conditions" : [ {
+            "type" : "frontmost_application_if",
+            "bundle_identifiers" : [ "^org\\.wireshark\\.Wireshark$" ]
           } ],
           "type" : "basic"
         } ]

@@ -44,7 +44,3 @@ nmap <C-o> :action Back<CR>
 nmap <c-i> :action Forward<CR>
 
 nmap s <Action>(AceAction)
-
-" maybe conflict with intellij idea
-inoremap ; <Esc>A;
-inoremap { <Esc>A<Space>{

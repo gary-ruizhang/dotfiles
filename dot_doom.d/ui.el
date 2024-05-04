@@ -57,4 +57,6 @@
  org-agenda-current-time-string
  "⭠ now ─────────────────────────────────────────────────")
 
+(setq org-startup-with-inline-images t)
+
 (global-org-modern-mode)

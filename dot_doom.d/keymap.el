@@ -79,10 +79,10 @@
 (map! "C-s" #'(lambda () (interactive) (execute-extended-command-with-initial-input "consult ")))
 
 (fset 'goto-next-empty-line
-   (kmacro-lambda-form [?/ ?^ ?$ return] 0 "%d"))
+   (kmacro [?/ ?^ ?$ return] 0 "%d"))
 
 (fset 'goto-last-empty-line
-   (kmacro-lambda-form [?? ?^ ?$ return] 0 "%d"))
+   (kmacro [?? ?^ ?$ return] 0 "%d"))
 
 (map! :n "}" 'goto-next-empty-line)
 (map! :n "{" 'goto-last-empty-line)
