@@ -517,6 +517,7 @@ require('lazy').setup({
           -- Execute a code action, usually your cursor needs to be on top of an error
           -- or a suggestion from your LSP for this to activate.
           map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
+          map('<M-Enter>', vim.lsp.buf.code_action, '[C]ode [A]ction')
 
           -- Opens a popup that displays documentation about the word under your cursor
           --  See `:help K` for why this keymap.
@@ -757,15 +758,14 @@ require('lazy').setup({
           -- Accept ([y]es) the completion.
           --  This will auto-import if your LSP supports it.
           --  This will expand snippets if the LSP sent a snippet.
-          -- ['<Tab>'] = cmp.mapping.confirm { select = true },
           ['<Tab>'] = cmp.mapping(function(fallback)
             if cmp.visible() then
+              -- FIXME actually not needed because of completeopt pre-select first item
               local entry = cmp.get_selected_entry()
               if not entry then
                 cmp.select_next_item { behavior = cmp.SelectBehavior.Select }
-              else
-                cmp.confirm()
               end
+              cmp.confirm()
             elseif luasnip.expandable() then
               luasnip.expand()
             elseif luasnip.expand_or_locally_jumpable() then
@@ -778,8 +778,10 @@ require('lazy').setup({
           end, {
             'i',
             's',
+            'c',
+            -- c = cmp.config.disable, -- fix cmdline autocompletion, workaround
           }),
-
+          --
           -- If you prefer more traditional completion keymaps,
           -- you can uncomment the following lines
           --['<CR>'] = cmp.mapping.confirm { select = true },
@@ -822,14 +824,14 @@ require('lazy').setup({
       }
 
       cmp.setup.cmdline({ '/', '?' }, {
-        mapping = cmp.mapping.preset.cmdline(),
+        completion = { completeopt = 'menu,menuone,noselect,noinsert' },
         sources = {
           { name = 'buffer' },
         },
       })
 
       cmp.setup.cmdline(':', {
-        mapping = cmp.mapping.preset.cmdline(),
+        completion = { completeopt = 'menu,menuone,noselect,noinsert' },
         sources = cmp.config.sources({
           { name = 'path' },
         }, {
@@ -849,13 +851,13 @@ require('lazy').setup({
     -- change the command in the config to whatever the name of that colorscheme is.
     --
     -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
-    'folke/tokyonight.nvim',
+    'catppuccin/nvim',
     priority = 1000, -- Make sure to load this before all the other start plugins.
     init = function()
       -- Load the colorscheme here.
       -- Like many other themes, this one has different styles, and you could load
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-      vim.cmd.colorscheme 'tokyonight-night'
+      vim.cmd.colorscheme 'catppuccin-macchiato'
 
       -- You can configure highlights by doing something like:
       vim.cmd.hi 'Comment gui=none'
@@ -881,7 +883,22 @@ require('lazy').setup({
       -- - saiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
       -- - sd'   - [S]urround [D]elete [']quotes
       -- - sr)'  - [S]urround [R]eplace [)] [']
-      require('mini.surround').setup()
+      require('mini.surround').setup {
+        mappings = {
+          -- classic vim-surround keymap:
+          add = 'ys',
+          delete = 'ds',
+          replace = 'cs',
+          -- find = 'gsf',
+          -- find_left = 'gsF',
+          -- highlight = 'gsh',
+          -- update_n_lines = 'gsn',
+        },
+      }
+
+      require('mini.align').setup()
+
+      require('mini.pairs').setup()
 
       -- Simple and easy statusline.
       --  You could remove this setup call if you don't like it,
@@ -934,7 +951,6 @@ require('lazy').setup({
       --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
     end,
   },
-
   -- The following two comments only work if you have downloaded the kickstart repo, not just copy pasted the
   -- init.lua. If you want these files, they are in the repository, so you can just download them and
   -- place them in the correct locations.
@@ -956,7 +972,7 @@ require('lazy').setup({
   --
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
   --    For additional information, see `:help lazy.nvim-lazy.nvim-structuring-your-plugins`
-  -- { import = 'custom.plugins' },
+  { import = 'custom.plugins' },
 }, {
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the
