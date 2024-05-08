@@ -183,6 +183,15 @@ function proxy_off(){
     echo -e "proxy off"
 }
 
+function yy() {
+    local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+    yazi "$@" --cwd-file="$tmp"
+    if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+        cd -- "$cwd"
+    fi
+    rm -f -- "$tmp"
+}
+
 # TODO auto set proxy for new shell session
 export https_proxy=http://127.0.0.1:7890
 export http_proxy=http://127.0.0.1:7890
@@ -293,7 +302,7 @@ autoload -Uz compinit && compinit
 
 source <(kubectl completion zsh)
 
-export PATH="/usr/local/opt/binutils/bin:$PATH"
+# export PATH="/usr/local/opt/binutils/bin:$PATH"
 
 # z
 eval "$(zoxide init zsh)"

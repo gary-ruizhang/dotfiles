@@ -54,8 +54,6 @@
 (package! evil-escape :disable t)
 (package! sis)
 (package! org-modern)
-(package! corfu)
-(package! cape)
 (package! org-anki)
 (package! consult-org-roam)
 (package! catppuccin-theme)
