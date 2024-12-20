@@ -24,6 +24,8 @@
 ;; org-modern
 (package-initialize)
 
+(setq desktop-restore-forces-onscreen nil)
+
 ;; Choose some fonts
 ;; (set-face-attribute 'org-modern-symbol nil :family "Iosevka")
 

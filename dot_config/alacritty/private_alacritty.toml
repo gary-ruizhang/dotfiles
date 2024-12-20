@@ -1,4 +1,3 @@
-import = ["/Users/ruizhang/.config/alacritty/catppuccin/catppuccin-mocha.toml"]
 
 [env]
 TERM = "xterm-256color"
@@ -27,3 +26,6 @@ decorations = "none"
 dynamic_padding = true
 option_as_alt = "OnlyLeft"
 startup_mode = "Maximized"
+
+[general]
+import = ["/Users/ruizhang/.config/alacritty/catppuccin/catppuccin-mocha.toml"]

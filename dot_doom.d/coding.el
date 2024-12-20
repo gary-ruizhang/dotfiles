@@ -8,8 +8,9 @@
   ;; (corfu-separator ?\s)          ;; Orderless field separator
   ;; (corfu-quit-at-boundary 'separator) ;; Automatically quit at word boundary
   (corfu-preview-current nil)       ;; Disable current candidate preview
-  (corfu-quit-no-match t)      ;; Never quit, even if there is no match
-  ;; (corfu-preselect 'prompt)      ;; Preselect the prompt
+  ;; (corfu-preview-current 'insert) ; insert previewed candidate
+  ;; (corfu-quit-no-match t)      ;; Never quit, even if there is no match
+  (corfu-preselect 'first)      ;; Preselect the prompt
   ;; (corfu-on-exact-match nil)     ;; Configure handling of exact matches
   ;; (corfu-scroll-margin 5)        ;; Use scroll margin
 
@@ -19,20 +20,16 @@
   ;;        (eshell-mode . corfu-mode))
 
   :bind
-  (:map corfu-map ("C-i" . corfu-insert-separator))
+  (:map corfu-map
+        ;; ("C-i" . corfu-insert-separator)
+        ("TAB" . #'corfu-insert)
+        ([tab] . #'corfu-insert))
 
   ;; Recommended: Enable Corfu globally.
   ;; This is recommended since Dabbrev can be used globally (M-/).
   ;; See also `corfu-exclude-modes'.
   :init
   (global-corfu-mode)
-
-  ;; FIXME https://github.com/emacs-evil/evil-collection/issues/766
-  (advice-remove 'corfu--setup 'evil-normalize-keymaps)
-  (advice-remove 'corfu--teardown 'evil-normalize-keymaps)
-
-  (advice-add 'corfu--setup :after (lambda (&rest r) (evil-normalize-keymaps)))
-  (advice-add 'corfu--teardown :after  (lambda (&rest r) (evil-normalize-keymaps)))
   )
 
 (setq debug-on-error t)
@@ -44,7 +41,7 @@
 
 (advice-add #'corfu--post-command :around #'force-debug)
 
-(map! :ie "C-i" 'corfu-insert-separator)
+;; (map! :ie "C-i" 'corfu-insert-separator)
 
 ;; A few more useful configurations...
 (use-package emacs
@@ -159,10 +156,10 @@
       ;; magit-status-mode is off
         (message "fuck")))
 
-(add-to-list 'consult-buffer-filter "magit-process*")
-(add-to-list 'consult-buffer-filter "magit-diff*")
-(add-to-list 'consult-buffer-filter "magit-revision*")
-(add-to-list 'consult-buffer-filter "magit-log*")
-(add-to-list 'consult-buffer-filter "magit-refs*")
+;; (add-to-list 'consult-buffer-filter "magit-process*")
+;; (add-to-list 'consult-buffer-filter "magit-diff*")
+;; (add-to-list 'consult-buffer-filter "magit-revision*")
+;; (add-to-list 'consult-buffer-filter "magit-log*")
+;; (add-to-list 'consult-buffer-filter "magit-refs*")
 
 (setq consult-preview-key nil)

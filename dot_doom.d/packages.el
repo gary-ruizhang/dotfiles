@@ -52,10 +52,11 @@
 ;; make emacs works well with system clipboard
 (package! simpleclip)
 (package! evil-escape :disable t)
-(package! sis)
+;; (package! sis)
 (package! org-modern)
-(package! org-anki)
+;; (package! org-anki)
 (package! consult-org-roam)
 (package! catppuccin-theme)
+;; (package! explain-pause-mode)
 ;; profiling
 ;; (package! benchmark-init)

@@ -71,15 +71,15 @@
 
 (customize-set-variable 'org-anki-default-deck "vocabulary")
 
-(sis-ism-lazyman-config
- "com.apple.keylayout.ABC"
- "com.apple.inputmethod.SCIM.Shuangpin")
-(use-package! sis
-  :config
-  (delete "C-h" sis-prefix-override-keys)
-  (sis-global-respect-mode t)
-  (sis-global-context-mode t)
-  (sis-global-cursor-color-mode t))
+;; (sis-ism-lazyman-config
+;;  "com.apple.keylayout.ABC"
+;;  "com.apple.inputmethod.SCIM.Shuangpin")
+;; (use-package! sis
+;;   :config
+;;   (delete "C-h" sis-prefix-override-keys)
+;;   (sis-global-respect-mode t)
+;;   (sis-global-context-mode t)
+;;   (sis-global-cursor-color-mode t))
 
 (load! "ui")
 (load! "org")

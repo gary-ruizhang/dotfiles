@@ -155,5 +155,4 @@
     "search.exclude": {
         "**/target": true
     },
-    "C_Cpp.autocompleteAddParentheses": true,
 }

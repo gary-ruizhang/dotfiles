@@ -37,7 +37,7 @@
 ;; NOTE exclude daily files from org-roam search
 (setq org-roam-file-exclude-regexp "/Users/ruizhang/org-roam/daily")
 ;; FIXME temporary fixes
-(setq org-fold-core-style "overlays")
+;; (setq org-fold-core-style "overlays")
 
 (use-package consult-org-roam
    :ensure t
