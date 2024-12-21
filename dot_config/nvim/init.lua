@@ -1,6 +1,5 @@
 --[[
 
-
 =====================================================================
 ==================== READ THIS BEFORE CONTINUING ====================
 =====================================================================
@@ -209,23 +208,6 @@ vim.api.nvim_set_hl(0, 'LeapBackdrop', { link = 'Comment' })
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
-
--- TODO restore position
-vim.api.nvim_create_autocmd('BufRead', {
-  callback = function(opts)
-    vim.api.nvim_create_autocmd('BufWinEnter', {
-      once = true,
-      buffer = opts.buf,
-      callback = function()
-        local ft = vim.bo[opts.buf].filetype
-        local last_known_line = vim.api.nvim_buf_get_mark(opts.buf, '"')[1]
-        if not (ft:match 'commit' and ft:match 'rebase') and last_known_line > 1 and last_known_line <= vim.api.nvim_buf_line_count(opts.buf) then
-          vim.api.nvim_feedkeys([[g`"]], 'nx', false)
-        end
-      end,
-    })
-  end,
-})
 
 -- Highlight when yanking (copying) text
 --  Try it with `yap` in normal mode
@@ -465,8 +447,6 @@ require('lazy').setup({
       'williamboman/mason-lspconfig.nvim',
       'WhoIsSethDaniel/mason-tool-installer.nvim',
 
-      { 'saghen/blink.cmp' },
-
       -- Useful status updates for LSP.
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
       { 'j-hui/fidget.nvim', opts = {} },
@@ -607,7 +587,7 @@ require('lazy').setup({
       --  When you add nvim-cmp, luasnip, etc. Neovim now has *more* capabilities.
       --  So, we create new capabilities with nvim cmp, and then broadcast that to the servers.
       local capabilities = vim.lsp.protocol.make_client_capabilities()
-      capabilities = vim.tbl_deep_extend('force', capabilities, require('blink.cmp').get_lsp_capabilities(capabilities))
+      capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
 
       -- Enable the following language servers
       --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
@@ -717,311 +697,227 @@ require('lazy').setup({
     },
   },
 
-  -- { -- Autocompletion
-  --   'hrsh7th/nvim-cmp',
-  --   event = { 'InsertEnter', 'CmdlineEnter' },
-  --   dependencies = {
-  --     -- Snippet Engine & its associated nvim-cmp source
-  --     {
-  --       'L3MON4D3/LuaSnip',
-  --       build = (function()
-  --         -- Build Step is needed for regex support in snippets.
-  --         -- This step is not supported in many windows environments.
-  --         -- Remove the below condition to re-enable on windows.
-  --         if vim.fn.has 'win32' == 1 or vim.fn.executable 'make' == 0 then
-  --           return
-  --         end
-  --         return 'make install_jsregexp'
-  --       end)(),
-  --       dependencies = {
-  --         -- `friendly-snippets` contains a variety of premade snippets.
-  --         --    See the README about individual language/framework/plugin snippets:
-  --         --    https://github.com/rafamadriz/friendly-snippets
-  --         -- {
-  --         --   'rafamadriz/friendly-snippets',
-  --         --   config = function()
-  --         --     require('luasnip.loaders.from_vscode').lazy_load()
-  --         --   end,
-  --         -- },
-  --       },
-  --     },
-  --     'saadparwaiz1/cmp_luasnip',
-  --
-  --     -- Adds other completion capabilities.
-  --     --  nvim-cmp does not ship with all sources by default. They are split
-  --     --  into multiple repos for maintenance purposes.
-  --     'hrsh7th/cmp-nvim-lsp',
-  --     'hrsh7th/cmp-path',
-  --     'hrsh7th/cmp-buffer',
-  --     'hrsh7th/cmp-cmdline',
-  --   },
-  --   config = function()
-  --     vim.api.nvim_set_hl(0, 'CmpGhostText', { link = 'Comment', default = true })
-  --     -- See `:help cmp`
-  --     local cmp = require 'cmp'
-  --     local luasnip = require 'luasnip'
-  --     local types = require 'cmp.types'
-  --     luasnip.config.setup {}
-  --     luasnip.config.set_config {
-  --       delete_check_events = 'TextChanged,InsertEnter',
-  --     }
-  --
-  --     cmp.setup {
-  --       snippet = {
-  --         expand = function(args)
-  --           luasnip.lsp_expand(args.body)
-  --         end,
-  --       },
-  --       preselect = cmp.PreselectMode.None,
-  --       completion = { completeopt = 'menu,menuone,noinsert' },
-  --
-  --       -- For an understanding of why these mappings were
-  --       -- chosen, you will need to read `:help ins-completion`
-  --       --
-  --       -- No, but seriously. Please read `:help ins-completion`, it is really good!
-  --       mapping = cmp.mapping.preset.insert {
-  --         ['<C-k>'] = cmp.mapping(cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Select }, { 'i', 'c' }),
-  --         ['<C-j>'] = cmp.mapping(cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Select }, { 'i', 'c' }),
-  --         ['<C-p>'] = cmp.mapping(cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Select }, { 'i', 'c' }),
-  --         ['<C-n>'] = cmp.mapping(cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Select }, { 'i', 'c' }),
-  --         ['<Up>'] = cmp.mapping(cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Select }, { 'i', 'c' }),
-  --         ['<Down>'] = cmp.mapping(cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Select }, { 'i', 'c' }),
-  --
-  --         -- Scroll the documentation window [b]ack / [f]orward
-  --         -- TODO never use
-  --         -- ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-  --         -- ['<C-f>'] = cmp.mapping.scroll_docs(4),
-  --
-  --         -- Accept ([y]es) the completion.
-  --         --  This will auto-import if your LSP supports it.
-  --         --  This will expand snippets if the LSP sent a snippet.
-  --         ['<Tab>'] = cmp.mapping(function(fallback)
-  --           if cmp.visible() then
-  --             -- FIXME actually not needed because of completeopt pre-select first item
-  --             local entry = cmp.get_selected_entry()
-  --             if not entry then
-  --               cmp.select_next_item { behavior = cmp.SelectBehavior.Select }
-  --             end
-  --             cmp.confirm()
-  --           elseif luasnip.expandable() then
-  --             luasnip.expand()
-  --           elseif luasnip.expand_or_locally_jumpable() then
-  --             luasnip.expand_or_jump()
-  --           elseif check_backspace() then
-  --             fallback()
-  --           else
-  --             fallback()
-  --           end
-  --         end, {
-  --           'i',
-  --           's',
-  --           'c',
-  --           -- c = cmp.config.disable, -- fix cmdline autocompletion, workaround
-  --         }),
-  --
-  --         ['<C-f>'] = cmp.mapping(function(fallback)
-  --           if cmp.visible() then
-  --             -- FIXME actually not needed because of completeopt pre-select first item
-  --             local entry = cmp.get_selected_entry()
-  --             if not entry then
-  --               cmp.select_next_item { behavior = cmp.SelectBehavior.Select }
-  --             end
-  --             cmp.confirm()
-  --           elseif luasnip.expandable() then
-  --             luasnip.expand()
-  --           elseif luasnip.expand_or_locally_jumpable() then
-  --             luasnip.expand_or_jump()
-  --           elseif check_backspace() then
-  --             fallback()
-  --           else
-  --             fallback()
-  --           end
-  --         end, {
-  --           'i',
-  --           's',
-  --           'c',
-  --           -- c = cmp.config.disable, -- fix cmdline autocompletion, workaround
-  --         }),
-  --         --
-  --         -- If you prefer more traditional completion keymaps,
-  --         -- you can uncomment the following lines
-  --         --['<CR>'] = cmp.mapping.confirm { select = true },
-  --         --['<Tab>'] = cmp.mapping.select_next_item(),
-  --         --['<S-Tab>'] = cmp.mapping.select_prev_item(),
-  --
-  --         -- Manually trigger a completion from nvim-cmp.
-  --         --  Generally you don't need this, because nvim-cmp will display
-  --         --  completions whenever it has completion options available.
-  --         ['<C-Space>'] = cmp.mapping.complete {},
-  --
-  --         -- Think of <c-l> as moving to the right of your snippet expansion.
-  --         --  So if you have a snippet that's like:
-  --         --  function $name($args)
-  --         --    $body
-  --         --  end
-  --         --
-  --         -- <c-l> will move you to the right of each of the expansion locations.
-  --         -- <c-h> is similar, except moving you backwards.
-  --         -- ['<C-l>'] = cmp.mapping(function()
-  --         --   if luasnip.expand_or_locally_jumpable() then
-  --         --     luasnip.expand_or_jump()
-  --         --   end
-  --         -- end, { 'i', 's' }),
-  --         -- ['<C-h>'] = cmp.mapping(function()
-  --         --   if luasnip.locally_jumpable(-1) then
-  --         --     luasnip.jump(-1)
-  --         --   end
-  --         -- end, { 'i', 's' }),
-  --
-  --         -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
-  --         --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
-  --       },
-  --       sources = {
-  --         { name = 'nvim_lsp' },
-  --         { name = 'luasnip' },
-  --         { name = 'path' },
-  --         -- TODO remove TEXT kind
-  --         -- { name = 'buffer' },
-  --       },
-  --       sorting = {
-  --         priority_weight = 2,
-  --         comparators = {
-  --           cmp.config.compare.offset,
-  --           cmp.config.compare.exact,
-  --           cmp.config.compare.recently_used,
-  --           cmp.config.compare.score,
-  --           function(entry1, entry2)
-  --             local kind1 = entry1:get_kind()
-  --             kind1 = kind1 == types.lsp.CompletionItemKind.Text and 100 or kind1
-  --             local kind2 = entry2:get_kind()
-  --             kind2 = kind2 == types.lsp.CompletionItemKind.Text and 100 or kind2
-  --             if kind1 ~= kind2 then
-  --               if kind1 == types.lsp.CompletionItemKind.Snippet then
-  --                 return false
-  --               end
-  --               if kind2 == types.lsp.CompletionItemKind.Snippet then
-  --                 return true
-  --               end
-  --               local diff = kind1 - kind2
-  --               if diff < 0 then
-  --                 return true
-  --               elseif diff > 0 then
-  --                 return false
-  --               end
-  --             end
-  --           end,
-  --           cmp.config.compare.sort_text,
-  --           cmp.config.compare.length,
-  --           cmp.config.compare.order,
-  --         },
-  --       },
-  --     }
-  --
-  --     cmp.setup.cmdline({ '/', '?' }, {
-  --       completion = { completeopt = 'menu,menuone,noselect,noinsert' },
-  --       sources = {
-  --         { name = 'buffer' },
-  --       },
-  --     })
-  --
-  --     cmp.setup.cmdline(':', {
-  --       completion = { completeopt = 'menu,menuone,noselect,noinsert' },
-  --       sources = cmp.config.sources({
-  --         { name = 'path' },
-  --       }, {
-  --         {
-  --           name = 'cmdline',
-  --           option = {
-  --             ignore_cmds = { 'Man', '!' },
-  --           },
-  --         },
-  --       }),
-  --     })
-  --   end,
-  -- },
-  {
-    'saghen/blink.cmp',
-    -- optional: provides snippets for the snippet source
+  { -- Autocompletion
+    'hrsh7th/nvim-cmp',
+    event = { 'InsertEnter', 'CmdlineEnter' },
     dependencies = {
-      'rafamadriz/friendly-snippets',
-      { 'L3MON4D3/LuaSnip', version = 'v2.*' },
-    },
-
-    -- use a release tag to download pre-built binaries
-    version = 'v0.*',
-    -- AND/OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
-    -- build = 'cargo build --release',
-    -- If you use nix, you can build from source using latest nightly rust with:
-    -- build = 'nix run .#build-plugin',
-
-    ---@module 'blink.cmp'
-    ---@type blink.cmp.Config
-    opts = {
-      -- 'default' for mappings similar to built-in completion
-      -- 'super-tab' for mappings similar to vscode (tab to accept, arrow keys to navigate)
-      -- 'enter' for mappings similar to 'super-tab' but with 'enter' to accept
-      -- see the "default configuration" section below for full documentation on how to define
-      -- your own keymap.
-      keymap = {
-        preset = 'super-tab',
-        ['<C-f>'] = {
-          function(cmp)
-            if cmp.snippet_active() then
-              return cmp.accept()
-            else
-              return cmp.select_and_accept()
-            end
-          end,
-          'snippet_forward',
-          'fallback',
-        },
-      },
-
-      appearance = {
-        -- Sets the fallback highlight groups to nvim-cmp's highlight groups
-        -- Useful for when your theme doesn't support blink.cmp
-        -- will be removed in a future release
-        use_nvim_cmp_as_default = true,
-        -- Set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
-        -- Adjusts spacing to ensure icons are aligned
-        nerd_font_variant = 'mono',
-      },
-
-      snippets = {
-        expand = function(snippet)
-          require('luasnip').lsp_expand(snippet)
-        end,
-        active = function(filter)
-          if filter and filter.direction then
-            return require('luasnip').jumpable(filter.direction)
+      -- Snippet Engine & its associated nvim-cmp source
+      {
+        'L3MON4D3/LuaSnip',
+        build = (function()
+          -- Build Step is needed for regex support in snippets.
+          -- This step is not supported in many windows environments.
+          -- Remove the below condition to re-enable on windows.
+          if vim.fn.has 'win32' == 1 or vim.fn.executable 'make' == 0 then
+            return
           end
-          return require('luasnip').in_snippet()
-        end,
-        jump = function(direction)
-          require('luasnip').jump(direction)
-        end,
-      },
-
-      -- default list of enabled providers defined so that you can extend it
-      -- elsewhere in your config, without redefining it, due to `opts_extend`
-      sources = {
-        default = { 'lsp', 'path', 'snippets', 'buffer' },
-        -- optionally disable cmdline completions
-        -- cmdline = {},
-      },
-
-      completion = {
-        accept = {
-          auto_brackets = { enabled = true },
+          return 'make install_jsregexp'
+        end)(),
+        dependencies = {
+          -- `friendly-snippets` contains a variety of premade snippets.
+          --    See the README about individual language/framework/plugin snippets:
+          --    https://github.com/rafamadriz/friendly-snippets
+          -- {
+          --   'rafamadriz/friendly-snippets',
+          --   config = function()
+          --     require('luasnip.loaders.from_vscode').lazy_load()
+          --   end,
+          -- },
         },
       },
+      'saadparwaiz1/cmp_luasnip',
 
-      -- experimental signature help support
-      -- signature = { enabled = true }
+      -- Adds other completion capabilities.
+      --  nvim-cmp does not ship with all sources by default. They are split
+      --  into multiple repos for maintenance purposes.
+      'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-path',
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-cmdline',
     },
-    -- allows extending the providers array elsewhere in your config
-    -- without having to redefine it
-    opts_extend = { 'sources.default' },
+    config = function()
+      vim.api.nvim_set_hl(0, 'CmpGhostText', { link = 'Comment', default = true })
+      -- See `:help cmp`
+      local cmp = require 'cmp'
+      local luasnip = require 'luasnip'
+      local types = require 'cmp.types'
+      luasnip.config.setup {}
+      luasnip.config.set_config {
+        delete_check_events = 'TextChanged,InsertEnter',
+      }
+
+      cmp.setup {
+        snippet = {
+          expand = function(args)
+            luasnip.lsp_expand(args.body)
+          end,
+        },
+        preselect = cmp.PreselectMode.None,
+        completion = { completeopt = 'menu,menuone,noinsert' },
+
+        -- For an understanding of why these mappings were
+        -- chosen, you will need to read `:help ins-completion`
+        --
+        -- No, but seriously. Please read `:help ins-completion`, it is really good!
+        mapping = cmp.mapping.preset.insert {
+          ['<C-k>'] = cmp.mapping(cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Select }, { 'i', 'c' }),
+          ['<C-j>'] = cmp.mapping(cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Select }, { 'i', 'c' }),
+          ['<C-p>'] = cmp.mapping(cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Select }, { 'i', 'c' }),
+          ['<C-n>'] = cmp.mapping(cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Select }, { 'i', 'c' }),
+          ['<Up>'] = cmp.mapping(cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Select }, { 'i', 'c' }),
+          ['<Down>'] = cmp.mapping(cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Select }, { 'i', 'c' }),
+
+          -- Scroll the documentation window [b]ack / [f]orward
+          -- TODO never use
+          -- ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+          -- ['<C-f>'] = cmp.mapping.scroll_docs(4),
+
+          -- Accept ([y]es) the completion.
+          --  This will auto-import if your LSP supports it.
+          --  This will expand snippets if the LSP sent a snippet.
+          ['<Tab>'] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+              -- FIXME actually not needed because of completeopt pre-select first item
+              local entry = cmp.get_selected_entry()
+              if not entry then
+                cmp.select_next_item { behavior = cmp.SelectBehavior.Select }
+              end
+              cmp.confirm()
+            elseif luasnip.expandable() then
+              luasnip.expand()
+            elseif luasnip.expand_or_locally_jumpable() then
+              luasnip.expand_or_jump()
+            elseif check_backspace() then
+              fallback()
+            else
+              fallback()
+            end
+          end, {
+            'i',
+            's',
+            'c',
+            -- c = cmp.config.disable, -- fix cmdline autocompletion, workaround
+          }),
+
+          ['<C-f>'] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+              -- FIXME actually not needed because of completeopt pre-select first item
+              local entry = cmp.get_selected_entry()
+              if not entry then
+                cmp.select_next_item { behavior = cmp.SelectBehavior.Select }
+              end
+              cmp.confirm()
+            elseif luasnip.expandable() then
+              luasnip.expand()
+            elseif luasnip.expand_or_locally_jumpable() then
+              luasnip.expand_or_jump()
+            elseif check_backspace() then
+              fallback()
+            else
+              fallback()
+            end
+          end, {
+            'i',
+            's',
+            'c',
+            -- c = cmp.config.disable, -- fix cmdline autocompletion, workaround
+          }),
+          --
+          -- If you prefer more traditional completion keymaps,
+          -- you can uncomment the following lines
+          --['<CR>'] = cmp.mapping.confirm { select = true },
+          --['<Tab>'] = cmp.mapping.select_next_item(),
+          --['<S-Tab>'] = cmp.mapping.select_prev_item(),
+
+          -- Manually trigger a completion from nvim-cmp.
+          --  Generally you don't need this, because nvim-cmp will display
+          --  completions whenever it has completion options available.
+          ['<C-Space>'] = cmp.mapping.complete {},
+
+          -- Think of <c-l> as moving to the right of your snippet expansion.
+          --  So if you have a snippet that's like:
+          --  function $name($args)
+          --    $body
+          --  end
+          --
+          -- <c-l> will move you to the right of each of the expansion locations.
+          -- <c-h> is similar, except moving you backwards.
+          -- ['<C-l>'] = cmp.mapping(function()
+          --   if luasnip.expand_or_locally_jumpable() then
+          --     luasnip.expand_or_jump()
+          --   end
+          -- end, { 'i', 's' }),
+          -- ['<C-h>'] = cmp.mapping(function()
+          --   if luasnip.locally_jumpable(-1) then
+          --     luasnip.jump(-1)
+          --   end
+          -- end, { 'i', 's' }),
+
+          -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
+          --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
+        },
+        sources = {
+          { name = 'nvim_lsp' },
+          { name = 'luasnip' },
+          { name = 'path' },
+          -- TODO remove TEXT kind
+          -- { name = 'buffer' },
+        },
+        sorting = {
+          priority_weight = 2,
+          comparators = {
+            cmp.config.compare.offset,
+            cmp.config.compare.exact,
+            cmp.config.compare.recently_used,
+            cmp.config.compare.score,
+            function(entry1, entry2)
+              local kind1 = entry1:get_kind()
+              kind1 = kind1 == types.lsp.CompletionItemKind.Text and 100 or kind1
+              local kind2 = entry2:get_kind()
+              kind2 = kind2 == types.lsp.CompletionItemKind.Text and 100 or kind2
+              if kind1 ~= kind2 then
+                if kind1 == types.lsp.CompletionItemKind.Snippet then
+                  return false
+                end
+                if kind2 == types.lsp.CompletionItemKind.Snippet then
+                  return true
+                end
+                local diff = kind1 - kind2
+                if diff < 0 then
+                  return true
+                elseif diff > 0 then
+                  return false
+                end
+              end
+            end,
+            cmp.config.compare.sort_text,
+            cmp.config.compare.length,
+            cmp.config.compare.order,
+          },
+        },
+      }
+
+      cmp.setup.cmdline({ '/', '?' }, {
+        completion = { completeopt = 'menu,menuone,noselect,noinsert' },
+        sources = {
+          { name = 'buffer' },
+        },
+      })
+
+      cmp.setup.cmdline(':', {
+        completion = { completeopt = 'menu,menuone,noselect,noinsert' },
+        sources = cmp.config.sources({
+          { name = 'path' },
+        }, {
+          {
+            name = 'cmdline',
+            option = {
+              ignore_cmds = { 'Man', '!' },
+            },
+          },
+        }),
+      })
+    end,
   },
 
   { -- You can easily change to a different colorscheme.
@@ -1074,35 +970,37 @@ require('lazy').setup({
         },
       }
 
-      -- require('mini.pairs').setup()
-      --
-      -- -- TODO disable quote pairs for rust
-      -- local rust_group = vim.api.nvim_create_augroup('Rust_disable_single_quote', { clear = true })
-      --
-      -- vim.api.nvim_create_autocmd('FileType', {
-      --   pattern = 'rust',
-      --   group = rust_group,
-      --   callback = function()
-      --     if MiniPairs ~= nil then
-      --       MiniPairs.unmap('i', "'", "''")
-      --     end
-      --   end,
-      --   desc = 'Disable single quote Rust',
-      -- })
-      --
-      -- vim.api.nvim_create_autocmd('User', {
-      --   pattern = 'LazyLoad',
-      --   group = vim.api.nvim_create_augroup('Rust_disable_single_quote_lazyload', { clear = true }),
-      --   callback = function(event)
-      --     if event.data == 'mini.pairs' then
-      --       vim.api.nvim_exec_autocmds('FileType', {
-      --         pattern = 'rust',
-      --         group = rust_group,
-      --       })
-      --     end
-      --   end,
-      --   desc = 'Disable single quote Rust',
-      -- })
+      require('mini.align').setup()
+
+      require('mini.pairs').setup()
+
+      -- TODO disable quote pairs for rust
+      local rust_group = vim.api.nvim_create_augroup('Rust_disable_single_quote', { clear = true })
+
+      vim.api.nvim_create_autocmd('FileType', {
+        pattern = 'rust',
+        group = rust_group,
+        callback = function()
+          if MiniPairs ~= nil then
+            MiniPairs.unmap('i', "'", "''")
+          end
+        end,
+        desc = 'Disable single quote Rust',
+      })
+
+      vim.api.nvim_create_autocmd('User', {
+        pattern = 'LazyLoad',
+        group = vim.api.nvim_create_augroup('Rust_disable_single_quote_lazyload', { clear = true }),
+        callback = function(event)
+          if event.data == 'mini.pairs' then
+            vim.api.nvim_exec_autocmds('FileType', {
+              pattern = 'rust',
+              group = rust_group,
+            })
+          end
+        end,
+        desc = 'Disable single quote Rust',
+      })
 
       -- Simple and easy statusline.
       --  You could remove this setup call if you don't like it,
