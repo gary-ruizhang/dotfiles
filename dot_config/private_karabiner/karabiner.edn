@@ -146,6 +146,9 @@
 {:des "ctrl-l to cmd-l in dash" :rules [[:!Tl :!Cl [:dash]]]}
 {:des "ctrl-l to cmd-shift-f in devutils" :rules [[:!Tl :!CSf [:devutils]]]}
 
+; code
+{:des "ctrl-f to tab in code" :rules [[:!Tf :tab [:code]]]}
+
 ; obsidian
 {:des "ctrl-q to cmd-o in obsidian" :rules [[:!Tq :!Co [:obsidian]]]}
 {:des "alt-x to cmd-p in obsidian" :rules [[:!Ox :!Cp [:obsidian]]]}
@@ -169,11 +172,11 @@
 :des "quickly switch between tabs in tmux" 
 :rules [
 [:!Cw :vk_none [:terminal]]
-[:!Ce [:!Ta :w] [:terminal]]
-[:!Ttab [:!Ta :n] [:terminal]]
-[:!TStab [:!Ta :p] [:terminal]]
+[:!Ce [:!Oe] [:terminal]]
 [:!Cl [:!Ta :n] [:terminal]]
 [:!Ch [:!Ta :p] [:terminal]]
+[:!Cj [:!Ta :j] [:terminal]]
+[:!Ck [:!Ta :k] [:terminal]]
 [:!C0 [:!Ta :0] [:terminal]]
 [:!C1 [:!Ta :1] [:terminal]]
 [:!C2 [:!Ta :2] [:terminal]]

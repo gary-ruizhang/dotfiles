@@ -954,6 +954,24 @@
           "type" : "basic"
         } ]
       }, {
+        "description" : "ctrl-f to tab in code",
+        "manipulators" : [ {
+          "from" : {
+            "key_code" : "f",
+            "modifiers" : {
+              "mandatory" : [ "left_control" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "tab"
+          } ],
+          "conditions" : [ {
+            "type" : "frontmost_application_if",
+            "bundle_identifiers" : [ "^com\\.microsoft\\.VSCode$" ]
+          } ],
+          "type" : "basic"
+        } ]
+      }, {
         "description" : "ctrl-q to cmd-o in obsidian",
         "manipulators" : [ {
           "from" : {
@@ -1229,46 +1247,8 @@
             }
           },
           "to" : [ {
-            "key_code" : "a",
-            "modifiers" : [ "left_control" ]
-          }, {
-            "key_code" : "w"
-          } ],
-          "conditions" : [ {
-            "type" : "frontmost_application_if",
-            "bundle_identifiers" : [ "^com\\.github\\.wez\\.wezterm$", "^org\\.alacritty$" ]
-          } ],
-          "type" : "basic"
-        }, {
-          "from" : {
-            "key_code" : "tab",
-            "modifiers" : {
-              "mandatory" : [ "left_control" ]
-            }
-          },
-          "to" : [ {
-            "key_code" : "a",
-            "modifiers" : [ "left_control" ]
-          }, {
-            "key_code" : "n"
-          } ],
-          "conditions" : [ {
-            "type" : "frontmost_application_if",
-            "bundle_identifiers" : [ "^com\\.github\\.wez\\.wezterm$", "^org\\.alacritty$" ]
-          } ],
-          "type" : "basic"
-        }, {
-          "from" : {
-            "key_code" : "tab",
-            "modifiers" : {
-              "mandatory" : [ "left_control", "left_shift" ]
-            }
-          },
-          "to" : [ {
-            "key_code" : "a",
-            "modifiers" : [ "left_control" ]
-          }, {
-            "key_code" : "p"
+            "key_code" : "e",
+            "modifiers" : [ "left_option" ]
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_if",
@@ -1305,6 +1285,42 @@
             "modifiers" : [ "left_control" ]
           }, {
             "key_code" : "p"
+          } ],
+          "conditions" : [ {
+            "type" : "frontmost_application_if",
+            "bundle_identifiers" : [ "^com\\.github\\.wez\\.wezterm$", "^org\\.alacritty$" ]
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "j",
+            "modifiers" : {
+              "mandatory" : [ "left_command" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "a",
+            "modifiers" : [ "left_control" ]
+          }, {
+            "key_code" : "j"
+          } ],
+          "conditions" : [ {
+            "type" : "frontmost_application_if",
+            "bundle_identifiers" : [ "^com\\.github\\.wez\\.wezterm$", "^org\\.alacritty$" ]
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "k",
+            "modifiers" : {
+              "mandatory" : [ "left_command" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "a",
+            "modifiers" : [ "left_control" ]
+          }, {
+            "key_code" : "k"
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_if",

@@ -104,7 +104,7 @@ vim.opt.number = true
 --  Experiment for yourself to see if you like it!
 vim.opt.relativenumber = true
 
-vim.opt_local.conceallevel = 1
+vim.opt.conceallevel = 1
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = ''
@@ -121,6 +121,23 @@ vim.opt.clipboard = ''
 
 -- Enable break indent
 vim.opt.breakindent = false
+
+-- TODO restore last position
+vim.api.nvim_create_autocmd('BufRead', {
+  callback = function(opts)
+    vim.api.nvim_create_autocmd('BufWinEnter', {
+      once = true,
+      buffer = opts.buf,
+      callback = function()
+        local ft = vim.bo[opts.buf].filetype
+        local last_known_line = vim.api.nvim_buf_get_mark(opts.buf, '"')[1]
+        if not (ft:match 'commit' and ft:match 'rebase') and last_known_line > 1 and last_known_line <= vim.api.nvim_buf_line_count(opts.buf) then
+          vim.api.nvim_feedkeys([[g`"]], 'nx', false)
+        end
+      end,
+    })
+  end,
+})
 
 -- Save undo history
 vim.opt.undofile = false
@@ -169,10 +186,13 @@ vim.keymap.set('n', '<C-l>', '<cmd>nohlsearch<CR>')
 vim.keymap.set('n', ';', ':', { silent = false })
 
 -- Diagnostic keymaps
-vim.keymap.set('n', 'gp', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
-vim.keymap.set('n', 'gn', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
+-- vim.keymap.set('n', 'gp', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
+-- vim.keymap.set('n', 'gn', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+vim.keymap.set('n', '<C-c>', '<cmd>only<CR>', { desc = 'close other splits' })
+
+vim.keymap.set('i', '<C-e>', '<Right><Right>')
 
 -- Leap.nvim keymaps
 vim.keymap.set('n', 's', '<Plug>(leap)')
@@ -244,6 +264,17 @@ local check_backspace = function()
   local col = vim.fn.col '.' - 1
   return col == 0 or vim.fn.getline('.'):sub(col, col):match '%s'
 end
+
+-- require('oil').setup()
+vim.keymap.set('n', '-', '<CMD>Oil<CR>', { desc = 'Open parent directory' })
+
+local fzf_opts = {
+  fuzzy = true, -- false will only do exact matching
+  override_generic_sorter = true, -- override the generic sorter
+  override_file_sorter = true, -- override the file sorter
+  case_mode = 'smart_case', -- or "ignore_case" or "respect_case"
+  -- the default case_mode is "smart_case"
+}
 
 --
 -- NOTE: Here is where you install your plugins.
@@ -368,7 +399,9 @@ require('lazy').setup({
 
       -- [[ Configure Telescope ]]
       -- See `:help telescope` and `:help telescope.setup()`
-      require('telescope').setup {
+      local open_with_trouble = require('trouble.sources.telescope').open
+      local telescope = require 'telescope'
+      telescope.setup {
         -- You can put your default mappings / updates / etc. in here
         --  All the info you're looking for is in `:help telescope.setup()`
         --
@@ -378,34 +411,46 @@ require('lazy').setup({
               ['<Esc>'] = function(...)
                 return require('telescope.actions').close(...)
               end,
+              ['<c-q>'] = open_with_trouble,
             },
           },
         },
-        -- pickers = {}
+        pickers = {
+          -- Manually set sorter, for some reason not picked up automatically
+          lsp_dynamic_workspace_symbols = {
+            sorter = telescope.extensions.fzf.native_fzf_sorter(fzf_opts),
+          },
+        },
         extensions = {
           ['ui-select'] = {
             require('telescope.themes').get_dropdown(),
+          },
+          smart_open = {
+            match_algorithm = 'fzf',
+            disable_devicons = false,
           },
         },
       }
 
       -- Enable Telescope extensions if they are installed
-      pcall(require('telescope').load_extension, 'fzf')
-      pcall(require('telescope').load_extension, 'ui-select')
+      pcall(telescope.load_extension, 'fzf')
+      pcall(telescope.load_extension, 'ui-select')
 
       -- See `:help telescope.builtin`
       local builtin = require 'telescope.builtin'
       vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
       vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
       vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
-      vim.keymap.set('n', '<C-q>', builtin.find_files, { desc = '[S]earch [F]iles' })
+      vim.keymap.set('n', '<C-q>', function()
+        telescope.extensions.smart_open.smart_open()
+      end, { noremap = true, silent = true })
       vim.keymap.set('n', '<M-x>', builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
       vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
       vim.keymap.set('n', '<S-M-f>', builtin.live_grep, { desc = '[S]earch by [G]rep' })
       vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
       vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
       vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
-      vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
+      vim.keymap.set('n', '<M-e>', builtin.buffers, { desc = '[ ] Find existing buffers' })
 
       -- Slightly advanced example of overriding default behavior and theme
       vim.keymap.set('n', '<leader>/', function()
@@ -431,7 +476,99 @@ require('lazy').setup({
       end, { desc = '[S]earch [N]eovim files' })
     end,
   },
-
+  {
+    'danielfalk/smart-open.nvim',
+    branch = '0.2.x',
+    config = function()
+      require('telescope').load_extension 'smart_open'
+    end,
+    dependencies = {
+      'kkharji/sqlite.lua',
+      -- Only required if using match_algorithm fzf
+      { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+      -- Optional.  If installed, native fzy will be used when match_algorithm is fzy
+      -- { 'nvim-telescope/telescope-fzy-native.nvim' },
+    },
+  },
+  {
+    'folke/trouble.nvim',
+    opts = {}, -- for default options, refer to the configuration section for custom setup.
+    cmd = 'Trouble',
+    keys = {
+      {
+        '<leader>xx',
+        '<cmd>Trouble diagnostics toggle<cr>',
+        desc = 'Diagnostics (Trouble)',
+      },
+      {
+        '<leader>xX',
+        '<cmd>Trouble diagnostics toggle filter.buf=0<cr>',
+        desc = 'Buffer Diagnostics (Trouble)',
+      },
+      {
+        '<leader>cs',
+        '<cmd>Trouble symbols toggle focus=false<cr>',
+        desc = 'Symbols (Trouble)',
+      },
+      {
+        '<leader>cl',
+        '<cmd>Trouble lsp toggle focus=false win.position=right<cr>',
+        desc = 'LSP Definitions / references / ... (Trouble)',
+      },
+      {
+        '<leader>xL',
+        '<cmd>Trouble loclist toggle<cr>',
+        desc = 'Location List (Trouble)',
+      },
+      {
+        '<leader>xQ',
+        '<cmd>Trouble qflist toggle<cr>',
+        desc = 'Quickfix List (Trouble)',
+      },
+      {
+        'gp',
+        function()
+          if require('trouble').is_open() then
+            require('trouble').prev { skip_groups = true, jump = true }
+          else
+            local ok, err = pcall(vim.diagnostic.goto_prev)
+            if not ok then
+              vim.notify(err, vim.log.levels.ERROR)
+            end
+          end
+        end,
+        desc = 'Previous Trouble/Quickfix Item',
+      },
+      {
+        'gn',
+        function()
+          if require('trouble').is_open() then
+            require('trouble').next { skip_groups = true, jump = true }
+          else
+            local ok, err = pcall(vim.diagnostic.goto_next)
+            if not ok then
+              vim.notify(err, vim.log.levels.ERROR)
+            end
+          end
+        end,
+        desc = 'Next Trouble/Quickfix Item',
+      },
+    },
+  },
+  {
+    'folke/snacks.nvim',
+    priority = 1000,
+    lazy = false,
+    ---@type snacks.Config
+    opts = {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+      indent = { enabled = true },
+      scope = { enabled = true },
+      quickfile = { enabled = true },
+    },
+  },
   {
     'ThePrimeagen/harpoon',
     branch = 'harpoon2',
@@ -601,7 +738,7 @@ require('lazy').setup({
       local servers = {
         -- clangd = {},
         gopls = {},
-        pyright = {},
+        -- pyright = {},
         -- ruff = {},
         rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
@@ -861,40 +998,44 @@ require('lazy').setup({
           { name = 'luasnip' },
           { name = 'path' },
           -- TODO remove TEXT kind
-          -- { name = 'buffer' },
+          { name = 'buffer' },
         },
-        sorting = {
-          priority_weight = 2,
-          comparators = {
-            cmp.config.compare.offset,
-            cmp.config.compare.exact,
-            cmp.config.compare.recently_used,
-            cmp.config.compare.score,
-            function(entry1, entry2)
-              local kind1 = entry1:get_kind()
-              kind1 = kind1 == types.lsp.CompletionItemKind.Text and 100 or kind1
-              local kind2 = entry2:get_kind()
-              kind2 = kind2 == types.lsp.CompletionItemKind.Text and 100 or kind2
-              if kind1 ~= kind2 then
-                if kind1 == types.lsp.CompletionItemKind.Snippet then
-                  return false
-                end
-                if kind2 == types.lsp.CompletionItemKind.Snippet then
-                  return true
-                end
-                local diff = kind1 - kind2
-                if diff < 0 then
-                  return true
-                elseif diff > 0 then
-                  return false
-                end
-              end
-            end,
-            cmp.config.compare.sort_text,
-            cmp.config.compare.length,
-            cmp.config.compare.order,
-          },
-        },
+        -- sorting = {
+        --   priority_weight = 2,
+        --   comparators = {
+        --     cmp.config.compare.offset,
+        --     cmp.config.compare.exact,
+        --     -- compare.scopes,
+        --     cmp.config.compare.score,
+        --     cmp.config.compare.recently_used,
+        --     cmp.config.compare.locality,
+        --     -- TODO put snippet always bottom
+        --     function(entry1, entry2)
+        --       local kind1 = entry1:get_kind()
+        --       kind1 = kind1 == types.lsp.CompletionItemKind.Text and 100 or kind1
+        --       local kind2 = entry2:get_kind()
+        --       kind2 = kind2 == types.lsp.CompletionItemKind.Text and 100 or kind2
+        --       if kind1 ~= kind2 then
+        --         if kind1 == types.lsp.CompletionItemKind.Snippet then
+        --           return false
+        --         end
+        --         if kind2 == types.lsp.CompletionItemKind.Snippet then
+        --           return true
+        --         end
+        --         local diff = kind1 - kind2
+        --         if diff < 0 then
+        --           return true
+        --         elseif diff > 0 then
+        --           return false
+        --         end
+        --       end
+        --     end,
+        --     cmp.config.compare.kind,
+        --     -- compare.sort_text,
+        --     cmp.config.compare.length,
+        --     cmp.config.compare.order,
+        --   },
+        -- },
       }
 
       cmp.setup.cmdline({ '/', '?' }, {
@@ -963,10 +1104,11 @@ require('lazy').setup({
           add = 'ys',
           delete = 'ds',
           replace = 'cs',
-          -- find = 'gsf',
-          -- find_left = 'gsF',
-          -- highlight = 'gsh',
-          -- update_n_lines = 'gsn',
+          -- never use just not conflict with leap.nvim
+          find = 'gsf',
+          find_left = 'gsF',
+          highlight = 'gsh',
+          update_n_lines = 'gsn',
         },
       }
 
@@ -1056,6 +1198,31 @@ require('lazy').setup({
   {
     'mfussenegger/nvim-jdtls',
   },
+  {
+    'scalameta/nvim-metals',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+    },
+    ft = { 'scala', 'sbt', 'java' },
+    opts = function()
+      local metals_config = require('metals').bare_config()
+      metals_config.on_attach = function(client, bufnr)
+        -- your on_attach function
+      end
+
+      return metals_config
+    end,
+    config = function(self, metals_config)
+      local nvim_metals_group = vim.api.nvim_create_augroup('nvim-metals', { clear = true })
+      vim.api.nvim_create_autocmd('FileType', {
+        pattern = self.ft,
+        callback = function()
+          require('metals').initialize_or_attach(metals_config)
+        end,
+        group = nvim_metals_group,
+      })
+    end,
+  },
   -- The following two comments only work if you have downloaded the kickstart repo, not just copy pasted the
   -- init.lua. If you want these files, they are in the repository, so you can just download them and
   -- place them in the correct locations.
@@ -1087,7 +1254,67 @@ require('lazy').setup({
         },
       },
 
+      mappings = {
+        -- Overrides the 'gf' mapping to work on markdown/wiki links within your vault.
+        ['gf'] = {
+          action = function()
+            return require('obsidian').util.gf_passthrough()
+          end,
+          opts = { noremap = false, expr = true, buffer = true },
+        },
+        -- Toggle check-boxes.
+        ['<C-c><C-c>'] = {
+          action = function()
+            return require('obsidian').util.toggle_checkbox()
+          end,
+          opts = { buffer = true },
+        },
+        -- open TOC
+        ['<M-i>'] = {
+          action = function()
+            return require 'obsidian.commands.toc'(require('obsidian').get_client())
+          end,
+        },
+      },
       -- see below for full list of options 👇
+    },
+  },
+
+  {
+    'ZWindL/orphans.nvim',
+    config = function()
+      require('orphans').setup {}
+    end,
+  },
+
+  {
+    'stevearc/oil.nvim',
+    ---@module 'oil'
+    ---@type oil.SetupOpts
+    opts = {
+      keymaps = {
+        ['q'] = { 'actions.close', mode = 'n' },
+      },
+    },
+    -- Optional dependencies
+    -- dependencies = { { "echasnovski/mini.icons", opts = {} } },
+    dependencies = { 'nvim-tree/nvim-web-devicons' }, -- use if prefer nvim-web-devicons
+  },
+
+  -- lazy.nvim
+  {
+    'folke/noice.nvim',
+    event = 'VeryLazy',
+    opts = {
+      -- add any options here
+    },
+    dependencies = {
+      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+      'MunifTanjim/nui.nvim',
+      -- OPTIONAL:
+      --   `nvim-notify` is only needed, if you want to use the notification view.
+      --   If not available, we use `mini` as the fallback
+      -- "rcarriga/nvim-notify",
     },
   },
 

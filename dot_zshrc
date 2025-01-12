@@ -53,7 +53,7 @@ alias l='ls -alF -snewest -I .DS_Store'
 alias awk=gawk
 # alias cat to bat
 alias cat=bat
-alias top=btop
+# alias top=btop
 
 alias python=python3
 alias td='echo 164517 | sudo -S tcpdump'
@@ -152,6 +152,7 @@ alias da='fc -e - d="git_add "'
 alias dc='fc -e - d="git_checkout "'
 
 alias c=cargo
+alias cn='cargo +nightly'
 
 # stash specific file path
 gs() {
@@ -218,10 +219,19 @@ alias topgrade='topgrade && brew bundle dump --force --file=~/.config/homebrew/B
 # install on new machine
 # brew bundle install --file=~/.config/homebrew/Brewfile
 
-alias vim=nvim
-alias  vi=nvim
-alias   v=nvim
-alias   n=nvim
+function nvim_help() {
+  if [ $# -eq 0 ]
+  then
+    nvim .
+  else
+    nvim $1
+  fi
+}
+
+alias vim=nvim_help
+alias  vi=nvim_help
+alias   v=nvim_help
+alias   n=nvim_help
 
 ## Tools
 
@@ -243,11 +253,9 @@ export PATH=$PATH:$HOME/.luarocks/bin:
 # ~/.tmux/plugins
 export PATH=$HOME/.tmux/plugins/t-smart-tmux-session-manager/bin:$PATH
 
-# bigdata
-export SPARK_HOME="/Users/ruizhang/bigdata/spark-3.2.1-bin-hadoop3.2"
-export PATH=$PATH:$SPARK_HOME/bin
-
 export GOKU_EDN_CONFIG_FILE=$HOME/.config/karabiner/karabiner.edn
+
+export PATH="$PATH:/Users/ruizhang/Library/Application Support/Coursier/bin"
 
 # config for ssl
 export SSLKEYLOGFILE=/Users/ruizhang/keylog.txt
