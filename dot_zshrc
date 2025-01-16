@@ -338,6 +338,8 @@ export JAVA_HOME=`/usr/libexec/java_home -v 21.0.1`
 
 export BW_SESSION="XNhzIzxFPV+7GXjEgRgbNoF7N5LSQobUewEjC/7UiD1QdBBCjTjblTldAKMnd4z8wEzYmUNrH1roR7eV22+PLw=="
 
+export XDG_CONFIG_HOME="$HOME/.config"
+
 clear-ctrl-r() {
   zle autosuggest-clear
   # TODO clear autosuggestions before list history

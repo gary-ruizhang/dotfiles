@@ -101,8 +101,8 @@
 {:des "ctrl-m to toggle menu bar" :rules [[:!Tm :!Tf2]]}
 
 ;; TODO for easy typing
-{:des "\\ to |" :rules [[:backslash :!Sbackslash]]}
-{:des "| to \\" :rules [[:!Sbackslash :backslash]]}
+; {:des "\\ to |" :rules [[:backslash :!Sbackslash]]}
+; {:des "| to \\" :rules [[:!Sbackslash :backslash]]}
 
 ;; app
 {:des "cmd-f to ctrl-a + tab in terminal" :rules [[:!Cf [:!Ta :tab] [:terminal]]]}
@@ -134,6 +134,7 @@
 {:des "ctrl-i to cmd-] in skim" :rules [[:!Ti :!Cclose_bracket [:skim]]]}
 
 {:des "cmd-e to cmd-shift-a in chrome" :rules [[:!Ce :!CSa [:chrome]]]}
+{:des "ctrl-q to cmd-shift-a in chrome" :rules [[:!Tq :!CSa [:chrome]]]}
 {:des "cmd-0 to ctrl-q in chrome" :rules [[:!C0 :!Tq [:chrome]]]}
 {:des "ctrl-l to cmd-l in chrome" :rules [[:!Tl :!Cl [:chrome]]]}
 
@@ -173,6 +174,7 @@
 :rules [
 [:!Cw :vk_none [:terminal]]
 [:!Ce [:!Oe] [:terminal]]
+[:!Cr [:!Or] [:terminal]]
 [:!Cl [:!Ta :n] [:terminal]]
 [:!Ch [:!Ta :p] [:terminal]]
 [:!Cj [:!Ta :j] [:terminal]]

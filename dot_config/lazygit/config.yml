@@ -1,0 +1,6 @@
+git:
+  paging:
+    pager: delta --dark --paging=never
+os:
+  edit: 'nvim'
+

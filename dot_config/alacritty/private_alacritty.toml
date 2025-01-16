@@ -6,19 +6,19 @@ TERM = "xterm-256color"
 size = 20
 
 [font.bold]
-family = "MonoLisa Nerd Font"
+family = "MonoLisa Nerd Font Mono"
 style = "Bold"
 
 [font.bold_italic]
-family = "MonoLisa Nerd Font"
+family = "MonoLisa Nerd Font Mono"
 style = "Bold Italic"
 
 [font.italic]
-family = "MonoLisa Nerd Font"
+family = "MonoLisa Nerd Font Mono"
 style = "Italic"
 
 [font.normal]
-family = "MonoLisa Nerd Font"
+family = "MonoLisa Nerd Font Mono"
 style = "Regular"
 
 [window]
