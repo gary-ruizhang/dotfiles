@@ -293,25 +293,10 @@
           "type" : "basic"
         } ]
       }, {
-        "description" : "ctrl-m to toggle menu bar",
+        "description" : "cmd-w to ctrl-a + tab in terminal",
         "manipulators" : [ {
           "from" : {
-            "key_code" : "m",
-            "modifiers" : {
-              "mandatory" : [ "left_control" ]
-            }
-          },
-          "to" : [ {
-            "key_code" : "f2",
-            "modifiers" : [ "left_control" ]
-          } ],
-          "type" : "basic"
-        } ]
-      }, {
-        "description" : "cmd-f to ctrl-a + tab in terminal",
-        "manipulators" : [ {
-          "from" : {
-            "key_code" : "f",
+            "key_code" : "w",
             "modifiers" : {
               "mandatory" : [ "left_command" ]
             }
@@ -348,6 +333,41 @@
           "type" : "basic"
         } ]
       }, {
+        "description" : "cmd-shift-i to alt-shift-i in terminal",
+        "manipulators" : [ {
+          "from" : {
+            "key_code" : "i",
+            "modifiers" : {
+              "mandatory" : [ "left_command", "left_shift" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "i",
+            "modifiers" : [ "left_option", "left_shift" ]
+          } ],
+          "conditions" : [ {
+            "type" : "frontmost_application_if",
+            "bundle_identifiers" : [ "^com\\.github\\.wez\\.wezterm$", "^org\\.alacritty$" ]
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "i",
+            "modifiers" : {
+              "mandatory" : [ "left_command", "left_shift" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "i",
+            "modifiers" : [ "left_option", "left_shift" ]
+          } ],
+          "conditions" : [ {
+            "type" : "frontmost_application_if",
+            "bundle_identifiers" : [ "^com\\.github\\.wez\\.wezterm$", "^org\\.alacritty$" ]
+          } ],
+          "type" : "basic"
+        } ]
+      }, {
         "description" : "cmd-z to ctrl-a + z in terminal",
         "manipulators" : [ {
           "from" : {
@@ -369,6 +389,27 @@
           "type" : "basic"
         } ]
       }, {
+        "description" : "ctrl-m to toggle tmux status bar",
+        "manipulators" : [ {
+          "from" : {
+            "key_code" : "m",
+            "modifiers" : {
+              "mandatory" : [ "left_control" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "a",
+            "modifiers" : [ "left_control" ]
+          }, {
+            "key_code" : "m"
+          } ],
+          "conditions" : [ {
+            "type" : "frontmost_application_if",
+            "bundle_identifiers" : [ "^com\\.github\\.wez\\.wezterm$", "^org\\.alacritty$" ]
+          } ],
+          "type" : "basic"
+        } ]
+      }, {
         "description" : "cmd-i to alt-i in terminal",
         "manipulators" : [ {
           "from" : {
@@ -380,25 +421,6 @@
           "to" : [ {
             "key_code" : "i",
             "modifiers" : [ "left_option" ]
-          } ],
-          "conditions" : [ {
-            "type" : "frontmost_application_if",
-            "bundle_identifiers" : [ "^com\\.github\\.wez\\.wezterm$", "^org\\.alacritty$" ]
-          } ],
-          "type" : "basic"
-        } ]
-      }, {
-        "description" : "cmd-shift-i to alt-shift-i in terminal",
-        "manipulators" : [ {
-          "from" : {
-            "key_code" : "i",
-            "modifiers" : {
-              "mandatory" : [ "left_command", "left_shift" ]
-            }
-          },
-          "to" : [ {
-            "key_code" : "i",
-            "modifiers" : [ "left_option", "left_shift" ]
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_if",
@@ -1219,13 +1241,14 @@
         "description" : "quickly switch between tabs in tmux",
         "manipulators" : [ {
           "from" : {
-            "key_code" : "w",
+            "key_code" : "c",
             "modifiers" : {
               "mandatory" : [ "left_command" ]
             }
           },
           "to" : [ {
-            "key_code" : "vk_none"
+            "key_code" : "c",
+            "modifiers" : [ "left_option" ]
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_if",
@@ -1250,6 +1273,22 @@
           "type" : "basic"
         }, {
           "from" : {
+            "key_code" : "b",
+            "modifiers" : {
+              "mandatory" : [ "left_command" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "b",
+            "modifiers" : [ "left_option" ]
+          } ],
+          "conditions" : [ {
+            "type" : "frontmost_application_if",
+            "bundle_identifiers" : [ "^com\\.github\\.wez\\.wezterm$", "^org\\.alacritty$" ]
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
             "key_code" : "r",
             "modifiers" : {
               "mandatory" : [ "left_command" ]
@@ -1257,6 +1296,38 @@
           },
           "to" : [ {
             "key_code" : "r",
+            "modifiers" : [ "left_option" ]
+          } ],
+          "conditions" : [ {
+            "type" : "frontmost_application_if",
+            "bundle_identifiers" : [ "^com\\.github\\.wez\\.wezterm$", "^org\\.alacritty$" ]
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "f",
+            "modifiers" : {
+              "mandatory" : [ "left_command" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "f",
+            "modifiers" : [ "left_option" ]
+          } ],
+          "conditions" : [ {
+            "type" : "frontmost_application_if",
+            "bundle_identifiers" : [ "^com\\.github\\.wez\\.wezterm$", "^org\\.alacritty$" ]
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "p",
+            "modifiers" : {
+              "mandatory" : [ "left_command" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "x",
             "modifiers" : [ "left_option" ]
           } ],
           "conditions" : [ {

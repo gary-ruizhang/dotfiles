@@ -1,6 +1,9 @@
 return {
+  { "slugbyte/lackluster.nvim" },
   {
     "LazyVim/LazyVim",
-    opts = {},
+    opts = {
+      colorscheme = "lackluster-mint",
+    },
   },
 }

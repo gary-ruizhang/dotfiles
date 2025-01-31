@@ -1,5 +1,6 @@
 " minimum setup for edit in editor command
 nnoremap ; :
+vnoremap ; :
 let &t_SI = "\e[6 q"
 let &t_EI = "\e[2 q"
 set ttimeout

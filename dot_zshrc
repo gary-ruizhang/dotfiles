@@ -1,37 +1,13 @@
-## prof if need, don't forget the zprof at end of file
-# zmodload zsh/zprof
-
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
+autoload -Uz compinit
+compinit
 
 ## Settings
-setopt MENU_COMPLETE
-# case-insensitive,partial-word and then substring completion
-zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
-# set descriptions format to enable group support
-zstyle ':completion:*:descriptions' format '[%d]'
-# set list-colors to enable filename colorizing
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-# preview directory's content with eza when completing cd
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
-zstyle ':fzf-tab:*' fzf-command fzf
-
 # Enable Ctrl-x-e to edit command line
 bindkey -e
 autoload -U edit-command-line
 zle -N edit-command-line
 bindkey '^xe' edit-command-line
 bindkey '^x^e' edit-command-line
-
-# bindkey '^w' backward-kill-word
-# how zsh decide a word, useful /foo/bar ctrl-w /foo
-# autoload -U select-word-style
-# select-word-style bash
 
 # only work perfectly solution 
 export WORDCHARS=
@@ -56,7 +32,6 @@ alias cat=bat
 # alias top=btop
 
 alias python=python3
-alias td='echo 164517 | sudo -S tcpdump'
 
 # navi for ctrl-g
 eval "$(navi widget zsh)"
@@ -68,118 +43,10 @@ alias chc="chezmoi cd"
 alias cha="chezmoi add"
 alias chd="chezmoi diff"
 
-# bash help command for zsh
-# TODO not work, (no such hash table element: run-help)
-# unalias run-help
-# autoload run-help
-# HELPDIR=$(command brew --prefix)/share/zsh/help
-# alias help=run-help
-
-alias p=perl
-alias t=touch
 alias g=git
-alias gl="git log --date=format-local:'%Y-%m-%d %H:%M:%S'"
-eval $(thefuck --alias f)
-
-gm() {
-  if [ $# -eq 0 ]
-  then
-    git commit
-  else
-    git commit -m $1
-  fi
-}
-
-gam() {
-  if [ $# -eq 0 ]
-  then
-    git commit
-  else
-    git commit -am $1
-  fi
-}
-
-# workflow: git status -> git diff -> git add or checkout --
-#
-# r='fc -e -' repeat last command
-# g status -s -> diff
-#
-s() {
-  if [ $# -eq 0 ]
-  then
-    script -q /dev/null git status -s | nl | awk "{\$1=\$1};1"
-  else
-    git status -s | head -n$1 | awk "NR==$1 { printf \$2}" | pbcopy
-  fi
-}
-
-#useful utilities for s()
-alias s1='s 1'
-alias s2='s 2'
-alias s3='s 3'
-alias s4='s 4'
-alias s5='s 5'
-alias s6='s 6'
-alias s7='s 7'
-alias s8='s 8'
-alias s9='s 9'
-
-d() {
-  # FIXME not test all git status -s situation, like merge conflicts or cherry-pick
-  git diff $(git status -s | head -n$1 | awk "NR==$1 { print \$2}")
-}
-git_add() {
-  git add $(git status -s | head -n$1 | awk "NR==$1 { print \$2}")
-}
-git_checkout() {
-  git checkout -- $(git status -s | head -n$1 | awk "NR==$1 { print \$2}")
-}
-#
-#useful utilities for d()
-alias d1='d 1'
-alias d2='d 2'
-alias d3='d 3'
-alias d4='d 4'
-alias d5='d 5'
-alias d6='d 6'
-alias d7='d 7'
-alias d8='d 8'
-alias d9='d 9'
-# diff -> add
-# NOTE extra space to suitable for both `dn` and `d n` operations
-alias da='fc -e - d="git_add "'
-# diff -> checkout --
-alias dc='fc -e - d="git_checkout "'
 
 alias c=cargo
 alias cn='cargo +nightly'
-
-# stash specific file path
-gs() {
-  local number=$1
-  local len=${#number}
-  local gs_temp=""
-  for ((i=0; i<len; i++))
-  do
-    local index=${number:$i:1}
-    gs_temp="${gs_temp} $(git status -s | head -n$index | awk "NR==$index { print \$2}" | tr -d '\n')"
-  done
-  # TODO use $gs_temp directly the string will become ':(,prefix:0)' + the real string, need to echo for transform
-  git stash push $(echo $gs_temp)
-}
-
-# gcp which used when want to cherry-pick current newest commit to another branch
-# alias not convient for long command
-gcp() {
-  local cherry=$(git show --oneline | head -1 | awk '{ print $1 }')
-  echo $cherry | tr -d '\n' | pbcopy
-  echo $cherry
-}
-
-gr() {
-  git reset
-  git checkout -- .idea
-}
 
 function proxy_on() {
     export http_proxy=http://127.0.0.1:7890
@@ -193,15 +60,6 @@ function proxy_off(){
     echo -e "proxy off"
 }
 
-function yy() {
-    local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
-    yazi "$@" --cwd-file="$tmp"
-    if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-        cd -- "$cwd"
-    fi
-    rm -f -- "$tmp"
-}
-
 # TODO auto set proxy for new shell session
 export https_proxy=http://127.0.0.1:7890
 export http_proxy=http://127.0.0.1:7890
@@ -209,11 +67,7 @@ export all_proxy=socks5://127.0.0.1:7890
 
 alias lg=lazygit
 alias k=kubectl
-alias b=brew
 alias ks='kubectl -n kube-system'
-alias cc='cargo clippy'
-alias ct='cargo test'
-alias cr='cargo run'
 # TODO topgrade just upgrade not install new packages so brew dump file maybe no changes
 alias topgrade='topgrade && brew bundle dump --force --file=~/.config/homebrew/Brewfile'
 # install on new machine
@@ -234,9 +88,6 @@ alias   v=nvim_help
 alias   n=nvim_help
 
 ## Tools
-
-export ZOOKEEPER_HOME=/opt/zookeeper-3.4.12
-export KAFKA_HOME=/opt/kafka_2.11-2.0.0
 
 # for ssh
 export LC_ALL="en_US.UTF-8"
@@ -266,20 +117,9 @@ export SSLKEYLOGFILE=/Users/ruizhang/keylog.txt
 eval "$(fnm env)"
 
 ## fzf
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-source ~/.config/fzf-tab/fzf-tab.plugin.zsh
 
 # slow if source but normal for new shell session
 export LS_COLORS="$(vivid generate catppuccin-mocha)"
-export FZF_DEFAULT_COMMAND="fd --type file --color=always"
-# --ansi is needed, otherwise color code will escaped
-export FZF_DEFAULT_OPTS="--ansi \
---color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
---color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
---color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8"
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_ALT_C_COMMAND="fd --type d"
 
 ## UI
 
@@ -296,31 +136,7 @@ export LESS_TERMCAP_se=$'\e[0m'         # reset reverse video
 export LESS_TERMCAP_ue=$'\e[0m'         # reset underline
 export GROFF_NO_SGR=1                   # for konsole
 
-source $(brew --prefix)/share/powerlevel10k/powerlevel10k.zsh-theme
-
-# add new line on each command output
-precmd() {
-    precmd() {
-        echo
-    }
-}
-
-# solve tmux term color
-# export TERM=alacritty
-
-fpath=(/Users/ruizhang/.zsh/zsh-completions/src $fpath)
-fpath+=~/.zfunc
-
-autoload -Uz compinit && compinit
-# if [ $(date +'%j') != $(stat -f '%Sm' -t '%j' ~/.zcompdump) ]; then
-#   compinit
-# else
-#   compinit -C
-# fi
-
 source <(kubectl completion zsh)
-
-# export PATH="/usr/local/opt/binutils/bin:$PATH"
 
 # z
 eval "$(zoxide init zsh)"
@@ -352,34 +168,6 @@ export ATUIN_NOBIND="true"
 eval "$(atuin init zsh)"
 bindkey '^R' clear-ctrl-r
 
-# ignore commands for zsh-autosuggestions plugin
-# ZSH_AUTOSUGGEST_HISTORY_IGNORE="g stash*"
-
-# create tmux session
-# TODO hard code work path, needed change if workspace path changed
-tmux_work() {
-  # check if session exists, if not create one, if so attach it
-  local session="work"
-  tmux has-session -t $session 2>/dev/null
-
-  if [ $? != 0 ]; then
-    # Use -d to allow the rest of the function to run
-    tmux new-session -d -s work -c "/Users/ruizhang/Work/workspace/ivoss_web"
-    tmux rename-window npm
-    # -d to prevent current window from changing
-    tmux new-window -d -n front -c "/Users/ruizhang/Work/workspace/ivoss_web"
-    tmux new-window -d -n back -c "/Users/ruizhang/Work/workspace/ivoss_web_service"
-    tmux new-window -d -n bss/bigdata -c "/Users/ruizhang/Work/ivoss_bigdata"
-    tmux new-window -d -n other -c "/Users/ruizhang"
-    tmux new-window -d -n ssh -c "/Users/ruizhang"
-    # -d to detach any other client (which there shouldn't be,
-    # since you just created the session).
-    tmux attach-session -d -t work
-  else 
-    tmux attach-session -t $session
-  fi
-}
-
 # remove duplicate in $PATH
 typeset -U path
 
@@ -387,9 +175,4 @@ typeset -U path
 source ~/.zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh
 source /Users/ruizhang/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-##
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-# zprof
+eval "$(starship init zsh)"

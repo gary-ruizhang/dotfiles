@@ -68,8 +68,6 @@
 ; {:des "shift to lazy" :rules [[:left_shift {:key :left_shift :lazy true}]]}
 {:des "command to lazy" :rules [[:left_command {:key :left_command :lazy true}]]}
 
-; {:des "no_ctrl-w open application switcher" :rules [[:!COSw :!Ospacebar]]}
-
 ;; volume up/down
 {:des "hyper - to volume down" :rules [[:!!hyphen :volume_down]]}
 {:des "hyper + to volume up" :rules [[:!!equal_sign :volume_up]]}
@@ -98,18 +96,17 @@
 ;; normal
 {:des "caps_lock to ctrl" :rules [[:##caps_lock :left_control]]}
 {:des "ctrl-[ to esc" :rules [[:!Topen_bracket :escape]]}
-{:des "ctrl-m to toggle menu bar" :rules [[:!Tm :!Tf2]]}
-
-;; TODO for easy typing
-; {:des "\\ to |" :rules [[:backslash :!Sbackslash]]}
-; {:des "| to \\" :rules [[:!Sbackslash :backslash]]}
 
 ;; app
-{:des "cmd-f to ctrl-a + tab in terminal" :rules [[:!Cf [:!Ta :tab] [:terminal]]]}
+; TODO if change shortcut need to disable cmd-w
+{:des "cmd-w to ctrl-a + tab in terminal" :rules [[:!Cw [:!Ta :tab] [:terminal]]]}
 {:des "cmd-shift-f to alt-shift-f in terminal" :rules [[:!CSf :!OSf [:terminal]]]}
+{:des "cmd-shift-i to alt-shift-i in terminal" :rules [[:!CSi :!OSi [:terminal]]]}
+
 ; TODO 沉淀一下 先用keyboard maestro代替
 ; {:des "cmd-enter to shift-enter in terminal" :rules [[:!Creturn_or_enter :!Sreturn_or_enter [:terminal]]]}
 {:des "cmd-z to ctrl-a + z in terminal" :rules [[:!Cz [:!Ta :z] [:terminal]]]}
+{:des "ctrl-m to toggle tmux status bar" :rules [[:!Tm [:!Ta :m] [:terminal]]]}
 {:des "cmd-i to alt-i in terminal" :rules [[:!Ci [:!Oi] [:terminal]]]}
 {:des "cmd-shift-i to alt-shift-i in terminal" :rules [[:!CSi [:!OSi] [:terminal]]]}
 
@@ -172,9 +169,13 @@
 {
 :des "quickly switch between tabs in tmux" 
 :rules [
-[:!Cw :vk_none [:terminal]]
+; [:!Cw :vk_none [:terminal]]
+[:!Cc [:!Oc] [:terminal]]
 [:!Ce [:!Oe] [:terminal]]
+[:!Cb [:!Ob] [:terminal]]
 [:!Cr [:!Or] [:terminal]]
+[:!Cf [:!Of] [:terminal]]
+[:!Cp [:!Ox] [:terminal]]
 [:!Cl [:!Ta :n] [:terminal]]
 [:!Ch [:!Ta :p] [:terminal]]
 [:!Cj [:!Ta :j] [:terminal]]

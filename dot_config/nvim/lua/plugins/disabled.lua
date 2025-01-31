@@ -6,4 +6,6 @@ return {
   { "nvim-treesitter/nvim-treesitter-context", enabled = false },
   { "windwp/nvim-ts-autotag", enabled = false },
   { "lewis6991/gitsigns.nvim", enabled = false },
+  { "folke/tokyonight.nvim", enabled = false },
+  { "folke/flash.nvim", enabled = false },
 }

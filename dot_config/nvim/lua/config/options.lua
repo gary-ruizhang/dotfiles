@@ -7,6 +7,8 @@ local opt = vim.opt
 opt.clipboard = ""
 opt.undofile = false
 opt.timeoutlen = 300
+opt.conceallevel = 0
+opt.wrap = true
 
 local g = vim.g
 

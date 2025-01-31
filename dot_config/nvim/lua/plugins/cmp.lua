@@ -16,7 +16,13 @@ return {
       },
       signature = { enabled = true },
       sources = {
-        cmdline = { "cmdline" },
+        cmdline = function()
+          if vim.tbl_contains({ "/", "?" }, vim.fn.getcmdtype()) then
+            return { "buffer" }
+          else
+            return { "cmdline" }
+          end
+        end,
       },
       keymap = {
         preset = "none",

@@ -22,14 +22,12 @@ return {
     },
     -- stylua: ignore
     keys = {
-      { "<C-q>", function() Snacks.picker.recent() end, desc = "Recent" },
-      { "<M-e>", function() Snacks.picker.buffers() end, desc = "Buffers" },
+      { "<M-x>", function() Snacks.picker() end, desc = "All in All" },
+      { "<C-q>", function() Snacks.picker.smart({ multi = { "recent", "files" }, matcher = { sort_empty = false }, filter = { cwd = false } }) end, desc = "Recent", },
+      { "<M-e>", function() Snacks.picker.smart({ multi = { "recent", "files" }, matcher = { sort_empty = false }, filter = { cwd = true } }) end, desc = "Recent", },
+      { "<M-b>", function() Snacks.picker.buffers({ current = false }) end, desc = "Buffers" },
       { "<M-S-f>", function() Snacks.picker.grep() end, desc = "Grep" },
-      -- TODO make work with key n
-      { "/", function() Snacks.picker.lines() end, desc = "Buffer Lines" },
-      -- TODO not work at q:
-      -- { "?", function() Snacks.picker.lines() end, desc = "Buffer Lines" },
-      -- TODO figure out a suitable shortcut for resume
+      { "<M-f>", function() Snacks.picker.lines() end, desc = "Buffer Lines" },
       { "<M-r>", function() Snacks.picker.resume() end, desc = "Buffer Lines" },
     },
   },
