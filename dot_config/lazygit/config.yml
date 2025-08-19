@@ -1,6 +1,14 @@
 git:
   paging:
+    colorArg: always
     pager: delta --dark --paging=never
-os:
-  edit: 'nvim'
+  autoFetch: false
 
+keybinding:
+  universal:
+    # Assign <esc> to the return/quit action
+    # The default 'q' might still work alongside this.
+    quit: '<esc>'
+
+os:
+  editPreset: 'nvim-remote'

@@ -24,6 +24,10 @@ map("n", "<C-c>", function()
   end
 end)
 
+map("n", "<M-t>", "<cmd>Trouble<CR>")
 -- swap with trouble.nvim
 map("n", "<leader>xL", "<cmd>lopen<cr>", { desc = "Location List" })
 map("n", "<leader>xQ", "<cmd>copen<cr>", { desc = "Quickfix List" })
+map("n", "<C-g>", function()
+  Snacks.lazygit()
+end, { desc = "Lazygit (cwd)" })

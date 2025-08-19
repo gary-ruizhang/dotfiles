@@ -8,4 +8,6 @@ return {
   { "lewis6991/gitsigns.nvim", enabled = false },
   { "folke/tokyonight.nvim", enabled = false },
   { "folke/flash.nvim", enabled = false },
+  { "catppuccin/nvim", enabled = false },
+  { "stevearc/conform.nvim", enabled = false },
 }

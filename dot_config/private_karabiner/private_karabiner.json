@@ -309,7 +309,7 @@
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_if",
-            "bundle_identifiers" : [ "^com\\.github\\.wez\\.wezterm$", "^org\\.alacritty$" ]
+            "bundle_identifiers" : [ "^org\\.alacritty$" ]
           } ],
           "type" : "basic"
         } ]
@@ -328,7 +328,7 @@
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_if",
-            "bundle_identifiers" : [ "^com\\.github\\.wez\\.wezterm$", "^org\\.alacritty$" ]
+            "bundle_identifiers" : [ "^org\\.alacritty$" ]
           } ],
           "type" : "basic"
         } ]
@@ -347,7 +347,7 @@
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_if",
-            "bundle_identifiers" : [ "^com\\.github\\.wez\\.wezterm$", "^org\\.alacritty$" ]
+            "bundle_identifiers" : [ "^org\\.alacritty$" ]
           } ],
           "type" : "basic"
         }, {
@@ -363,7 +363,25 @@
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_if",
-            "bundle_identifiers" : [ "^com\\.github\\.wez\\.wezterm$", "^org\\.alacritty$" ]
+            "bundle_identifiers" : [ "^org\\.alacritty$" ]
+          } ],
+          "type" : "basic"
+        } ]
+      }, {
+        "description" : "ctrl-spacebar to spacebar",
+        "manipulators" : [ {
+          "from" : {
+            "key_code" : "spacebar",
+            "modifiers" : {
+              "mandatory" : [ "left_control" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "spacebar"
+          } ],
+          "conditions" : [ {
+            "type" : "frontmost_application_if",
+            "bundle_identifiers" : [ "^org\\.alacritty$" ]
           } ],
           "type" : "basic"
         } ]
@@ -384,7 +402,7 @@
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_if",
-            "bundle_identifiers" : [ "^com\\.github\\.wez\\.wezterm$", "^org\\.alacritty$" ]
+            "bundle_identifiers" : [ "^org\\.alacritty$" ]
           } ],
           "type" : "basic"
         } ]
@@ -405,7 +423,7 @@
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_if",
-            "bundle_identifiers" : [ "^com\\.github\\.wez\\.wezterm$", "^org\\.alacritty$" ]
+            "bundle_identifiers" : [ "^org\\.alacritty$" ]
           } ],
           "type" : "basic"
         } ]
@@ -424,7 +442,7 @@
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_if",
-            "bundle_identifiers" : [ "^com\\.github\\.wez\\.wezterm$", "^org\\.alacritty$" ]
+            "bundle_identifiers" : [ "^org\\.alacritty$" ]
           } ],
           "type" : "basic"
         } ]
@@ -907,7 +925,7 @@
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_unless",
-            "bundle_identifiers" : [ "^com\\.github\\.wez\\.wezterm$", "^org\\.alacritty$" ]
+            "bundle_identifiers" : [ "^org\\.alacritty$" ]
           } ],
           "type" : "basic"
         } ]
@@ -926,7 +944,7 @@
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_unless",
-            "bundle_identifiers" : [ "^com\\.github\\.wez\\.wezterm$", "^org\\.alacritty$" ]
+            "bundle_identifiers" : [ "^org\\.alacritty$" ]
           } ],
           "type" : "basic"
         } ]
@@ -1252,7 +1270,7 @@
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_if",
-            "bundle_identifiers" : [ "^com\\.github\\.wez\\.wezterm$", "^org\\.alacritty$" ]
+            "bundle_identifiers" : [ "^org\\.alacritty$" ]
           } ],
           "type" : "basic"
         }, {
@@ -1268,7 +1286,7 @@
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_if",
-            "bundle_identifiers" : [ "^com\\.github\\.wez\\.wezterm$", "^org\\.alacritty$" ]
+            "bundle_identifiers" : [ "^org\\.alacritty$" ]
           } ],
           "type" : "basic"
         }, {
@@ -1284,7 +1302,7 @@
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_if",
-            "bundle_identifiers" : [ "^com\\.github\\.wez\\.wezterm$", "^org\\.alacritty$" ]
+            "bundle_identifiers" : [ "^org\\.alacritty$" ]
           } ],
           "type" : "basic"
         }, {
@@ -1300,7 +1318,7 @@
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_if",
-            "bundle_identifiers" : [ "^com\\.github\\.wez\\.wezterm$", "^org\\.alacritty$" ]
+            "bundle_identifiers" : [ "^org\\.alacritty$" ]
           } ],
           "type" : "basic"
         }, {
@@ -1316,7 +1334,7 @@
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_if",
-            "bundle_identifiers" : [ "^com\\.github\\.wez\\.wezterm$", "^org\\.alacritty$" ]
+            "bundle_identifiers" : [ "^org\\.alacritty$" ]
           } ],
           "type" : "basic"
         }, {
@@ -1332,7 +1350,23 @@
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_if",
-            "bundle_identifiers" : [ "^com\\.github\\.wez\\.wezterm$", "^org\\.alacritty$" ]
+            "bundle_identifiers" : [ "^org\\.alacritty$" ]
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "t",
+            "modifiers" : {
+              "mandatory" : [ "left_command" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "t",
+            "modifiers" : [ "left_option" ]
+          } ],
+          "conditions" : [ {
+            "type" : "frontmost_application_if",
+            "bundle_identifiers" : [ "^org\\.alacritty$" ]
           } ],
           "type" : "basic"
         }, {
@@ -1350,7 +1384,7 @@
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_if",
-            "bundle_identifiers" : [ "^com\\.github\\.wez\\.wezterm$", "^org\\.alacritty$" ]
+            "bundle_identifiers" : [ "^org\\.alacritty$" ]
           } ],
           "type" : "basic"
         }, {
@@ -1368,7 +1402,7 @@
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_if",
-            "bundle_identifiers" : [ "^com\\.github\\.wez\\.wezterm$", "^org\\.alacritty$" ]
+            "bundle_identifiers" : [ "^org\\.alacritty$" ]
           } ],
           "type" : "basic"
         }, {
@@ -1386,7 +1420,7 @@
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_if",
-            "bundle_identifiers" : [ "^com\\.github\\.wez\\.wezterm$", "^org\\.alacritty$" ]
+            "bundle_identifiers" : [ "^org\\.alacritty$" ]
           } ],
           "type" : "basic"
         }, {
@@ -1404,7 +1438,7 @@
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_if",
-            "bundle_identifiers" : [ "^com\\.github\\.wez\\.wezterm$", "^org\\.alacritty$" ]
+            "bundle_identifiers" : [ "^org\\.alacritty$" ]
           } ],
           "type" : "basic"
         }, {
@@ -1422,7 +1456,7 @@
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_if",
-            "bundle_identifiers" : [ "^com\\.github\\.wez\\.wezterm$", "^org\\.alacritty$" ]
+            "bundle_identifiers" : [ "^org\\.alacritty$" ]
           } ],
           "type" : "basic"
         }, {
@@ -1440,7 +1474,7 @@
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_if",
-            "bundle_identifiers" : [ "^com\\.github\\.wez\\.wezterm$", "^org\\.alacritty$" ]
+            "bundle_identifiers" : [ "^org\\.alacritty$" ]
           } ],
           "type" : "basic"
         }, {
@@ -1458,7 +1492,7 @@
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_if",
-            "bundle_identifiers" : [ "^com\\.github\\.wez\\.wezterm$", "^org\\.alacritty$" ]
+            "bundle_identifiers" : [ "^org\\.alacritty$" ]
           } ],
           "type" : "basic"
         }, {
@@ -1476,7 +1510,7 @@
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_if",
-            "bundle_identifiers" : [ "^com\\.github\\.wez\\.wezterm$", "^org\\.alacritty$" ]
+            "bundle_identifiers" : [ "^org\\.alacritty$" ]
           } ],
           "type" : "basic"
         }, {
@@ -1494,7 +1528,7 @@
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_if",
-            "bundle_identifiers" : [ "^com\\.github\\.wez\\.wezterm$", "^org\\.alacritty$" ]
+            "bundle_identifiers" : [ "^org\\.alacritty$" ]
           } ],
           "type" : "basic"
         }, {
@@ -1512,7 +1546,7 @@
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_if",
-            "bundle_identifiers" : [ "^com\\.github\\.wez\\.wezterm$", "^org\\.alacritty$" ]
+            "bundle_identifiers" : [ "^org\\.alacritty$" ]
           } ],
           "type" : "basic"
         }, {
@@ -1530,7 +1564,7 @@
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_if",
-            "bundle_identifiers" : [ "^com\\.github\\.wez\\.wezterm$", "^org\\.alacritty$" ]
+            "bundle_identifiers" : [ "^org\\.alacritty$" ]
           } ],
           "type" : "basic"
         }, {
@@ -1548,7 +1582,7 @@
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_if",
-            "bundle_identifiers" : [ "^com\\.github\\.wez\\.wezterm$", "^org\\.alacritty$" ]
+            "bundle_identifiers" : [ "^org\\.alacritty$" ]
           } ],
           "type" : "basic"
         }, {
@@ -1566,7 +1600,7 @@
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_if",
-            "bundle_identifiers" : [ "^com\\.github\\.wez\\.wezterm$", "^org\\.alacritty$" ]
+            "bundle_identifiers" : [ "^org\\.alacritty$" ]
           } ],
           "type" : "basic"
         }, {
@@ -1584,7 +1618,7 @@
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_if",
-            "bundle_identifiers" : [ "^com\\.github\\.wez\\.wezterm$", "^org\\.alacritty$" ]
+            "bundle_identifiers" : [ "^org\\.alacritty$" ]
           } ],
           "type" : "basic"
         } ]
@@ -1603,7 +1637,7 @@
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_if",
-            "bundle_identifiers" : [ "^com\\.github\\.wez\\.wezterm$", "^org\\.alacritty$" ]
+            "bundle_identifiers" : [ "^org\\.alacritty$" ]
           } ],
           "type" : "basic"
         }, {
@@ -1638,7 +1672,7 @@
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_if",
-            "bundle_identifiers" : [ "^com\\.github\\.wez\\.wezterm$", "^org\\.alacritty$" ]
+            "bundle_identifiers" : [ "^org\\.alacritty$" ]
           } ],
           "type" : "basic"
         }, {
@@ -1689,7 +1723,7 @@
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_if",
-            "bundle_identifiers" : [ "^com\\.github\\.wez\\.wezterm$", "^org\\.alacritty$" ]
+            "bundle_identifiers" : [ "^org\\.alacritty$" ]
           } ],
           "type" : "basic"
         }, {

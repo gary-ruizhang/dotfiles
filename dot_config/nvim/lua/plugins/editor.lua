@@ -28,4 +28,29 @@ return {
       vim.api.nvim_set_hl(0, "LeapBackdrop", { link = "Comment" })
     end,
   },
+  -- {
+  --   "stevearc/conform.nvim",
+  --   opts = {
+  --     formatters_by_ft = {
+  --       java = { "google-java-format" },
+  --       go = { "gofmt" },
+  --       -- python = { "ruff_fix", "ruff_format", "ruff_organize_imports " },
+  --       rust = { "rustfmt" },
+  --       -- scala = { "scalafmt" },
+  --     },
+  --     formatters = {
+  --       ["google-java-format"] = {
+  --         prepend_args = { "--aosp" },
+  --       },
+  --     },
+  --   },
+  -- },
+  {
+    "echasnovski/mini.ai",
+    opts = {
+      custom_textobjects = {
+        b = false,
+      },
+    },
+  },
 }

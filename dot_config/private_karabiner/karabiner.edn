@@ -3,7 +3,8 @@
 :applications 
 {
 :chrome ["^com\\.google\\.Chrome$"]
-:terminal ["^com\\.github\\.wez\\.wezterm$", "^org\\.alacritty$"]
+:ai ["^com\\.google\\.Chrome\\.app\\.mojogeknlbnppmajemmkcfkilgaapppk$"]
+:terminal ["^org\\.alacritty$"]
 :qq ["^com\\.tencent\\.qq$"]
 :skim ["^net\\.sourceforge\\.skim-app\\.skim$"]
 :emacs ["^org\\.gnu\\.Emacs$"]
@@ -29,12 +30,6 @@
 :km "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"%s\"'"
 :open "open \"%s\""
 :temp_cp "osascript -e 'set temp to the clipboard \n set the clipboard to \"%s\" \n tell application \"System Events\" \n   keystroke \"v\" using command down \n   delay 0.1 \n end tell \n set the clipboard to temp'"
-}
-
-:input-sources
-{
-:abc {:input_source_id "^com\\.apple\\.keylayout\\.ABC$"}
-:cn  {:input_source_id "^com\\.apple\\.inputmethod\\.SCIM\\.Shuangpin$"}
 }
 
 :tos
@@ -102,6 +97,9 @@
 {:des "cmd-w to ctrl-a + tab in terminal" :rules [[:!Cw [:!Ta :tab] [:terminal]]]}
 {:des "cmd-shift-f to alt-shift-f in terminal" :rules [[:!CSf :!OSf [:terminal]]]}
 {:des "cmd-shift-i to alt-shift-i in terminal" :rules [[:!CSi :!OSi [:terminal]]]}
+
+; terminal disable ctrl-spacebar
+{:des "ctrl-spacebar to spacebar" :rules [[:!Tspacebar [:spacebar] [:terminal]]]}
 
 ; TODO 沉淀一下 先用keyboard maestro代替
 ; {:des "cmd-enter to shift-enter in terminal" :rules [[:!Creturn_or_enter :!Sreturn_or_enter [:terminal]]]}
@@ -176,6 +174,7 @@
 [:!Cr [:!Or] [:terminal]]
 [:!Cf [:!Of] [:terminal]]
 [:!Cp [:!Ox] [:terminal]]
+[:!Ct [:!Ot] [:terminal]]
 [:!Cl [:!Ta :n] [:terminal]]
 [:!Ch [:!Ta :p] [:terminal]]
 [:!Cj [:!Ta :j] [:terminal]]
