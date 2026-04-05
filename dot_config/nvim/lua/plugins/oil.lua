@@ -21,10 +21,16 @@ return {
       },
       view_options = {
         show_hidden = true,
+        is_always_hidden = function(name, bufnr)
+          if name == ".." then
+            return true
+          end
+          return false
+        end,
       },
     },
     -- Optional dependencies
-    dependencies = { { "echasnovski/mini.icons", opts = {} } },
+    dependencies = { { "nvim-mini/mini.icons", opts = {} } },
     -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
     keys = {
       { "-", "<CMD>Oil<CR>", desc = "Open parent directory" },

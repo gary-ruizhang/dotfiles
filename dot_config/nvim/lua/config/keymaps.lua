@@ -9,8 +9,8 @@ map("n", ";", ":", { silent = false })
 map("v", ";", ":", { silent = false })
 map("i", "<C-e>", "<Right><Right>")
 map("n", "<M-Enter>", vim.lsp.buf.code_action, { desc = "Code Action" })
-map("n", "<M-c>", "<cmd>only<CR>")
-map("v", "<M-c>", '"+y')
+map("n", "<D-c>", "<cmd>only<CR>")
+map("v", "<D-c>", '"+y')
 map("i", "<C-l>", "<Esc>zzgi")
 map("n", "<C-c>", function()
   -- TODO always use inside a file
@@ -24,10 +24,15 @@ map("n", "<C-c>", function()
   end
 end)
 
-map("n", "<M-t>", "<cmd>Trouble<CR>")
+map({'n', 'v'}, '<D-c>', '"+y')
+
+map("n", "<D-t>", "<cmd>Trouble<CR>")
 -- swap with trouble.nvim
 map("n", "<leader>xL", "<cmd>lopen<cr>", { desc = "Location List" })
 map("n", "<leader>xQ", "<cmd>copen<cr>", { desc = "Quickfix List" })
 map("n", "<C-g>", function()
   Snacks.lazygit()
 end, { desc = "Lazygit (cwd)" })
+
+-- latex \
+map("i", "<C-l>", "\\")

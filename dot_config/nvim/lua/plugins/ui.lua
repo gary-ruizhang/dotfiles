@@ -113,4 +113,13 @@ return {
       return opts
     end,
   },
+  {
+    "kristijanhusak/vim-dadbod-ui",
+    init = function()
+      -- 让查询结果总是尝试占用最大的窗口空间
+      vim.g.db_ui_use_nerd_fonts = 1
+      -- 尝试这个设置，强制在当前窗口打开而不是分裂窗口
+      -- vim.g.db_ui_win_combination = "vertical" 
+    end,
+  }
 }

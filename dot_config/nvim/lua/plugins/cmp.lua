@@ -104,6 +104,6 @@ return {
         ["<C-k>"] = { "select_prev", "fallback" },
         ["<C-j>"] = { "select_next", "fallback" },
       },
-    },
-  },
+    }
+  }
 }

@@ -5,6 +5,7 @@
 :chrome ["^com\\.google\\.Chrome$"]
 :ai ["^com\\.google\\.Chrome\\.app\\.mojogeknlbnppmajemmkcfkilgaapppk$"]
 :terminal ["^org\\.alacritty$"]
+:ghostty ["^com\\.mitchellh\\.ghostty$"]
 :qq ["^com\\.tencent\\.qq$"]
 :skim ["^net\\.sourceforge\\.skim-app\\.skim$"]
 :emacs ["^org\\.gnu\\.Emacs$"]
@@ -14,7 +15,6 @@
 :code ["^com\\.microsoft\\.VSCode$"]
 :obsidian ["^md\\.obsidian$"]
 :devutils ["^tonyapp\\.devutils$"]
-:telegram ["^com\\.tdesktop\\.Telegram$"]
 :iina ["^com\\.colliderli\\.iina$"]
 :wireshark ["^org\\.wireshark\\.Wireshark$"]
 }
@@ -95,8 +95,6 @@
 ;; app
 ; TODO if change shortcut need to disable cmd-w
 {:des "cmd-w to ctrl-a + tab in terminal" :rules [[:!Cw [:!Ta :tab] [:terminal]]]}
-{:des "cmd-shift-f to alt-shift-f in terminal" :rules [[:!CSf :!OSf [:terminal]]]}
-{:des "cmd-shift-i to alt-shift-i in terminal" :rules [[:!CSi :!OSi [:terminal]]]}
 
 ; terminal disable ctrl-spacebar
 {:des "ctrl-spacebar to spacebar" :rules [[:!Tspacebar [:spacebar] [:terminal]]]}
@@ -105,23 +103,16 @@
 ; {:des "cmd-enter to shift-enter in terminal" :rules [[:!Creturn_or_enter :!Sreturn_or_enter [:terminal]]]}
 {:des "cmd-z to ctrl-a + z in terminal" :rules [[:!Cz [:!Ta :z] [:terminal]]]}
 {:des "ctrl-m to toggle tmux status bar" :rules [[:!Tm [:!Ta :m] [:terminal]]]}
-{:des "cmd-i to alt-i in terminal" :rules [[:!Ci [:!Oi] [:terminal]]]}
-{:des "cmd-shift-i to alt-shift-i in terminal" :rules [[:!CSi [:!OSi] [:terminal]]]}
 
 {:des "ctrl-k to up exclude qq, telegram" :rules [[:!Tk :up_arrow [:!qq :!telegram]]]}
 {:des "ctrl-j to down exclude qq, telegram" :rules [[:!Tj :down_arrow [:!qq :!telegram]]]}
-{:des "ctrl-p to up exclude qq, telegram" :rules [[:!Tp :up_arrow [:!qq :!telegram]]]}
+; {:des "ctrl-p to up exclude qq, telegram" :rules [[:!Tp :up_arrow [:!qq :!telegram]]]}
 {:des "ctrl-n to down exclude qq, telegram" :rules [[:!Tn :down_arrow [:!qq :!telegram]]]}
 
 {:des "ctrl-k to ctrl-up in qq" :rules [[:!Tk :!Cup_arrow [:qq]]]}
 {:des "ctrl-j to ctrl-down in qq" :rules [[:!Tj :!Cdown_arrow [:qq]]]}
 {:des "ctrl-p to ctrl-up in qq" :rules [[:!Tp :!Cup_arrow [:qq]]]}
 {:des "ctrl-n to ctrl-down in qq" :rules [[:!Tn :!Cdown_arrow [:qq]]]}
-
-{:des "ctrl-k to alt-up in telegram" :rules [[:!Tk :!Oup_arrow [:telegram]]]}
-{:des "ctrl-j to alt-down in telegram" :rules [[:!Tj :!Odown_arrow [:telegram]]]}
-{:des "ctrl-p to alt-up in telegram" :rules [[:!Tp :!Oup_arrow [:telegram]]]}
-{:des "ctrl-n to alt-down in telegram" :rules [[:!Tn :!Odown_arrow [:telegram]]]}
 
 {:des "cmd-1 to shift-cmd-t in skim" :rules [[:!C1 :!CSt [:skim]]]}
 {:des "cmd-2 to shift-cmd-o in skim" :rules [[:!C2 :!CSo [:skim]]]}
@@ -167,14 +158,6 @@
 {
 :des "quickly switch between tabs in tmux" 
 :rules [
-; [:!Cw :vk_none [:terminal]]
-[:!Cc [:!Oc] [:terminal]]
-[:!Ce [:!Oe] [:terminal]]
-[:!Cb [:!Ob] [:terminal]]
-[:!Cr [:!Or] [:terminal]]
-[:!Cf [:!Of] [:terminal]]
-[:!Cp [:!Ox] [:terminal]]
-[:!Ct [:!Ot] [:terminal]]
 [:!Cl [:!Ta :n] [:terminal]]
 [:!Ch [:!Ta :p] [:terminal]]
 [:!Cj [:!Ta :j] [:terminal]]

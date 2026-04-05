@@ -1,6 +1,6 @@
 return {
   {
-    "echasnovski/mini.surround",
+    "nvim-mini/mini.surround",
     opts = {
       mappings = {
         -- classic vim-surround keymap:
@@ -16,7 +16,15 @@ return {
     },
   },
   {
-    "ggandor/leap.nvim",
+    "iamcco/markdown-preview.nvim",
+    enabled = false,
+  },
+  {
+    "MeanderingProgrammer/render-markdown.nvim",
+    -- enabled = false,
+  },
+  {
+    "https://codeberg.org/andyg/leap.nvim",
     config = function()
       vim.keymap.set("n", "s", "<Plug>(leap)")
       local leap = require("leap")
@@ -46,7 +54,7 @@ return {
   --   },
   -- },
   {
-    "echasnovski/mini.ai",
+    "nvim-mini/mini.ai",
     opts = {
       custom_textobjects = {
         b = false,

@@ -1,26 +1,29 @@
 return {
   {
     "neovim/nvim-lspconfig",
-    opts = function()
-      local Keys = require("lazyvim.plugins.lsp.keymaps").get()
-      -- stylua: ignore
-      vim.list_extend(Keys, {
-        { "<M-i>", function() Snacks.picker.lsp_symbols({ filter = LazyVim.config.kind_filter }) end, desc = "LSP Symbols", has = "documentSymbol" },
-        { "<M-S-i>", function() Snacks.picker.lsp_workspace_symbols({ filter = LazyVim.config.kind_filter }) end, desc = "LSP Symbols", has = "documentSymbol" },
-      })
-
-      -- require("lspconfig").asm_lsp.setup({
-      --   -- handlers = {
-      --   --   ["textDocument/publishDiagnostics"] = function() end,
-      --   -- },
-      --   filetypes = {
-      --     "asm",
-      --     "nasm",
-      --     "s",
-      --     "S",
-      --   },
-      -- })
-    end,
+    keys = {
+      {
+        "<D-i>",
+        function()
+          require("snacks").picker.lsp_symbols({ filter = require("lazyvim.config").kind_filter })
+        end,
+        desc = "LSP Symbols",
+      },
+      {
+        "<D-S-i>",
+        function()
+          require("snacks").picker.lsp_workspace_symbols({ filter = require("lazyvim.config").kind_filter })
+        end,
+        desc = "LSP Workspace Symbols",
+      },
+    },
+    opts = {
+        servers = {
+            pyright = { enabled = false },
+            ty = { enabled = true }
+        },
+        inlay_hints = { enabled = false },
+    }
   },
   {
     "nvim-treesitter/nvim-treesitter",
@@ -34,5 +37,13 @@ return {
         },
       })
     end,
+  },
+  {
+    "mfussenegger/nvim-lint",
+    opts = {
+      linters_by_ft = {
+        markdown = {}, -- 将其设置为空列表即可禁用该文件类型的 linter
+      },
+    },
   },
 }

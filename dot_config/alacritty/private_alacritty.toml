@@ -5,6 +5,9 @@ TERM = "xterm-256color"
 program = "/usr/local/bin/fish"
 args = ["--login"]
 
+[scrolling]
+multiplier = 1  # 默认通常是 3，调成 1 会让基于滚轮/触控板的触发更平滑
+
 [font]
 size = 20
 
@@ -29,6 +32,7 @@ decorations = "none"
 # dynamic_padding = true
 option_as_alt = "OnlyLeft"
 startup_mode = "Maximized"
+dynamic_padding = true
 
 [font.offset]
 x = 0
@@ -41,18 +45,44 @@ y = 0
 # [general]
 # import = ["/Users/ruizhang/.config/alacritty/catppuccin/catppuccin-mocha.toml"]
 # LACKLUSTER COLORS
-[colors.primary]
-background = '#0A0A0A'
+# [colors.primary]
+# background = '#0A0A0A'
+#
+# [colors.normal]
+# # black is gray0
+# black = '#080808'
+# red = '#D70000'
+# green = '#789978'
+# yellow = '#ffAA88'
+# blue = '#7788AA'
+# magenta = '#D7007D'
+# # cyan is set to lack
+# cyan = '#708090' 
+# # white is set to luster
+# white = '#DEEEED'
 
+# zenwritten light
+[colors.bright]
+black = "#C6C3C3"
+red = "#94253E"
+green = "#3F5A22"
+yellow = "#803D1C"
+blue = "#1D5573"
+magenta = "#7B3B70"
+cyan = "#2B747C"
+white = "#5C5C5C"
+[colors.cursor]
+cursor = "#353535"
+text = "#EEEEEE"
 [colors.normal]
-# black is gray0
-black = '#080808'
-red = '#D70000'
-green = '#789978'
-yellow = '#ffAA88'
-blue = '#7788AA'
-magenta = '#D7007D'
-# cyan is set to lack
-cyan = '#708090' 
-# white is set to luster
-white = '#DEEEED'
+black = "#EEEEEE"
+blue = "#286486"
+cyan = "#3B8992"
+green = "#4F6C31"
+magenta = "#88507D"
+red = "#A8334C"
+white = "#353535"
+yellow = "#944927"
+[colors.primary]
+background = "#EEEEEE"
+foreground = "#353535"

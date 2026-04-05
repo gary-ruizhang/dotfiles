@@ -1,14 +1,31 @@
 git:
-  paging:
-    colorArg: always
-    pager: delta --dark --paging=never
+  pagers:
+    - colorArg: always
+      pager: delta --dark --paging=never
   autoFetch: false
 
 keybinding:
   universal:
-    # Assign <esc> to the return/quit action
-    # The default 'q' might still work alongside this.
-    quit: '<esc>'
+    # 基础导航：强制 j/k 负责切换
+    prevItem: 'k'
+    nextItem: 'j'
+    
+    # 移除方向键的默认切换功能（设为空字符串）
+    prevItem-alt: ''
+    nextItem-alt: ''
+    
+    # 核心需求：方向键负责右侧 Diff 滚动
+    scrollUpMain: '<up>'
+    scrollDownMain: '<down>'
+    
+    # 退出功能
+    quit: '<c-c>'
 
 os:
   editPreset: 'nvim-remote'
+
+# 变色测试（生效后可删除）
+gui:
+  theme:
+    activeBorderColor:
+      - '#ff0000'
