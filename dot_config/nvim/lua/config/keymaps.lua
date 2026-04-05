@@ -3,14 +3,15 @@
 -- Add any additional keymaps here
 
 local map = vim.keymap.set
+local mk = vim.g.main_key
 
 map("n", "<C-l>", "<cmd>nohlsearch<CR>")
 map("n", ";", ":", { silent = false })
 map("v", ";", ":", { silent = false })
 map("i", "<C-e>", "<Right><Right>")
-map("n", "<M-Enter>", vim.lsp.buf.code_action, { desc = "Code Action" })
-map("n", "<D-c>", "<cmd>only<CR>")
-map("v", "<D-c>", '"+y')
+map("n", "<C-Enter>", vim.lsp.buf.code_action, { desc = "Code Action" })
+map("n", string.format("<%s-c>", mk), "<cmd>only<CR>")
+map("v", string.format("<%s-c>", mk), '"+y')
 map("i", "<C-l>", "<Esc>zzgi")
 map("n", "<C-c>", function()
   -- TODO always use inside a file
@@ -24,9 +25,9 @@ map("n", "<C-c>", function()
   end
 end)
 
-map({'n', 'v'}, '<D-c>', '"+y')
+map({'n', 'v'}, string.format('<%s-c>', mk), '"+y')
 
-map("n", "<D-t>", "<cmd>Trouble<CR>")
+map("n", string.format("<%s-t>", mk), "<cmd>Trouble<CR>")
 -- swap with trouble.nvim
 map("n", "<leader>xL", "<cmd>lopen<cr>", { desc = "Location List" })
 map("n", "<leader>xQ", "<cmd>copen<cr>", { desc = "Quickfix List" })

@@ -74,4 +74,4 @@
   merge-conflict-theirs-diff-header-decoration-style = "#434C5E" box
 
 [credential]
-	helper = store
+	helper = osxkeychain

@@ -1,3 +1,5 @@
+local mk = vim.g.main_key
+
 return {
   {
     "folke/snacks.nvim",
@@ -33,15 +35,12 @@ return {
     },
     -- stylua: ignore
     keys = {
-      { "<M-x>", function() Snacks.picker() end, desc = "All in All" },
-      { "<D-p>", function() Snacks.picker() end, desc = "All in All" },
+      { string.format("<%s-p>", mk), function() Snacks.picker() end, desc = "All in All" },
       { "<C-q>", function() Snacks.picker.smart({ multi = { "recent", "files" }, matcher = { sort_empty = false }, filter = { cwd = false } }) end, desc = "Recent", },
-      { "<D-e>", function() Snacks.picker.smart({ multi = { "recent", "files" }, matcher = { sort_empty = false }, filter = { cwd = true } }) end, desc = "Recent", },
-      { "<D-b>", function() Snacks.picker.buffers({ current = false }) end, desc = "Buffers" },
-      { "<D-S-f>", function() Snacks.picker.grep({ exclude = { "**/yellow.md", "**/archive/*" } }) end, desc = "Grep" },
-      -- FIXME 和ghostty冲突
-      -- { "<D-f>", function() Snacks.picker.lines() end, desc = "Buffer Lines" },
-      { "<D-r>", function() Snacks.picker.resume() end, desc = "Buffer Lines" },
+      { string.format("<%s-e>", mk), function() Snacks.picker.smart({ multi = { "recent", "files" }, matcher = { sort_empty = false }, filter = { cwd = true } }) end, desc = "Recent", },
+      { string.format("<%s-b>", mk), function() Snacks.picker.buffers({ current = false }) end, desc = "Buffers" },
+      { string.format("<%s-S-f>", mk), function() Snacks.picker.grep({ exclude = { "**/yellow.md", "**/archive/*" } }) end, desc = "Grep" },
+      { string.format("<%s-r>", mk), function() Snacks.picker.resume() end, desc = "Buffer Lines" },
     },
   },
   {

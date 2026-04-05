@@ -1,16 +1,18 @@
+local mk = vim.g.main_key
+
 return {
   {
     "neovim/nvim-lspconfig",
     keys = {
       {
-        "<D-i>",
+        string.format("<%s-i>", mk),
         function()
           require("snacks").picker.lsp_symbols({ filter = require("lazyvim.config").kind_filter })
         end,
         desc = "LSP Symbols",
       },
       {
-        "<D-S-i>",
+        string.format("<%s-S-i>", mk),
         function()
           require("snacks").picker.lsp_workspace_symbols({ filter = require("lazyvim.config").kind_filter })
         end,
